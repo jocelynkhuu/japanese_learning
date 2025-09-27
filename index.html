@@ -8,6 +8,17 @@
     body { padding: 2rem; }
     .correct { color: green; font-weight: bold; }
     .incorrect { color: red; font-weight: bold; }
+    .sticky-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #f8f9fa;
+      border-top: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: center;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body class="bg-light">
@@ -46,20 +57,23 @@
     </div>
 
     <!-- Verb List -->
-    <div id="list" style="display:none;">
+    <div id="list" style="display:none; position: relative; min-height: 100vh;">
       <h2>All Verbs</h2>
       <table class="table table-striped table-bordered">
         <thead class="table-dark">
-          <tr><th>Dict</th><th>Te-form(s)</th><th>Masu-form(s)</th><th>Type</th><th>Meaning</th></tr>
+          <tr><th>Kanji</th><th>Dict (Kana)</th><th>Te-form(s)</th><th>Masu-form(s)</th><th>Type</th><th>Meaning</th></tr>
         </thead>
         <tbody id="verbTable"></tbody>
       </table>
-      <button class="btn btn-primary mt-3" onclick="reset()">🔙 Back to Menu</button>
+      <!-- Sticky footer -->
+      <div class="sticky-footer">
+        <button class="btn btn-primary" onclick="reset()">🔙 Back to Menu</button>
+      </div>
     </div>
   </div>
 
   <script>
-    // ==== Verbs with both Te-form + Masu-form ====
+    // ==== Verbs go here ====
     const verbs = [
       // ==== U-verbs ====
       {dict: "あう", kanji: "<ruby>会<rt>あ</rt></ruby>う", type: "u-verb",
@@ -200,8 +214,6 @@
       te: ["もってきて","持ってきて"], masu: ["もってきます","持ってきます"], meaning: "to bring (thing)"}
     ];
 
-
-
     document.getElementById("totalVerbs").textContent = verbs.length;
 
     function startQuiz() {
@@ -217,6 +229,7 @@
       verbs.forEach(v => {
         const row = `<tr>
           <td>${v.kanji}</td>
+          <td>${v.dict}</td>
           <td>${v.te.join(", ")}</td>
           <td>${v.masu.join(", ")}</td>
           <td>${v.type}</td>
@@ -256,19 +269,10 @@
         const validAnswers = JSON.parse(input.getAttribute("data-answers"));
         if (validAnswers.includes(userAnswer)) {
           score++;
-          output += `
-            <div class="alert alert-success">
-              ✅ Q${i+1}: Correct! <br>
-              Your answer: <b>${userAnswer}</b><br>
-              Acceptable answers: ${validAnswers.join(", ")} (${v.type})
-            </div>`;
+          output += `<div class="alert alert-success">✅ Q${i+1}: Correct (${userAnswer})</div>`;
         } else {
-          output += `
-            <div class="alert alert-danger">
-              ❌ Q${i+1}: Incorrect <br>
-              Your answer: <b>${userAnswer}</b><br>
-              Acceptable answers: ${validAnswers.join(", ")} (${v.type})
-            </div>`;
+          output += `<div class="alert alert-danger">❌ Q${i+1}: Your answer: "${userAnswer}"<br>
+            Acceptable: ${validAnswers.join(", ")} (${v.type})</div>`;
         }
       });
       output += `<p class="fw-bold">Final Score: ${score}/${currentQuestions.length}</p>`;
@@ -276,6 +280,13 @@
       document.getElementById("quiz").style.display = "none";
       document.getElementById("results").style.display = "block";
       document.getElementById("resultsContent").innerHTML = output;
+    }
+
+    function reset() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("results").style.display = "none";
+      document.getElementById("list").style.display = "none";
+      document.getElementById("menu").style.display = "block";
     }
 
     // Fisher-Yates shuffle
