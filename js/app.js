@@ -1,18 +1,20 @@
 let verbs = [];
 
 function initApp() {
-  fetch("verbs.json") // relative path on GitHub Pages
+  fetch("js/verbs.json")
     .then(response => response.json())
     .then(data => {
-      verbs = data["u-verbs"]
+      verbs = []
+        .concat(data["u-verbs"])
         .concat(data["ru-verbs"])
-        .concat(data["irregular-verbs"]);
+        .concat(data["irregular"]); 
 
       buildLessonDropdown();
       updateTotalVerbs();
     })
     .catch(error => console.error("Error loading verbs.json:", error));
 }
+
 
 document.addEventListener("DOMContentLoaded", initApp);
 
