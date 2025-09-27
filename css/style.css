@@ -1,0 +1,19 @@
+body { padding: 2rem; }
+.correct { color: green; font-weight: bold; }
+.incorrect { color: red; font-weight: bold; }
+.sticky-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: center;
+  z-index: 1000;
+}
+h3.lesson-heading {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid #ccc;
+}
