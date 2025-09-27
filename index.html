@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Japanese Verb Quiz (Genki I)</title>
+  <title>Japanese Verb Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body { padding: 2rem; }
@@ -307,6 +307,8 @@
       te: ["ねつがあって","熱があって"], masu: ["ねつがあります","熱があります"], meaning: "to have a fever", lesson: 12},
       {dict: "のどがかわく", kanji: "のどが<ruby>渇<rt>かわ</rt></ruby>く", type: "u-verb",
       te: ["のどがかわいて","のどが渇いて"], masu: ["のどがかわきます","のどが渇きます"], meaning: "to become thirsty", lesson: 12},
+      {dict: "きょうみがある", kanji: "<ruby>興味<rt>きょうみ</rt></ruby>がある", type: "u-verb",
+      te: ["きょうみがあって","興味があって"], masu: ["きょうみがあります","興味があります"], meaning: "to be interested in (~に)", lesson: 12},
 
       // ==== Ru-verbs ====
       {dict: "あける", kanji: "<ruby>開<rt>あ</rt></ruby>ける", type: "ru-verb",
@@ -361,6 +363,11 @@
       te: ["つかれて","疲れて"], masu: ["つかれます","疲れます"], meaning: "to get tired", lesson: 11},
       {dict: "やめる", type: "ru-verb",
       te: ["やめて"], masu: ["やめます"], meaning: "to quit (~を)", lesson: 11},
+      {dict: "せきがでる", kanji: "<ruby>咳<rt>せき</rt></ruby>がでる", type: "ru-verb",
+      te: ["せきがでて","咳が出て"], masu: ["せきがでます","咳が出ます"], meaning: "to cough", lesson: 12},
+      {dict: "わかれる", kanji: "<ruby>別<rt>わか</rt></ruby>れる", type: "ru-verb",
+      te: ["わかれて","別れて"], masu: ["わかれます","別れます"], meaning: "to break up; to separate (person と)", lesson: 12},
+
 
       // ==== Irregular ====
       {dict: "くる", kanji: "<ruby>来<rt>く</rt></ruby>る", type: "irregular",
@@ -401,6 +408,10 @@
       te: ["しょうかいして","紹介して"], masu: ["しょうかいします","紹介します"], meaning: "to introduce (person に person を)", lesson: 11},
       {dict: "ちこくする", kanji: "<ruby>遅刻<rt>ちこく</rt></ruby>する", type: "irregular",
       te: ["ちこくして","遅刻して"], masu: ["ちこくします","遅刻します"], meaning: "to be late (for an appointment) (~に)", lesson: 11},
+      {dict: "きんちょうする", kanji: "<ruby>緊張<rt>きんちょう</rt></ruby>する", type: "irregular",
+      te: ["きんちょうして","緊張して"], masu: ["きんちょうします","緊張します"], meaning: "to get nervous", lesson: 12},
+      {dict: "しんぱいする", kanji: "<ruby>心配<rt>しんぱい</rt></ruby>する", type: "irregular",
+      te: ["しんぱいして","心配して"], masu: ["しんぱいします","心配します"], meaning: "to worry", lesson: 12},
     ];
 
     function updateTotalVerbs() {
