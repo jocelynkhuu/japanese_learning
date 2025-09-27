@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Japanese Verb Quiz</title>
+  <title>Japanese Verb Quiz (Genki I)</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body { padding: 2rem; }
@@ -18,6 +18,11 @@
       padding: 0.75rem;
       text-align: center;
       z-index: 1000;
+    }
+    h3.lesson-heading {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px solid #ccc;
     }
   </style>
 </head>
@@ -44,6 +49,16 @@
           <option value="te">Te-form</option>
           <option value="masu">Masu-form</option>
         </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Choose lesson:</label>
+        <select id="lessonFilter" class="form-select w-25 d-inline-block">
+          <option value="all">All Lessons</option>
+          <option value="4">Lesson 4</option>
+          <option value="5">Lesson 5</option>
+          <option value="6">Lesson 6</option>
+          <!-- Add more lessons -->
+        </select>
         <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
       </div>
       <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
@@ -53,19 +68,15 @@
     <div id="results" style="display:none;">
       <h2>Results</h2>
       <div id="resultsContent"></div>
-      <button class="btn btn-primary mt-3" onclick="reset()">🔙 Back to Menu</button>
+      <div class="sticky-footer">
+        <button class="btn btn-primary" onclick="reset()">🔙 Back to Menu</button>
+      </div>
     </div>
 
     <!-- Verb List -->
     <div id="list" style="display:none; position: relative; min-height: 100vh;">
-      <h2>All Verbs</h2>
-      <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-          <tr><th>Kanji</th><th>Dict (Kana)</th><th>Te-form(s)</th><th>Masu-form(s)</th><th>Type</th><th>Meaning</th></tr>
-        </thead>
-        <tbody id="verbTable"></tbody>
-      </table>
-      <!-- Sticky footer -->
+      <h2>All Verbs by Lesson</h2>
+      <div id="verbTables"></div>
       <div class="sticky-footer">
         <button class="btn btn-primary" onclick="reset()">🔙 Back to Menu</button>
       </div>
@@ -73,7 +84,7 @@
   </div>
 
   <script>
-    // ==== Verbs go here ====
+    // ==== Example verbs (replace with your full list) ====
     const verbs = [
       // ==== U-verbs ====
       {dict: "あう", kanji: "<ruby>会<rt>あ</rt></ruby>う", type: "u-verb",
@@ -93,7 +104,7 @@
       {dict: "ふとる", kanji: "<ruby>太<rt>ふと</rt></ruby>る", type: "u-verb",
       te: ["ふとって","太って"], masu: ["ふとります","太ります"], meaning: "to gain weight"},
       {dict: "いく", kanji: "<ruby>行<rt>い</rt></ruby>く", type: "u-verb (exception)",
-      te: ["いって","行って"], masu: ["いきます","行きます"], meaning: "to go"},
+      te: ["いって","行って"], masu: ["いきます","行きます"], meaning: "to go", lesson: 3},
       {dict: "いう", kanji: "<ruby>言<rt>い</rt></ruby>う", type: "u-verb",
       te: ["いって","言って"], masu: ["いいます","言います"], meaning: "to say"},
       {dict: "いそぐ", kanji: "<ruby>急<rt>いそ</rt></ruby>ぐ", type: "u-verb",
@@ -115,7 +126,7 @@
       {dict: "かす", kanji: "<ruby>貸<rt>か</rt></ruby>す", type: "u-verb",
       te: ["かして","貸して"], masu: ["かします","貸します"], meaning: "to lend"},
       {dict: "きく", kanji: "<ruby>聞<rt>き</rt></ruby>く", type: "u-verb",
-      te: ["きいて","聞いて"], masu: ["ききます","聞きます"], meaning: "to ask; to listen"},
+      te: ["きいて","聞いて"], masu: ["ききます","聞きます"], meaning: "to ask; to listen", lesson: 3},
       {dict: "けす", kanji: "<ruby>消<rt>け</rt></ruby>す", type: "u-verb",
       te: ["けして","消して"], masu: ["けします","消します"], meaning: "to erase; turn off"},
       {dict: "すわる", kanji: "<ruby>座<rt>すわ</rt></ruby>る", type: "u-verb",
@@ -131,7 +142,7 @@
       {dict: "なくす", kanji: "<ruby>失<rt>な</rt></ruby>くす", type: "u-verb",
       te: ["なくして","失くして"], masu: ["なくします","失くします"], meaning: "to lose"},
       {dict: "のむ", kanji: "<ruby>飲<rt>の</rt></ruby>む", type: "u-verb",
-      te: ["のんで","飲んで"], masu: ["のみます","飲みます"], meaning: "to drink"},
+      te: ["のんで","飲んで"], masu: ["のみます","飲みます"], meaning: "to drink", lesson: 3},
       {dict: "しぬ", kanji: "<ruby>死<rt>し</rt></ruby>ぬ", type: "u-verb",
       te: ["しんで","死んで"], masu: ["しにます","死にます"], meaning: "to die"},
       {dict: "のる", kanji: "<ruby>乗<rt>の</rt></ruby>る", type: "u-verb",
@@ -141,7 +152,7 @@
       {dict: "はじまる", kanji: "<ruby>始<rt>はじ</rt></ruby>まる", type: "u-verb",
       te: ["はじまって","始まって"], masu: ["はじまります","始まります"], meaning: "something begins"},
       {dict: "はなす", kanji: "<ruby>話<rt>はな</rt></ruby>す", type: "u-verb",
-      te: ["はなして","話して"], masu: ["はなします","話します"], meaning: "to speak"},
+      te: ["はなして","話して"], masu: ["はなします","話します"], meaning: "to speak; to talk", lesson: 3},
       {dict: "はらう", kanji: "<ruby>払<rt>はら</rt></ruby>う", type: "u-verb",
       te: ["はらって","払って"], masu: ["はらいます","払います"], meaning: "to pay"},
       {dict: "ひく", kanji: "<ruby>弾<rt>ひ</rt></ruby>く", type: "u-verb",
@@ -152,6 +163,8 @@
       te: ["やすんで","休んで"], masu: ["やすみます","休みます"], meaning: "to rest"},
       {dict: "よむ", kanji: "<ruby>読<rt>よ</rt></ruby>む", type: "u-verb",
       te: ["よんで","読んで"], masu: ["よみます","読みます"], meaning: "to read"},
+      {dict: "かえる", kanji: "<ruby>帰<rt>かえ</rt></ruby>る", type: "u-verb",
+      te: ["かえって","帰って"], masu: ["かえります","帰ります"], meaning: "to go back; to return", lesson: 3},
 
       // ==== Ru-verbs ====
       {dict: "あける", kanji: "<ruby>開<rt>あ</rt></ruby>ける", type: "ru-verb",
@@ -224,18 +237,46 @@
     function showList() {
       document.getElementById("menu").style.display = "none";
       document.getElementById("list").style.display = "block";
-      const tbody = document.getElementById("verbTable");
-      tbody.innerHTML = "";
+      const container = document.getElementById("verbTables");
+      container.innerHTML = "";
+
+      // Group verbs by lesson
+      const grouped = {};
       verbs.forEach(v => {
-        const row = `<tr>
-          <td>${v.kanji}</td>
-          <td>${v.dict}</td>
-          <td>${v.te.join(", ")}</td>
-          <td>${v.masu.join(", ")}</td>
-          <td>${v.type}</td>
-          <td>${v.meaning}</td>
-        </tr>`;
-        tbody.innerHTML += row;
+        if (!grouped[v.lesson]) grouped[v.lesson] = [];
+        grouped[v.lesson].push(v);
+      });
+
+      Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
+        const verbsForLesson = grouped[lesson];
+        let table = `
+          <h3 class="lesson-heading">Lesson ${lesson}</h3>
+          <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Kanji</th>
+                <th>Dict</th>
+                <th>Te-form(s)</th>
+                <th>Masu-form(s)</th>
+                <th>Type</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        verbsForLesson.forEach(v => {
+          table += `
+            <tr>
+              <td>${v.kanji}</td>
+              <td>${v.dict}</td>
+              <td>${v.te.join(", ")}</td>
+              <td>${v.masu.join(", ")}</td>
+              <td>${v.type}</td>
+              <td>${v.meaning}</td>
+            </tr>`;
+        });
+        table += "</tbody></table>";
+        container.innerHTML += table;
       });
     }
 
@@ -245,7 +286,14 @@
     function generateQuiz() {
       const num = Math.min(parseInt(document.getElementById("numQuestions").value), verbs.length);
       currentType = document.getElementById("quizType").value;
-      currentQuestions = shuffle([...verbs]).slice(0, num);
+      const lesson = document.getElementById("lessonFilter").value;
+
+      let pool = verbs;
+      if (lesson !== "all") {
+        pool = verbs.filter(v => v.lesson == lesson);
+      }
+
+      currentQuestions = shuffle([...pool]).slice(0, num);
 
       const form = document.getElementById("quizForm");
       form.innerHTML = "";
@@ -269,10 +317,19 @@
         const validAnswers = JSON.parse(input.getAttribute("data-answers"));
         if (validAnswers.includes(userAnswer)) {
           score++;
-          output += `<div class="alert alert-success">✅ Q${i+1}: Correct (${userAnswer})</div>`;
+          output += `
+            <div class="alert alert-success">
+              ✅ Q${i+1}: Correct! <br>
+              Your answer: <b>${userAnswer}</b><br>
+              Acceptable answers: ${validAnswers.join(", ")} (${v.type})
+            </div>`;
         } else {
-          output += `<div class="alert alert-danger">❌ Q${i+1}: Your answer: "${userAnswer}"<br>
-            Acceptable: ${validAnswers.join(", ")} (${v.type})</div>`;
+          output += `
+            <div class="alert alert-danger">
+              ❌ Q${i+1}: Incorrect <br>
+              Your answer: <b>${userAnswer}</b><br>
+              Acceptable answers: ${validAnswers.join(", ")} (${v.type})
+            </div>`;
         }
       });
       output += `<p class="fw-bold">Final Score: ${score}/${currentQuestions.length}</p>`;
