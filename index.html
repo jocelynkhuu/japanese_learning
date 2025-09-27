@@ -32,64 +32,73 @@
 
     <!-- Menu -->
     <div id="menu" class="mb-3">
-      <!-- Te-form Cheat Sheet -->
-      <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-          📖 Te-form Conjugation Rules
-        </div>
-        <div class="card-body">
-          <table class="table table-bordered table-sm text-center">
-            <thead class="table-light">
-              <tr>
-                <th>Ending</th>
-                <th>Rule → て-form</th>
-                <th>Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>う, つ, る</td>
-                <td>→ って</td>
-                <td>あう → あって</td>
-              </tr>
-              <tr>
-                <td>む, ぶ, ぬ</td>
-                <td>→ んで</td>
-                <td>のむ → のんで</td>
-              </tr>
-              <tr>
-                <td>く</td>
-                <td>→ いて</td>
-                <td>きく → きいて</td>
-              </tr>
-              <tr>
-                <td>ぐ</td>
-                <td>→ いで</td>
-                <td>およぐ → およいで</td>
-              </tr>
-              <tr>
-                <td>す</td>
-                <td>→ して</td>
-                <td>はなす → はなして</td>
-              </tr>
-              <tr>
-                <td>る (Ichidan / Ru-verbs)</td>
-                <td>→ て</td>
-                <td>たべる → たべて</td>
-              </tr>
-              <tr>
-                <td>Irregular</td>
-                <td>
-                  する → して <br>
-                  くる → きて <br>
-                  いく → いって
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Collapsible Te-form Cheat Sheet -->
+      <div class="mb-3">
+        <button class="btn btn-info mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#teFormTable" aria-expanded="false" aria-controls="teFormTable">
+          📖 Show/Hide Te-form Conjugation Rules
+        </button>
+
+        <div class="collapse" id="teFormTable">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              Te-form Conjugation Rules
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered table-sm text-center">
+                <thead class="table-light">
+                  <tr>
+                    <th>Ending</th>
+                    <th>Rule → て-form</th>
+                    <th>Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>う, つ, る</td>
+                    <td>→ って</td>
+                    <td>あう → あって</td>
+                  </tr>
+                  <tr>
+                    <td>む, ぶ, ぬ</td>
+                    <td>→ んで</td>
+                    <td>のむ → のんで</td>
+                  </tr>
+                  <tr>
+                    <td>く</td>
+                    <td>→ いて</td>
+                    <td>きく → きいて</td>
+                  </tr>
+                  <tr>
+                    <td>ぐ</td>
+                    <td>→ いで</td>
+                    <td>およぐ → およいで</td>
+                  </tr>
+                  <tr>
+                    <td>す</td>
+                    <td>→ して</td>
+                    <td>はなす → はなして</td>
+                  </tr>
+                  <tr>
+                    <td>る (Ru-verbs)</td>
+                    <td>→ て</td>
+                    <td>たべる → たべて</td>
+                  </tr>
+                  <tr>
+                    <td>Irregular</td>
+                    <td>
+                      する → して <br>
+                      くる → きて <br>
+                      いく → いって
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
+
       <button class="btn btn-primary me-2" onclick="startQuiz()">Take a Quiz</button>
       <button class="btn btn-secondary" onclick="showList()">List All Verbs</button>
     </div>
@@ -382,7 +391,16 @@
       te: ["れんしゅうして","練習して"], masu: ["れんしゅうします","練習します"], meaning: "to practice (~を)", lesson: 10}
     ];
 
-    document.getElementById("totalVerbs").textContent = verbs.length;
+    function updateTotalVerbs() {
+      const lesson = document.getElementById("lessonFilter").value;
+      let pool = verbs;
+      if (lesson !== "all") {
+        pool = verbs.filter(v =>
+          Array.isArray(v.lesson) ? v.lesson.includes(parseInt(lesson)) : v.lesson == lesson
+        );
+      }
+      document.getElementById("totalVerbs").textContent = pool.length;
+    }
 
     // Build lesson dropdown dynamically
     function buildLessonDropdown() {
@@ -399,6 +417,10 @@
       [...lessons].sort((a, b) => a - b).forEach(l => {
         dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
       });
+      
+      dropdown.onchange = updateTotalVerbs;
+      updateTotalVerbs();
+
     }
 
 // Run it once on page load
