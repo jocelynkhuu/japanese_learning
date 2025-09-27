@@ -84,21 +84,6 @@
             "lesson": 7
         },
         {
-            "dict": "すむ",
-            "kanji": "<ruby>住<rt>す</rt></ruby>む",
-            "type": "u-verb",
-            "te": [
-                "すんで",
-                "住んで"
-            ],
-            "masu": [
-                "すみます",
-                "住みます"
-            ],
-            "meaning": "to live",
-            "lesson": 7
-        },
-        {
             "dict": "はたらく",
             "kanji": "<ruby>働<rt>はたら</rt></ruby>く",
             "type": "u-verb",
@@ -1310,19 +1295,6 @@
             "lesson": 6
         },
         {
-            "dict": "やせる",
-            "kanji": "やせる",
-            "type": "ru-verb",
-            "te": [
-                "やせて"
-            ],
-            "masu": [
-                "やせます"
-            ],
-            "meaning": "to lose weight",
-            "lesson": 7
-        },
-        {
             "dict": "たべる",
             "kanji": "<ruby>食<rt>た</rt></ruby>べる",
             "type": "ru-verb",
@@ -1373,7 +1345,7 @@
             "masu": [
                 "やせます"
             ],
-            "meaning": "to be thin",
+            "meaning": "to be thin; to lose weight",
             "lesson": 7
         },
         {
