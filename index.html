@@ -393,12 +393,19 @@
 
     function updateTotalVerbs() {
       const lesson = document.getElementById("lessonFilter").value;
+      const skipIrregular = document.getElementById("skipIrregular").checked;
       let pool = verbs;
+
       if (lesson !== "all") {
-        pool = verbs.filter(v =>
+        pool = pool.filter(v =>
           Array.isArray(v.lesson) ? v.lesson.includes(parseInt(lesson)) : v.lesson == lesson
         );
       }
+
+      if (skipIrregular) {
+        pool = pool.filter(v => v.type !== "irregular");
+      }
+
       document.getElementById("totalVerbs").textContent = pool.length;
     }
 
@@ -411,21 +418,22 @@
         } else if (v.lesson) {
           lessons.add(v.lesson);
         }
-      });      
+      });
+
       const dropdown = document.getElementById("lessonFilter");
       dropdown.innerHTML = `<option value="all">All Lessons</option>`;
       [...lessons].sort((a, b) => a - b).forEach(l => {
         dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
       });
-      
-      dropdown.onchange = updateTotalVerbs;
-      updateTotalVerbs();
 
+      dropdown.onchange = updateTotalVerbs;
+      document.getElementById("skipIrregular").onchange = updateTotalVerbs; // ✅ add this
+      updateTotalVerbs();
     }
 
 // Run it once on page load
 buildLessonDropdown();
-
+document.getElementById("skipIrregular").onchange = updateTotalVerbs;
 
     function startQuiz() {
       document.getElementById("menu").style.display = "none";
