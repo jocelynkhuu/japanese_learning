@@ -256,9 +256,19 @@
         const validAnswers = JSON.parse(input.getAttribute("data-answers"));
         if (validAnswers.includes(userAnswer)) {
           score++;
-          output += `<div class="alert alert-success">✅ Q${i+1}: Correct (${userAnswer})</div>`;
+          output += `
+            <div class="alert alert-success">
+              ✅ Q${i+1}: Correct! <br>
+              Your answer: <b>${userAnswer}</b><br>
+              Acceptable answers: ${validAnswers.join(", ")} (${v.type})
+            </div>`;
         } else {
-          output += `<div class="alert alert-danger">❌ Q${i+1}: Your answer: "${userAnswer}"<br>Acceptable: ${validAnswers.join(", ")} (${v.type})</div>`;
+          output += `
+            <div class="alert alert-danger">
+              ❌ Q${i+1}: Incorrect <br>
+              Your answer: <b>${userAnswer}</b><br>
+              Acceptable answers: ${validAnswers.join(", ")} (${v.type})
+            </div>`;
         }
       });
       output += `<p class="fw-bold">Final Score: ${score}/${currentQuestions.length}</p>`;
@@ -266,13 +276,6 @@
       document.getElementById("quiz").style.display = "none";
       document.getElementById("results").style.display = "block";
       document.getElementById("resultsContent").innerHTML = output;
-    }
-
-    function reset() {
-      document.getElementById("quiz").style.display = "none";
-      document.getElementById("results").style.display = "none";
-      document.getElementById("list").style.display = "none";
-      document.getElementById("menu").style.display = "block";
     }
 
     // Fisher-Yates shuffle
