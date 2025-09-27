@@ -90,7 +90,9 @@
     const verbs = [
       // ==== U-verbs ====
       {dict: "あう", kanji: "<ruby>会<rt>あ</rt></ruby>う", type: "u-verb",
-      te: ["あって","会って"], masu: ["あいます","会います"], meaning: "to meet"},
+      te: ["あって","会って"], masu: ["あいます","会います"], meaning: "to meet; to see (a person)", lesson: 4},
+      {dict: "ある", type: "u-verb",
+      te: ["あって"], masu: ["あります"], meaning: "there is... (place に thing が)", lesson: 4},
       {dict: "あそぶ", kanji: "<ruby>遊<rt>あそ</rt></ruby>ぶ", type: "u-verb",
       te: ["あそんで","遊んで"], masu: ["あそびます","遊びます"], meaning: "to play; spend time pleasantly"},
       {dict: "かぶる", kanji: "かぶる", type: "u-verb",
@@ -118,11 +120,11 @@
       {dict: "おわる", kanji: "<ruby>終<rt>お</rt></ruby>わる", type: "u-verb",
       te: ["おわって","終わって"], masu: ["おわります","終わります"], meaning: "something ends"},
       {dict: "およぐ", kanji: "<ruby>泳<rt>およ</rt></ruby>ぐ", type: "u-verb",
-      te: ["およいで","泳いで"], masu: ["およぎます","泳ぎます"], meaning: "to swim"},
+      te: ["およいで","泳いで"], masu: ["およぎます","泳ぎます"], meaning: "to swim", lesson: 5},
       {dict: "かう", kanji: "<ruby>買<rt>か</rt></ruby>う", type: "u-verb",
-      te: ["かって","買って"], masu: ["かいます","買います"], meaning: "to buy"},
+      te: ["かって","買って"], masu: ["かいます","買います"], meaning: "to buy", lesson: 4},
       {dict: "かく", kanji: "<ruby>書<rt>か</rt></ruby>く", type: "u-verb",
-      te: ["かいて","書いて"], masu: ["かきます","書きます"], meaning: "to write"},
+      te: ["かいて","書いて"], masu: ["かきます","書きます"], meaning: "to write", lesson: 4},
       {dict: "かえす", kanji: "<ruby>返<rt>かえ</rt></ruby>す", type: "u-verb",
       te: ["かえして","返して"], masu: ["かえします","返します"], meaning: "to return (a thing)"},
       {dict: "かす", kanji: "<ruby>貸<rt>か</rt></ruby>す", type: "u-verb",
@@ -141,6 +143,8 @@
       te: ["てつだって","手伝って"], masu: ["てつだいます","手伝います"], meaning: "to help"},
       {dict: "とる", kanji: "<ruby>取<rt>と</rt></ruby>る", type: "u-verb",
       te: ["とって","取って"], masu: ["とります","取ります"], meaning: "to take"},
+      {dict: "とる", kanji: "<ruby>撮<rt>と</rt></ruby>る", type: "u-verb",
+      te: ["とって","撮って"], masu: ["とります","撮ります"], meaning: "to take (a picture) (~を)", lesson: 4},
       {dict: "なくす", kanji: "<ruby>失<rt>な</rt></ruby>くす", type: "u-verb",
       te: ["なくして","失くして"], masu: ["なくします","失くします"], meaning: "to lose"},
       {dict: "のむ", kanji: "<ruby>飲<rt>の</rt></ruby>む", type: "u-verb",
@@ -167,6 +171,10 @@
       te: ["よんで","読んで"], masu: ["よみます","読みます"], meaning: "to read", lesson: 3},
       {dict: "かえる", kanji: "<ruby>帰<rt>かえ</rt></ruby>る", type: "u-verb",
       te: ["かえって","帰って"], masu: ["かえります","帰ります"], meaning: "to go back; to return", lesson: 3},
+      {dict: "まつ", kanji: "<ruby>待<rt>ま</rt></ruby>つ", type: "u-verb",
+      te: ["まって","待って"], masu: ["まちます","待ちます"], meaning: "to wait (~を)", lesson: 4},
+      {dict: "わかる", kanji: "<ruby>分<rt>わ</rt></ruby>かる", type: "u-verb",
+      te: ["わかって","分かって"], masu: ["わかります","分かります"], meaning: "to understand (~が)", lesson: 4},
 
       // ==== Ru-verbs ====
       {dict: "あける", kanji: "<ruby>開<rt>あ</rt></ruby>ける", type: "ru-verb",
@@ -194,9 +202,9 @@
       {dict: "でる", kanji: "<ruby>出<rt>で</rt></ruby>る", type: "ru-verb",
       te: ["でて","出て"], masu: ["でます","出ます"], meaning: "to leave"},
       {dict: "ねる", kanji: "<ruby>寝<rt>ね</rt></ruby>る", type: "ru-verb",
-      te: ["ねて","寝て"], masu: ["ねます","寝ます"], meaning: "to sleep"},
+      te: ["ねて","寝て"], masu: ["ねます","寝ます"], meaning: "to sleep", lesson: 3},
       {dict: "みる", kanji: "<ruby>見<rt>み</rt></ruby>る", type: "ru-verb",
-      te: ["みて","見て"], masu: ["みます","見ます"], meaning: "to watch"},
+      te: ["みて","見て"], masu: ["みます","見ます"], meaning: "to see; to look at; to watch", lesson: 3},
       {dict: "わすれる", kanji: "<ruby>忘<rt>わす</rt></ruby>れる", type: "ru-verb",
       te: ["わすれて","忘れて"], masu: ["わすれます","忘れます"], meaning: "to forget"},
       {dict: "シャワーをあびる", kanji: "シャワーをあびる", type: "ru-verb",
@@ -205,14 +213,17 @@
       te: ["やせて"], masu: ["やせます"], meaning: "to lose weight"},
       {dict: "たべる", kanji: "<ruby>食<rt>た</rt></ruby>べる", type: "ru-verb",
       te: ["たべて","食べて"], masu: ["たべます","食べます"], meaning: "to eat", lesson: 3},
+      {dict: "いる", type: "ru-verb",
+      te: ["いて"], masu: ["います"], meaning: "(a person) is in ...; stays at... (place に person が)", lesson: 4},
+
 
       // ==== Irregular ====
       {dict: "くる", kanji: "<ruby>来<rt>く</rt></ruby>る", type: "irregular",
-      te: ["きて","来て"], masu: ["きます","来ます"], meaning: "to come"},
+      te: ["きて","来て"], masu: ["きます","来ます"], meaning: "to come", lesson: 3},
       {dict: "する", kanji: "する", type: "irregular",
-      te: ["して"], masu: ["します"], meaning: "to do"},
+      te: ["して"], masu: ["します"], meaning: "to do", lesson: 3},
       {dict: "べんきょうする", kanji: "<ruby>勉強<rt>べんきょう</rt></ruby>する", type: "irregular",
-      te: ["べんきょうして","勉強して"], masu: ["べんきょうします","勉強します"], meaning: "to study"},
+      te: ["べんきょうして","勉強して"], masu: ["べんきょうします","勉強します"], meaning: "to study", lesson: 3},
       {dict: "けっこんする", kanji: "<ruby>結婚<rt>けっこん</rt></ruby>する", type: "irregular",
       te: ["けっこんして","結婚して"], masu: ["けっこんします","結婚します"], meaning: "to marry"},
       {dict: "さんぽする", kanji: "<ruby>散歩<rt>さんぽ</rt></ruby>する", type: "irregular",
@@ -235,7 +246,14 @@
 
     // Build lesson dropdown dynamically
     function buildLessonDropdown() {
-      const lessons = new Set(verbs.map(v => v.lesson).filter(l => l)); // collect lesson numbers
+      const lessons = new Set();
+      verbs.forEach(v => {
+        if (Array.isArray(v.lesson)) {
+          v.lesson.forEach(l => lessons.add(l));
+        } else if (v.lesson) {
+          lessons.add(v.lesson);
+        }
+      });      
       const dropdown = document.getElementById("lessonFilter");
       dropdown.innerHTML = `<option value="all">All Lessons</option>`;
       [...lessons].sort((a, b) => a - b).forEach(l => {
@@ -261,8 +279,15 @@ buildLessonDropdown();
       // Group verbs by lesson
       const grouped = {};
       verbs.forEach(v => {
-        if (!grouped[v.lesson]) grouped[v.lesson] = [];
-        grouped[v.lesson].push(v);
+        if (Array.isArray(v.lesson)) {
+          v.lesson.forEach(l => {
+            if (!grouped[l]) grouped[l] = [];
+            grouped[l].push(v);
+          });
+        } else {
+          if (!grouped[v.lesson]) grouped[v.lesson] = [];
+          grouped[v.lesson].push(v);
+        }
       });
 
       Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
@@ -308,7 +333,9 @@ buildLessonDropdown();
 
       let pool = verbs;
       if (lesson !== "all") {
-        pool = verbs.filter(v => v.lesson == lesson);
+        pool = verbs.filter(v => 
+          Array.isArray(v.lesson) ? v.lesson.includes(parseInt(lesson)) : v.lesson == lesson
+        );
       }
 
       currentQuestions = shuffle([...pool]).slice(0, num);
