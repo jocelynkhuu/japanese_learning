@@ -1,3 +1,21 @@
+let verbs = [];
+
+function initApp() {
+  fetch("verbs.json") // relative path on GitHub Pages
+    .then(response => response.json())
+    .then(data => {
+      verbs = data["u-verbs"]
+        .concat(data["ru-verbs"])
+        .concat(data["irregular-verbs"]);
+
+      buildLessonDropdown();
+      updateTotalVerbs();
+    })
+    .catch(error => console.error("Error loading verbs.json:", error));
+}
+
+document.addEventListener("DOMContentLoaded", initApp);
+
 function updateTotalVerbs() {
   const lesson = document.getElementById("lessonFilter").value;
   const skipIrregular = document.getElementById("skipIrregular").checked;
