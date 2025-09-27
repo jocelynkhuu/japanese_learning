@@ -52,13 +52,7 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Choose lesson:</label>
-        <select id="lessonFilter" class="form-select w-25 d-inline-block">
-          <option value="all">All Lessons</option>
-          <option value="4">Lesson 4</option>
-          <option value="5">Lesson 5</option>
-          <option value="6">Lesson 6</option>
-          <!-- Add more lessons -->
-        </select>
+        <select id="lessonFilter" class="form-select w-25 d-inline-block"></select>
         <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
       </div>
       <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
@@ -162,7 +156,7 @@
       {dict: "やすむ", kanji: "<ruby>休<rt>やす</rt></ruby>む", type: "u-verb",
       te: ["やすんで","休んで"], masu: ["やすみます","休みます"], meaning: "to rest"},
       {dict: "よむ", kanji: "<ruby>読<rt>よ</rt></ruby>む", type: "u-verb",
-      te: ["よんで","読んで"], masu: ["よみます","読みます"], meaning: "to read"},
+      te: ["よんで","読んで"], masu: ["よみます","読みます"], meaning: "to read", lesson: 3},
       {dict: "かえる", kanji: "<ruby>帰<rt>かえ</rt></ruby>る", type: "u-verb",
       te: ["かえって","帰って"], masu: ["かえります","帰ります"], meaning: "to go back; to return", lesson: 3},
 
@@ -172,7 +166,7 @@
       {dict: "あげる", kanji: "<ruby>上<rt>あ</rt></ruby>げる", type: "ru-verb",
       te: ["あげて","上げて"], masu: ["あげます","上げます"], meaning: "to give"},
       {dict: "おきる", kanji: "<ruby>起<rt>お</rt></ruby>きる", type: "ru-verb",
-      te: ["おきて","起きて"], masu: ["おきます","起きます"], meaning: "to get up"},
+      te: ["おきて","起きて"], masu: ["おきます","起きます"], meaning: "to get up", lesson: 3},
       {dict: "おしえる", kanji: "<ruby>教<rt>おし</rt></ruby>える", type: "ru-verb",
       te: ["おしえて","教えて"], masu: ["おしえます","教えます"], meaning: "to teach"},
       {dict: "おりる", kanji: "<ruby>降<rt>お</rt></ruby>りる", type: "ru-verb",
@@ -228,6 +222,20 @@
     ];
 
     document.getElementById("totalVerbs").textContent = verbs.length;
+
+    // Build lesson dropdown dynamically
+    function buildLessonDropdown() {
+      const lessons = new Set(verbs.map(v => v.lesson).filter(l => l)); // collect lesson numbers
+      const dropdown = document.getElementById("lessonFilter");
+      dropdown.innerHTML = `<option value="all">All Lessons</option>`;
+      [...lessons].sort((a, b) => a - b).forEach(l => {
+        dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
+      });
+    }
+
+// Run it once on page load
+buildLessonDropdown();
+
 
     function startQuiz() {
       document.getElementById("menu").style.display = "none";
