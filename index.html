@@ -363,7 +363,7 @@ buildLessonDropdown();
         verbsForLesson.forEach(v => {
           table += `
             <tr>
-              <td>${v.kanji}</td>
+              <td>${v.kanji || ""}</td>
               <td>${v.dict}</td>
               <td>${v.te.join(", ")}</td>
               <td>${v.masu.join(", ")}</td>
@@ -398,7 +398,7 @@ buildLessonDropdown();
       currentQuestions.forEach((v, i) => {
         form.innerHTML += `
           <div class="mb-3">
-            <label class="form-label">Q${i+1}: ${v.kanji} (${v.meaning}) → ${currentType}-form?</label>
+            <label class="form-label">Q${i+1}: ${(v.kanji || v.dict)} (${v.meaning}) → ${currentType}-form?</label>
             <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(v[currentType])}'>
           </div>
         `;
