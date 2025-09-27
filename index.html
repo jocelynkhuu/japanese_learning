@@ -55,6 +55,11 @@
       <select id="lessonFilter" class="form-select w-25 d-inline-block"></select>
       <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
     </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="skipIrregular">
+      <label class="form-check-label" for="skipIrregular">Skip irregular verbs</label>
+    </div>
+
 
     <!-- Quiz questions will go here -->
     <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
@@ -263,6 +268,8 @@
       te: ["すてて","捨てて"], masu: ["すてます","捨てます"], meaning: "to throw away (~を)", lesson: 8},
       {dict: "はじめる", kanji: "<ruby>始<rt>はじ</rt></ruby>める", type: "ru-verb",
       te: ["はじめて","始めて"], masu: ["はじめます","始めます"], meaning: "to begin (~を)", lesson: 8},
+      {dict: "きめる", kanji: "<ruby>決<rt>き</rt></ruby>める", type: "ru-verb",
+      te: ["きめて","決めて"], masu: ["きめます","決めます"], meaning: "to decide (~を)", lesson: 10},
 
       // ==== Irregular ====
       {dict: "くる", kanji: "<ruby>来<rt>く</rt></ruby>る", type: "irregular",
@@ -278,7 +285,7 @@
       {dict: "うんてんする", kanji: "<ruby>運転<rt>うんてん</rt></ruby>する", type: "irregular",
       te: ["うんてんして","運転して"], masu: ["うんてんします","運転します"], meaning: "to drive (~を)", lesson: 8},
       {dict: "りょこうする", kanji: "<ruby>旅行<rt>りょこう</rt></ruby>する", type: "irregular",
-      te: ["りょこうして","旅行して"], masu: ["りょこうします","旅行します"], meaning: "to travel"},
+      te: ["りょこうして","旅行して"], masu: ["りょこうします","旅行します"], meaning: "to travel", lesson: 10},
       {dict: "そうじする", kanji: "<ruby>掃除<rt>そうじ</rt></ruby>する", type: "irregular",
       te: ["そうじして","掃除して"], masu: ["そうじします","掃除します"], meaning: "to clean (~を)", lesson: 8},
       {dict: "でんわする", kanji: "<ruby>電話<rt>でんわ</rt></ruby>する", type: "irregular",
@@ -292,7 +299,9 @@
       {dict: "りょうりする", kanji: "<ruby>料理<rt>りょうり</rt></ruby>する", type: "irregular",
       te: ["りょうりして","料理して"], masu: ["りょうりします","料理します"], meaning: "to cook", lesson: 8},
       {dict: "うんどうする", kanji: "<ruby>運動<rt>うんどう</rt></ruby>する", type: "irregular",
-      te: ["うんどうして","運動して"], masu: ["うんどうします","運動します"], meaning: "to exercise", lesson: 9}
+      te: ["うんどうして","運動して"], masu: ["うんどうします","運動します"], meaning: "to exercise", lesson: 9},
+      {dict: "ごろごろする", type: "irregular",
+      te: ["ごろごろして"], masu: ["ごろごろします"], meaning: "to chillout at home; to stay home and do nothing", lesson: 10}
     ];
 
     document.getElementById("totalVerbs").textContent = verbs.length;
@@ -385,10 +394,18 @@ buildLessonDropdown();
       const lesson = document.getElementById("lessonFilter").value;
 
       let pool = verbs;
+
+      // filter by lesson
       if (lesson !== "all") {
         pool = verbs.filter(v => 
           Array.isArray(v.lesson) ? v.lesson.includes(parseInt(lesson)) : v.lesson == lesson
         );
+      }
+
+      // skip irregulars if checked
+      const skipIrregular = document.getElementById("skipIrregular").checked;
+      if (skipIrregular) {
+        pool = pool.filter(v => v.type !== "irregular");
       }
 
       currentQuestions = shuffle([...pool]).slice(0, num);
