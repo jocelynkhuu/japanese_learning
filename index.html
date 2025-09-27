@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Japanese Te-form Verb Quiz</title>
+  <title>Japanese Verb Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body { padding: 2rem; }
@@ -12,7 +12,7 @@
 </head>
 <body class="bg-light">
   <div class="container">
-    <h1 class="mb-4">📘 Japanese Te-form Verb Quiz (Genki I)</h1>
+    <h1 class="mb-4">📘 Japanese Verb Quiz (Genki I)</h1>
 
     <!-- Menu -->
     <div id="menu" class="mb-3">
@@ -26,6 +26,13 @@
       <div class="mb-3">
         <label class="form-label">How many questions? (1–<span id="totalVerbs"></span>):</label>
         <input type="number" id="numQuestions" class="form-control w-25 d-inline-block" min="1" value="5">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Choose form to practice:</label>
+        <select id="quizType" class="form-select w-25 d-inline-block">
+          <option value="te">Te-form</option>
+          <option value="masu">Masu-form</option>
+        </select>
         <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
       </div>
       <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
@@ -43,7 +50,7 @@
       <h2>All Verbs</h2>
       <table class="table table-striped table-bordered">
         <thead class="table-dark">
-          <tr><th>Dict</th><th>Te-form(s)</th><th>Type</th><th>Meaning</th></tr>
+          <tr><th>Dict</th><th>Te-form(s)</th><th>Masu-form(s)</th><th>Type</th><th>Meaning</th></tr>
         </thead>
         <tbody id="verbTable"></tbody>
       </table>
@@ -52,83 +59,84 @@
   </div>
 
   <script>
-    // ==== Full Genki I Verbs (Kana + optional Kanji) ====
+    // ==== Verbs with both Te-form + Masu-form ====
     const verbs = [
       // U-verbs
-      {dict: "あう", type: "u-verb", answers: ["あって","会って"], meaning: "to meet"},
-      {dict: "あそぶ", type: "u-verb", answers: ["あそんで"], meaning: "to play; spend time pleasantly"},
-      {dict: "かぶる", type: "u-verb", answers: ["かぶって"], meaning: "to put on (a hat)"},
-      {dict: "はく", type: "u-verb", answers: ["はいて"], meaning: "to put on (items below your waist)"},
-      {dict: "しる", type: "u-verb", answers: ["しって","知って"], meaning: "to get to know"},
-      {dict: "すむ", type: "u-verb", answers: ["すんで","住んで"], meaning: "to live"},
-      {dict: "はたらく", type: "u-verb", answers: ["はたらいて","働いて"], meaning: "to work"},
-      {dict: "ふとる", type: "u-verb", answers: ["ふとって"], meaning: "to gain weight"},
-      {dict: "いく", type: "u-verb (exception)", answers: ["いって","行って"], meaning: "to go"},
-      {dict: "いう", type: "u-verb", answers: ["いって","言って"], meaning: "to say"},
-      {dict: "いそぐ", type: "u-verb", answers: ["いそいで","急いで"], meaning: "to hurry"},
-      {dict: "うたう", type: "u-verb", answers: ["うたって","歌って"], meaning: "to sing"},
-      {dict: "おどる", type: "u-verb", answers: ["おどって","踊って"], meaning: "to dance"},
-      {dict: "おわる", type: "u-verb", answers: ["おわって","終わって"], meaning: "something ends"},
-      {dict: "およぐ", type: "u-verb", answers: ["およいで","泳いで"], meaning: "to swim"},
-      {dict: "かう", type: "u-verb", answers: ["かって","買って"], meaning: "to buy"},
-      {dict: "かく", type: "u-verb", answers: ["かいて","書いて"], meaning: "to write"},
-      {dict: "かえす", type: "u-verb", answers: ["かえして","返して"], meaning: "to return (a thing)"},
-      {dict: "かす", type: "u-verb", answers: ["かして","貸して"], meaning: "to lend"},
-      {dict: "きく", type: "u-verb", answers: ["きいて","聞いて"], meaning: "to ask; to listen"},
-      {dict: "けす", type: "u-verb", answers: ["けして","消して"], meaning: "to turn off; erase"},
-      {dict: "すわる", type: "u-verb", answers: ["すわって","座って"], meaning: "to sit down"},
-      {dict: "たつ", type: "u-verb", answers: ["たって","立って"], meaning: "to stand up"},
-      {dict: "タバコをすう", type: "u-verb", answers: ["タバコをすって"], meaning: "to smoke"},
-      {dict: "つかう", type: "u-verb", answers: ["つかって","使って"], meaning: "to use"},
-      {dict: "てつだう", type: "u-verb", answers: ["てつだって","手伝って"], meaning: "to help"},
-      {dict: "とる", type: "u-verb", answers: ["とって","取って"], meaning: "to take"},
-      {dict: "なくす", type: "u-verb", answers: ["なくして","失くして"], meaning: "to lose"},
-      {dict: "のむ", type: "u-verb", answers: ["のんで","飲んで"], meaning: "to drink"},
-      {dict: "しぬ", type: "u-verb", answers: ["しんで","死んで"], meaning: "to die"},
-      {dict: "のる", type: "u-verb", answers: ["のって","乗って"], meaning: "to ride; to board"},
-      {dict: "はいる", type: "u-verb", answers: ["はいって","入って"], meaning: "to enter"},
-      {dict: "はじまる", type: "u-verb", answers: ["はじまって","始まって"], meaning: "something begins"},
-      {dict: "はなす", type: "u-verb", answers: ["はなして","話して"], meaning: "to speak"},
-      {dict: "はらう", type: "u-verb", answers: ["はらって","払って"], meaning: "to pay"},
-      {dict: "ひく", type: "u-verb", answers: ["ひいて","弾いて"], meaning: "to play (string instrument)"},
-      {dict: "もつ", type: "u-verb", answers: ["もって","持って"], meaning: "to carry; to hold"},
-      {dict: "やすむ", type: "u-verb", answers: ["やすんで","休んで"], meaning: "to rest; to be absent"},
-      {dict: "よむ", type: "u-verb", answers: ["よんで","読んで"], meaning: "to read"},
+      {dict: "あう", type: "u-verb", te: ["あって","会って"], masu: ["あいます","会います"], meaning: "to meet"},
+      {dict: "あそぶ", type: "u-verb", te: ["あそんで","遊んで"], masu: ["あそびます","遊びます"], meaning: "to play; spend time pleasantly"},
+      {dict: "かぶる", type: "u-verb", te: ["かぶって"], masu: ["かぶります"], meaning: "to put on (a hat)"},
+      {dict: "はく", type: "u-verb", te: ["はいて"], masu: ["はきます"], meaning: "to put on (items below waist)"},
+      {dict: "しる", type: "u-verb", te: ["しって","知って"], masu: ["しります","知ります"], meaning: "to get to know"},
+      {dict: "すむ", type: "u-verb", te: ["すんで","住んで"], masu: ["すみます","住みます"], meaning: "to live"},
+      {dict: "はたらく", type: "u-verb", te: ["はたらいて","働いて"], masu: ["はたらきます","働きます"], meaning: "to work"},
+      {dict: "ふとる", type: "u-verb", te: ["ふとって"], masu: ["ふとります"], meaning: "to gain weight"},
+      {dict: "いく", type: "u-verb (exception)", te: ["いって","行って"], masu: ["いきます","行きます"], meaning: "to go"},
+      {dict: "いう", type: "u-verb", te: ["いって","言って"], masu: ["いいます","言います"], meaning: "to say"},
+      {dict: "いそぐ", type: "u-verb", te: ["いそいで","急いで"], masu: ["いそぎます","急ぎます"], meaning: "to hurry"},
+      {dict: "うたう", type: "u-verb", te: ["うたって","歌って"], masu: ["うたいます","歌います"], meaning: "to sing"},
+      {dict: "おどる", type: "u-verb", te: ["おどって","踊って"], masu: ["おどります","踊ります"], meaning: "to dance"},
+      {dict: "おわる", type: "u-verb", te: ["おわって","終わって"], masu: ["おわります","終わります"], meaning: "something ends"},
+      {dict: "およぐ", type: "u-verb", te: ["およいで","泳いで"], masu: ["およぎます","泳ぎます"], meaning: "to swim"},
+      {dict: "かう", type: "u-verb", te: ["かって","買って"], masu: ["かいます","買います"], meaning: "to buy"},
+      {dict: "かく", type: "u-verb", te: ["かいて","書いて"], masu: ["かきます","書きます"], meaning: "to write"},
+      {dict: "かえす", type: "u-verb", te: ["かえして","返して"], masu: ["かえします","返します"], meaning: "to return (a thing)"},
+      {dict: "かす", type: "u-verb", te: ["かして","貸して"], masu: ["かします","貸します"], meaning: "to lend"},
+      {dict: "きく", type: "u-verb", te: ["きいて","聞いて"], masu: ["ききます","聞きます"], meaning: "to ask; to listen"},
+      {dict: "けす", type: "u-verb", te: ["けして","消して"], masu: ["けします","消します"], meaning: "to turn off; erase"},
+      {dict: "すわる", type: "u-verb", te: ["すわって","座って"], masu: ["すわります","座ります"], meaning: "to sit down"},
+      {dict: "たつ", type: "u-verb", te: ["たって","立って"], masu: ["たちます","立ちます"], meaning: "to stand up"},
+      {dict: "タバコをすう", type: "u-verb", te: ["タバコをすって"], masu: ["タバコをすいます"], meaning: "to smoke"},
+      {dict: "つかう", type: "u-verb", te: ["つかって","使って"], masu: ["つかいます","使います"], meaning: "to use"},
+      {dict: "てつだう", type: "u-verb", te: ["てつだって","手伝って"], masu: ["てつだいます","手伝います"], meaning: "to help"},
+      {dict: "とる", type: "u-verb", te: ["とって","取って"], masu: ["とります","取ります"], meaning: "to take"},
+      {dict: "なくす", type: "u-verb", te: ["なくして","失くして"], masu: ["なくします","失くします"], meaning: "to lose"},
+      {dict: "のむ", type: "u-verb", te: ["のんで","飲んで"], masu: ["のみます","飲みます"], meaning: "to drink"},
+      {dict: "しぬ", type: "u-verb", te: ["しんで","死んで"], masu: ["しにます","死にます"], meaning: "to die"},
+      {dict: "のる", type: "u-verb", te: ["のって","乗って"], masu: ["のります","乗ります"], meaning: "to ride; to board"},
+      {dict: "はいる", type: "u-verb", te: ["はいって","入って"], masu: ["はいります","入ります"], meaning: "to enter"},
+      {dict: "はじまる", type: "u-verb", te: ["はじまって","始まって"], masu: ["はじまります","始まります"], meaning: "something begins"},
+      {dict: "はなす", type: "u-verb", te: ["はなして","話して"], masu: ["はなします","話します"], meaning: "to speak"},
+      {dict: "はらう", type: "u-verb", te: ["はらって","払って"], masu: ["はらいます","払います"], meaning: "to pay"},
+      {dict: "ひく", type: "u-verb", te: ["ひいて","弾いて"], masu: ["ひきます","弾きます"], meaning: "to play (string instrument)"},
+      {dict: "もつ", type: "u-verb", te: ["もって","持って"], masu: ["もちます","持ちます"], meaning: "to carry; to hold"},
+      {dict: "やすむ", type: "u-verb", te: ["やすんで","休んで"], masu: ["やすみます","休みます"], meaning: "to rest; to be absent"},
+      {dict: "よむ", type: "u-verb", te: ["よんで","読んで"], masu: ["よみます","読みます"], meaning: "to read"},
 
       // Ru-verbs
-      {dict: "あける", type: "ru-verb", answers: ["あけて","開けて"], meaning: "to open (something)"},
-      {dict: "あげる", type: "ru-verb", answers: ["あげて","上げて"], meaning: "to give"},
-      {dict: "いる", type: "ru-verb", answers: ["いて"], meaning: "to need"},
-      {dict: "おきる", type: "ru-verb", answers: ["おきて","起きて"], meaning: "to get up"},
-      {dict: "おしえる", type: "ru-verb", answers: ["おしえて","教えて"], meaning: "to teach"},
-      {dict: "おりる", type: "ru-verb", answers: ["おりて","降りて"], meaning: "to get off"},
-      {dict: "かける", type: "ru-verb", answers: ["でんわをかけて","電話をかけて"], meaning: "to make a phone call"},
-      {dict: "かける", type: "ru-verb", answers: ["かけて"], meaning: "to put on (glasses)"},
-      {dict: "かりる", type: "ru-verb", answers: ["かりて","借りて"], meaning: "to borrow"},
-      {dict: "きる", type: "ru-verb", answers: ["きて","着て"], meaning: "to wear (above waist)"},
-      {dict: "しめる", type: "ru-verb", answers: ["しめて","閉めて"], meaning: "to close (something)"},
-      {dict: "つける", type: "ru-verb", answers: ["つけて"], meaning: "to turn on"},
-      {dict: "でかける", type: "ru-verb", answers: ["でかけて","出かけて"], meaning: "to go out"},
-      {dict: "でる", type: "ru-verb", answers: ["でて","出て"], meaning: "to leave; to attend"},
-      {dict: "ねる", type: "ru-verb", answers: ["ねて","寝て"], meaning: "to sleep"},
-      {dict: "みる", type: "ru-verb", answers: ["みて","見て"], meaning: "to see; to watch"},
-      {dict: "わすれる", type: "ru-verb", answers: ["わすれて","忘れて"], meaning: "to forget"},
-      {dict: "シャワーをあびる", type: "ru-verb", answers: ["シャワーをあびて"], meaning: "to take a shower"},
-      {dict: "やせる", type: "ru-verb", answers: ["やせて"], meaning: "to lose weight"},
+      {dict: "あける", type: "ru-verb", te: ["あけて","開けて"], masu: ["あけます","開けます"], meaning: "to open (something)"},
+      {dict: "あげる", type: "ru-verb", te: ["あげて","上げて"], masu: ["あげます","上げます"], meaning: "to give"},
+      {dict: "いる", type: "ru-verb", te: ["いて"], masu: ["いります"], meaning: "to need"}, // (note: いる "to exist" also appears, but Genki I usually covers いる "to be (animate)")
+      {dict: "おきる", type: "ru-verb", te: ["おきて","起きて"], masu: ["おきます","起きます"], meaning: "to get up"},
+      {dict: "おしえる", type: "ru-verb", te: ["おしえて","教えて"], masu: ["おしえます","教えます"], meaning: "to teach"},
+      {dict: "おりる", type: "ru-verb", te: ["おりて","降りて"], masu: ["おります","降ります"], meaning: "to get off"},
+      {dict: "かける", type: "ru-verb", te: ["でんわをかけて","電話をかけて"], masu: ["でんわをかけます","電話をかけます"], meaning: "to make a phone call"},
+      {dict: "かける", type: "ru-verb", te: ["かけて"], masu: ["かけます"], meaning: "to put on (glasses)"},
+      {dict: "かりる", type: "ru-verb", te: ["かりて","借りて"], masu: ["かります","借ります"], meaning: "to borrow"},
+      {dict: "きる", type: "ru-verb", te: ["きて","着て"], masu: ["きます","着ます"], meaning: "to wear (above waist)"},
+      {dict: "しめる", type: "ru-verb", te: ["しめて","閉めて"], masu: ["しめます","閉めます"], meaning: "to close (something)"},
+      {dict: "つける", type: "ru-verb", te: ["つけて"], masu: ["つけます"], meaning: "to turn on"},
+      {dict: "でかける", type: "ru-verb", te: ["でかけて","出かけて"], masu: ["でかけます","出かけます"], meaning: "to go out"},
+      {dict: "でる", type: "ru-verb", te: ["でて","出て"], masu: ["でます","出ます"], meaning: "to leave; to attend"},
+      {dict: "ねる", type: "ru-verb", te: ["ねて","寝て"], masu: ["ねます","寝ます"], meaning: "to sleep"},
+      {dict: "みる", type: "ru-verb", te: ["みて","見て"], masu: ["みます","見ます"], meaning: "to see; to watch"},
+      {dict: "わすれる", type: "ru-verb", te: ["わすれて","忘れて"], masu: ["わすれます","忘れます"], meaning: "to forget"},
+      {dict: "シャワーをあびる", type: "ru-verb", te: ["シャワーをあびて"], masu: ["シャワーをあびます"], meaning: "to take a shower"},
+      {dict: "やせる", type: "ru-verb", te: ["やせて"], masu: ["やせます"], meaning: "to lose weight"},
 
       // Irregular
-      {dict: "くる", type: "irregular", answers: ["きて","来て"], meaning: "to come"},
-      {dict: "する", type: "irregular", answers: ["して"], meaning: "to do"},
-      {dict: "べんきょうする", type: "irregular", answers: ["べんきょうして","勉強して"], meaning: "to study"},
-      {dict: "けっこんする", type: "irregular", answers: ["けっこんして","結婚して"], meaning: "to marry"},
-      {dict: "さんぽする", type: "irregular", answers: ["さんぽして","散歩して"], meaning: "to take a walk"},
-      {dict: "うんてんする", type: "irregular", answers: ["うんてんして","運転して"], meaning: "to drive"},
-      {dict: "りょこうする", type: "irregular", answers: ["りょこうして","旅行して"], meaning: "to travel"},
-      {dict: "そうじする", type: "irregular", answers: ["そうじして","掃除して"], meaning: "to clean"},
-      {dict: "でんわする", type: "irregular", answers: ["でんわして","電話して"], meaning: "to call"},
-      {dict: "つれてくる", type: "irregular", answers: ["つれてきて","連れてきて"], meaning: "to bring (a person)"},
-      {dict: "もってくる", type: "irregular", answers: ["もってきて","持ってきて"], meaning: "to bring (a thing)"}
+      {dict: "くる", type: "irregular", te: ["きて","来て"], masu: ["きます","来ます"], meaning: "to come"},
+      {dict: "する", type: "irregular", te: ["して"], masu: ["します"], meaning: "to do"},
+      {dict: "べんきょうする", type: "irregular", te: ["べんきょうして","勉強して"], masu: ["べんきょうします","勉強します"], meaning: "to study"},
+      {dict: "けっこんする", type: "irregular", te: ["けっこんして","結婚して"], masu: ["けっこんします","結婚します"], meaning: "to marry"},
+      {dict: "さんぽする", type: "irregular", te: ["さんぽして","散歩して"], masu: ["さんぽします","散歩します"], meaning: "to take a walk"},
+      {dict: "うんてんする", type: "irregular", te: ["うんてんして","運転して"], masu: ["うんてんします","運転します"], meaning: "to drive"},
+      {dict: "りょこうする", type: "irregular", te: ["りょこうして","旅行して"], masu: ["りょこうします","旅行します"], meaning: "to travel"},
+      {dict: "そうじする", type: "irregular", te: ["そうじして","掃除して"], masu: ["そうじします","掃除します"], meaning: "to clean"},
+      {dict: "でんわする", type: "irregular", te: ["でんわして","電話して"], masu: ["でんわします","電話します"], meaning: "to call"},
+      {dict: "つれてくる", type: "irregular", te: ["つれてきて","連れてきて"], masu: ["つれてきます","連れて来ます"], meaning: "to bring (a person)"},
+      {dict: "もってくる", type: "irregular", te: ["もってきて","持ってきて"], masu: ["もってきます","持って来ます"], meaning: "to bring (a thing)"}
     ];
+
 
     document.getElementById("totalVerbs").textContent = verbs.length;
 
@@ -143,15 +151,23 @@
       const tbody = document.getElementById("verbTable");
       tbody.innerHTML = "";
       verbs.forEach(v => {
-        const row = `<tr><td>${v.dict}</td><td>${v.answers.join(", ")}</td><td>${v.type}</td><td>${v.meaning}</td></tr>`;
+        const row = `<tr>
+          <td>${v.dict}</td>
+          <td>${v.te.join(", ")}</td>
+          <td>${v.masu.join(", ")}</td>
+          <td>${v.type}</td>
+          <td>${v.meaning}</td>
+        </tr>`;
         tbody.innerHTML += row;
       });
     }
 
     let currentQuestions = [];
+    let currentType = "te";
 
     function generateQuiz() {
       const num = Math.min(parseInt(document.getElementById("numQuestions").value), verbs.length);
+      currentType = document.getElementById("quizType").value;
       currentQuestions = shuffle([...verbs]).slice(0, num);
 
       const form = document.getElementById("quizForm");
@@ -159,8 +175,8 @@
       currentQuestions.forEach((v, i) => {
         form.innerHTML += `
           <div class="mb-3">
-            <label class="form-label">Q${i+1}: ${v.dict} (${v.meaning}) → te-form?</label>
-            <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(v.answers)}'>
+            <label class="form-label">Q${i+1}: ${v.dict} (${v.meaning}) → ${currentType}-form?</label>
+            <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(v[currentType])}'>
           </div>
         `;
       });
