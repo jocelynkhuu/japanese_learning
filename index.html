@@ -36,27 +36,35 @@
       <button class="btn btn-secondary" onclick="showList()">List All Verbs</button>
     </div>
 
-    <!-- Quiz -->
-    <div id="quiz" style="display:none;">
-      <h2>Quiz</h2>
-      <div class="mb-3">
-        <label class="form-label">How many questions? (1–<span id="totalVerbs"></span>):</label>
-        <input type="number" id="numQuestions" class="form-control w-25 d-inline-block" min="1" value="5">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Choose form to practice:</label>
-        <select id="quizType" class="form-select w-25 d-inline-block">
-          <option value="te">Te-form</option>
-          <option value="masu">Masu-form</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Choose lesson:</label>
-        <select id="lessonFilter" class="form-select w-25 d-inline-block"></select>
-        <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
-      </div>
-      <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
+  <!-- Quiz -->
+  <div id="quiz" style="display:none; position: relative; min-height: 100vh;">
+    <h2>Quiz</h2>
+    <div class="mb-3">
+      <label class="form-label">How many questions? (1–<span id="totalVerbs"></span>):</label>
+      <input type="number" id="numQuestions" class="form-control w-25 d-inline-block" min="1" value="5">
     </div>
+    <div class="mb-3">
+      <label class="form-label">Choose form to practice:</label>
+      <select id="quizType" class="form-select w-25 d-inline-block">
+        <option value="te">Te-form</option>
+        <option value="masu">Masu-form</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Choose lesson:</label>
+      <select id="lessonFilter" class="form-select w-25 d-inline-block"></select>
+      <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
+    </div>
+
+    <!-- Quiz questions will go here -->
+    <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
+
+    <!-- Sticky footer always visible -->
+    <div class="sticky-footer">
+      <button class="btn btn-primary" onclick="reset()">🔙 Back to Menu</button>
+    </div>
+  </div>
+
 
     <!-- Results -->
     <div id="results" style="display:none;">
@@ -195,6 +203,8 @@
       te: ["シャワーをあびて"], masu: ["シャワーをあびます"], meaning: "to take a shower"},
       {dict: "やせる", kanji: "やせる", type: "ru-verb",
       te: ["やせて"], masu: ["やせます"], meaning: "to lose weight"},
+      {dict: "たべる", kanji: "<ruby>食<rt>た</rt></ruby>べる", type: "ru-verb",
+      te: ["たべて","食べて"], masu: ["たべます","食べます"], meaning: "to eat", lesson: 3},
 
       // ==== Irregular ====
       {dict: "くる", kanji: "<ruby>来<rt>く</rt></ruby>る", type: "irregular",
