@@ -301,7 +301,9 @@
       {dict: "うんどうする", kanji: "<ruby>運動<rt>うんどう</rt></ruby>する", type: "irregular",
       te: ["うんどうして","運動して"], masu: ["うんどうします","運動します"], meaning: "to exercise", lesson: 9},
       {dict: "ごろごろする", type: "irregular",
-      te: ["ごろごろして"], masu: ["ごろごろします"], meaning: "to chillout at home; to stay home and do nothing", lesson: 10}
+      te: ["ごろごろして"], masu: ["ごろごろします"], meaning: "to chillout at home; to stay home and do nothing", lesson: 10},
+      {dict: "れんしゅうする", kanji: "<ruby>練習<rt>れんしゅう</rt></ruby>する", type: "irregular",
+      te: ["れんしゅうして","練習して"], masu: ["れんしゅうします","練習します"], meaning: "to practice (~を)", lesson: 10}
     ];
 
     document.getElementById("totalVerbs").textContent = verbs.length;
@@ -389,9 +391,9 @@ buildLessonDropdown();
     let currentType = "te";
 
     function generateQuiz() {
-      const num = Math.min(parseInt(document.getElementById("numQuestions").value), verbs.length);
-      currentType = document.getElementById("quizType").value;
+      const numInput = document.getElementById("numQuestions");
       const lesson = document.getElementById("lessonFilter").value;
+      currentType = document.getElementById("quizType").value;
 
       let pool = verbs;
 
@@ -408,6 +410,10 @@ buildLessonDropdown();
         pool = pool.filter(v => v.type !== "irregular");
       }
 
+      // ✅ update available number dynamically
+      document.getElementById("totalVerbs").textContent = pool.length;
+
+      const num = Math.min(parseInt(numInput.value), pool.length);
       currentQuestions = shuffle([...pool]).slice(0, num);
 
       const form = document.getElementById("quizForm");
@@ -422,6 +428,7 @@ buildLessonDropdown();
       });
       form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
     }
+
 
     function checkAnswers() {
       let score = 0;
