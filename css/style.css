@@ -1,6 +1,19 @@
-body { padding: 2rem; }
-.correct { color: green; font-weight: bold; }
-.incorrect { color: red; font-weight: bold; }
+/* General page padding */
+body { 
+  padding: 2rem; 
+}
+
+/* Correct / Incorrect colors */
+.correct { 
+  color: green; 
+  font-weight: bold; 
+}
+.incorrect { 
+  color: red; 
+  font-weight: bold; 
+}
+
+/* Sticky footer for back-to-menu buttons */
 .sticky-footer {
   position: fixed;
   bottom: 0;
@@ -12,16 +25,21 @@ body { padding: 2rem; }
   text-align: center;
   z-index: 1000;
 }
+
+/* Section headers in Verb List */
 h3.lesson-heading {
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 2px solid #ccc;
 }
 
+/* Extra bottom padding so sticky footer doesn’t overlap */
 #quizForm {
-  margin-bottom: 80px; 
+  margin-bottom: 100px; 
 }
-
 #resultsContent {
-  padding-bottom: 80px; 
+  padding-bottom: 100px; 
+}
+#verbTables {
+  padding-bottom: 100px;
 }
