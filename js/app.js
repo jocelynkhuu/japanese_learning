@@ -25,20 +25,25 @@ function initApp() {
 document.addEventListener("DOMContentLoaded", initApp);
 
 function updateTotalVerbs() {
-    const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value);
-    const skipIrregular = document.getElementById("skipIrregular").checked;
-    let pool = verbs;
+  const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value);
+  const skipIrregular = document.getElementById("skipIrregular").checked;
+  let pool = verbs;
 
-    if (!selected.includes("all")) {
-        const lessons = selected.map(Number);
-        pool = pool.filter(v => v.lesson.some(l => lessons.includes(l)));
-    }
+  if (!selected.includes("all")) {
+    const lessons = selected.map(Number);
+    pool = pool.filter(v => v.lesson.some(l => lessons.includes(l)));
+  }
 
-    if (skipIrregular) {
-        pool = pool.filter(v => v.type !== "irregular");
-    }
+  if (skipIrregular) {
+    pool = pool.filter(v => v.type !== "irregular");
+  }
 
-    document.getElementById("totalVerbs").textContent = pool.length;
+  const max = pool.length;
+  document.getElementById("totalVerbs").textContent = max;
+
+  // 🔧 Always reset the input to the max
+  const numInput = document.getElementById("numQuestions");
+  numInput.value = max;
 }
 
 function buildLessonDropdown() {
