@@ -48,12 +48,23 @@ function buildLessonDropdown() {
     verbs.forEach(v => v.lesson.forEach(l => lessons.add(l)));
 
     const dropdown = document.getElementById("lessonFilter");
-    dropdown.innerHTML = `<option value="all">All Lessons</option>`;
+    dropdown.innerHTML = `<option value="all" selected>All Lessons</option>`;
     [...lessons].sort((a, b) => a - b).forEach(l => {
         dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
     });
 
-    dropdown.onchange = updateTotalVerbs;
+    // 🔧 Handle "all" vs multiple selection
+    dropdown.addEventListener("change", () => {
+        const selected = [...dropdown.selectedOptions].map(o => o.value);
+        if (selected.length > 1 && selected.includes("all")) {
+            // If "all" + others are selected, unselect "all"
+            [...dropdown.options].forEach(opt => {
+                if (opt.value === "all") opt.selected = false;
+            });
+        }
+        updateTotalVerbs();
+    });
+
     document.getElementById("skipIrregular").onchange = updateTotalVerbs;
     updateTotalVerbs();
 }
