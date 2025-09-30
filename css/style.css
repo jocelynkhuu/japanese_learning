@@ -21,3 +21,12 @@ h3.lesson-heading {
 #quizForm {
   margin-bottom: 80px; 
 }
+
+#resultsContent {
+  padding-bottom: 80px; /* adjust if needed */
+}
+
+#quizForm {
+  padding-bottom: 80px; /* adjust if needed */
+}
+
