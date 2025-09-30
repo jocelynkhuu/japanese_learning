@@ -27,14 +27,14 @@ function initApp() {
 document.addEventListener("DOMContentLoaded", initApp);
 
 function updateTotalVerbs() {
-    const lesson = document.getElementById("lessonFilter").value;
+    const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value);
     const skipIrregular = document.getElementById("skipIrregular").checked;
     let pool = verbs;
 
-    if (lesson !== "all") {
-        pool = pool.filter(v => v.lesson.includes(parseInt(lesson)));
+    if (!selected.includes("all")) {
+        const lessons = selected.map(Number);
+        pool = pool.filter(v => v.lesson.some(l => lessons.includes(l)));
     }
-
 
     if (skipIrregular) {
         pool = pool.filter(v => v.type !== "irregular");
@@ -110,12 +110,13 @@ let currentType = "te";
 
 function generateQuiz() {
     const numInput = document.getElementById("numQuestions");
-    const lesson = document.getElementById("lessonFilter").value;
+    const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value);
     currentType = document.getElementById("quizType").value;
 
     let pool = verbs;
-    if (lesson !== "all") {
-        pool = pool.filter(v => v.lesson.includes(parseInt(lesson)));
+    if (!selected.includes("all")) {
+        const lessons = selected.map(Number);
+        pool = pool.filter(v => v.lesson.some(l => lessons.includes(l)));
     }
 
     if (document.getElementById("skipIrregular").checked) {
@@ -131,13 +132,14 @@ function generateQuiz() {
     form.innerHTML = "";
     currentQuestions.forEach((v, i) => {
         form.innerHTML += `
-      <div class="mb-3">
-        <label class="form-label">Q${i + 1}: ${(v.kanji || v.dict)} (${v.meaning}) → ${currentType}-form?</label>
-        <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(v[currentType])}'>
-      </div>`;
+        <div class="mb-3">
+          <label class="form-label">Q${i + 1}: ${(v.kanji || v.dict)} (${v.meaning}) → ${currentType}-form?</label>
+          <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(v[currentType])}'>
+        </div>`;
     });
     form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
 }
+
 
 function checkAnswers() {
     let score = 0;

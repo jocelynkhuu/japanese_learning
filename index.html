@@ -69,11 +69,11 @@
           <option value="masu">Masu-form</option>
         </select>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Choose lesson:</label>
-        <select id="lessonFilter" class="form-select w-25 d-inline-block"></select>
-        <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
-      </div>
+        <div class="mb-3">
+          <label class="form-label">Choose lesson(s):</label>
+          <select id="lessonFilter" class="form-select w-25 d-inline-block" multiple size="6"></select>
+          <button class="btn btn-success ms-2" onclick="generateQuiz()">Start</button>
+        </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="skipIrregular">
         <label class="form-check-label" for="skipIrregular">Skip irregular verbs</label>
