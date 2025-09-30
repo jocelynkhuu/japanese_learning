@@ -17,3 +17,7 @@ h3.lesson-heading {
   padding-top: 1rem;
   border-top: 2px solid #ccc;
 }
+
+#quizForm {
+  margin-bottom: 80px; 
+}
