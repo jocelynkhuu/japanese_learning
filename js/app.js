@@ -97,7 +97,7 @@ function showList() {
       <table class="table table-striped table-bordered">
         <thead class="table-dark">
           <tr>
-            <th>Kanji</th><th>Dict</th><th>Te-form(s)</th><th>Masu-form(s)</th><th>Type</th><th>Meaning</th>
+            <th>Kanji</th><th>Dict</th><th>て-form(s)</th><th>ます-form(s)</th><th>Type</th><th>Meaning</th>
           </tr>
         </thead><tbody>`;
         verbsForLesson.forEach(v => {
