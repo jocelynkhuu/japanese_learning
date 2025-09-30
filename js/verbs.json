@@ -477,21 +477,6 @@
             "lesson": 6
         },
         {
-            "dict": "はじまる",
-            "kanji": "<ruby>始<rt>はじ</rt></ruby>まる",
-            "type": "u-verb",
-            "te": [
-                "はじまって",
-                "始まって"
-            ],
-            "masu": [
-                "はじまります",
-                "始まります"
-            ],
-            "meaning": "something begins",
-            "lesson": 9
-        },
-        {
             "dict": "はなす",
             "kanji": "<ruby>話<rt>はな</rt></ruby>す",
             "type": "u-verb",
@@ -1230,7 +1215,7 @@
                 "でます",
                 "出ます"
             ],
-            "meaning": "to leave",
+            "meaning": "1. to appear; to atend (~に); 2. to to exit (~を)",
             "lesson": [
                 6,
                 9
@@ -1345,7 +1330,7 @@
             "masu": [
                 "やせます"
             ],
-            "meaning": "to be thin; to lose weight",
+            "meaning": "to be thin; to lose",
             "lesson": 7
         },
         {
@@ -1449,6 +1434,21 @@
             ],
             "meaning": "to break up; to separate (person と)",
             "lesson": 12
+        }
+        {
+            "dict": "おぼえる",
+            "kanji": "<ruby>覚<rt>おぼ</rt></ruby>える",
+            "type": "ru-verb",
+            "te": [
+                "おぼえて",
+                "覚えて"
+            ],
+            "masu": [
+                "おぼえます",
+                "覚えます"
+            ],
+            "meaning": "to memorize (~を)",
+            "lesson": 9
         }
     ],
     "irregular": [
