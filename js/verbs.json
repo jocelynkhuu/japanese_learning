@@ -1135,12 +1135,10 @@
             "kanji": "<ruby>掛<rt>か</rt></ruby>ける",
             "type": "ru-verb",
             "te": [
-                "かけて",
-                "掛けて"
+                "かけて"
             ],
             "masu": [
-                "かけます",
-                "掛けます"
+                "かけます"
             ],
             "meaning": "to put on (glasses)",
             "lesson": 7
