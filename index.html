@@ -63,7 +63,10 @@
       <h2>Quiz</h2>
       <div class="mb-3">
         <label class="form-label">How many questions? (1–<span id="totalVerbs"></span>):</label>
-        <input type="number" id="numQuestions" class="form-control w-100 w-md-25 d-inline-block" min="1" value="5">
+        <div class="d-flex gap-2">
+          <input type="number" id="numQuestions" class="form-control w-50 w-md-25 d-inline-block" min="1" value="5">
+          <button type="button" class="btn btn-outline-secondary" onclick="setMaxQuestions()">Max</button>
+        </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Choose form to practice:</label>

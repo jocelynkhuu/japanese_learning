@@ -22,8 +22,6 @@ function initApp() {
         .catch(error => console.error("Error loading verbs.json:", error));
 }
 
-
-
 document.addEventListener("DOMContentLoaded", initApp);
 
 function updateTotalVerbs() {
@@ -186,4 +184,9 @@ function shuffle(array) {
         t = array[m]; array[m] = array[i]; array[i] = t;
     }
     return array;
+}
+
+function setMaxQuestions() {
+  const max = parseInt(document.getElementById("totalVerbs").textContent);
+  document.getElementById("numQuestions").value = max;
 }
