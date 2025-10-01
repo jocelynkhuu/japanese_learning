@@ -31,13 +31,13 @@ h3.lesson-heading {
 }
 
 #quizForm {
-  margin-bottom: 80px; /* space so footer doesn’t cover quiz */
+  margin-bottom: 100px; 
 }
 
 #adjQuizForm {
-  margin-bottom: 80px; /* space so footer doesn’t cover adjective quiz */
+  margin-bottom: 100px; 
 }
 
 #resultsContent {
-  padding-bottom: 80px; /* space for sticky footer */
+  padding-bottom: 100px;
 }
