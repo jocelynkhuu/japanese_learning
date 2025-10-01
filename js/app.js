@@ -223,7 +223,8 @@ function reset() {
   document.getElementById("quiz").style.display = "none";
   document.getElementById("results").style.display = "none";
   document.getElementById("list").style.display = "none";
-  document.getElementById("adjectives").style.display = "none"; // ✅ added
+  document.getElementById("adjectives").style.display = "none";
+  document.getElementById("adjQuiz").style.display = "none"; // ✅ Added fix
   document.getElementById("menu").style.display = "block";
 }
 
@@ -239,4 +240,63 @@ function shuffle(array) {
 function setMaxQuestions() {
   const max = parseInt(document.getElementById("totalVerbs").textContent);
   document.getElementById("numQuestions").value = max;
+}
+
+let currentAdjQuestions = [];
+
+function startAdjectiveQuiz() {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("adjQuiz").style.display = "block";
+
+  // Set max automatically
+  document.getElementById("totalAdjectives").textContent = adjectives.length;
+  document.getElementById("numAdjQuestions").value = adjectives.length;
+
+  generateAdjectiveQuiz();
+}
+
+function generateAdjectiveQuiz() {
+  const num = Math.min(
+    parseInt(document.getElementById("numAdjQuestions").value),
+    adjectives.length
+  );
+
+  currentAdjQuestions = shuffle([...adjectives]).slice(0, num);
+
+  const form = document.getElementById("adjQuizForm");
+  form.innerHTML = "";
+  currentAdjQuestions.forEach((adj, i) => {
+    form.innerHTML += `
+      <div class="mb-3">
+        <label class="form-label">Q${i + 1}: ${(adj.kanji || adj.dict)} (${adj.meaning}) → What type?</label>
+        <input type="text" class="form-control" name="adjQ${i}" data-answer="${adj.type}">
+      </div>`;
+  });
+  form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
+}
+
+function checkAdjectiveAnswers() {
+  let score = 0;
+  let output = "";
+  currentAdjQuestions.forEach((adj, i) => {
+    const input = document.querySelector(`[name=adjQ${i}]`);
+    const userAnswer = input.value.trim();
+    const correct = input.getAttribute("data-answer");
+
+    if (userAnswer === correct) {
+      score++;
+      output += `<div class="alert alert-success">✅ Q${i + 1}: Correct! (${adj.dict}) is a ${correct}</div>`;
+    } else {
+      output += `<div class="alert alert-danger">❌ Q${i + 1}: Incorrect<br>Your answer: <b>${userAnswer}</b><br>Correct: ${correct}</div>`;
+    }
+  });
+  output += `<p class="fw-bold">Final Score: ${score}/${currentAdjQuestions.length}</p>`;
+
+  document.getElementById("adjQuiz").style.display = "none";
+  document.getElementById("results").style.display = "block";
+  document.getElementById("resultsContent").innerHTML = output;
+}
+
+function setMaxAdjectiveQuestions() {
+  document.getElementById("numAdjQuestions").value = adjectives.length;
 }

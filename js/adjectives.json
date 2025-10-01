@@ -1,18 +1,24 @@
 {
   "adjectives": [
     {
-      "dict": "たかい",
-      "kanji": "<ruby>高<rt>たか</rt></ruby>い",
+      "dict": "いい",
       "type": "い-adjective",
-      "meaning": "tall; expensive",
-      "lesson": 5
+      "te": [
+                "よくて"
+            ],
+      "meaning": "good",
+      "lesson": 3
     },
     {
-      "dict": "しずか",
-      "kanji": "<ruby>静<rt>しず</rt></ruby>か",
-      "type": "な-adjective",
-      "meaning": "quiet",
-      "lesson": 5
+      "dict": "はやい",
+      "kanji": "<ruby>早<rt>はや</rt></ruby>い",
+      "type": "い-adjective",
+      "te": [
+                "はやくて",
+                "早くて"
+            ],
+      "meaning": "early",
+      "lesson": 3
     }
   ]
 }

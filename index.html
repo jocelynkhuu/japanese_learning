@@ -53,15 +53,16 @@
       </div>
 
       <div class="d-flex flex-wrap gap-2">
-        <button class="btn btn-primary flex-fill" onclick="startQuiz()">Take a Quiz</button>
+        <button class="btn btn-primary flex-fill" onclick="startQuiz()">Take a Verb Quiz</button>
         <button class="btn btn-secondary flex-fill" onclick="showList()">List All Verbs</button>
         <button class="btn btn-warning flex-fill" onclick="showAdjectives()">List All Adjectives</button>
+        <button class="btn btn-success flex-fill" onclick="startAdjectiveQuiz()">Take an Adjective Quiz</button>
       </div>
-    </div>
+    </div> <!-- ✅ closes #menu -->
 
     <!-- Quiz -->
     <div id="quiz" style="display:none; min-height: 100vh;">
-      <h2>Quiz</h2>
+      <h2>Verb Quiz</h2>
       <div class="mb-3">
         <label class="form-label">How many questions? (1–<span id="totalVerbs"></span>):</label>
         <div class="d-flex gap-2">
@@ -88,6 +89,25 @@
 
       <!-- Quiz questions go here -->
       <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
+
+      <div class="sticky-footer">
+        <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>
+      </div>
+    </div>
+
+    <!-- Adjective Quiz -->
+    <div id="adjQuiz" style="display:none; min-height: 100vh;">
+      <h2>Adjective Quiz</h2>
+      <div class="mb-3">
+        <label class="form-label">How many questions? (1–<span id="totalAdjectives"></span>):</label>
+        <div class="d-flex gap-2">
+          <input type="number" id="numAdjQuestions" class="form-control w-50 w-md-25 d-inline-block" min="1" value="5">
+          <button type="button" class="btn btn-outline-secondary" onclick="setMaxAdjectiveQuestions()">Max</button>
+        </div>
+      </div>
+
+      <!-- Adjective quiz questions go here -->
+      <form id="adjQuizForm" onsubmit="checkAdjectiveAnswers(); return false;"></form>
 
       <div class="sticky-footer">
         <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>

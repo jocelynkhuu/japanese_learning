@@ -31,7 +31,11 @@ h3.lesson-heading {
 }
 
 #quizForm {
-  margin-bottom: 80px; /* space so footer doesn’t cover */
+  margin-bottom: 80px; /* space so footer doesn’t cover quiz */
+}
+
+#adjQuizForm {
+  margin-bottom: 80px; /* space so footer doesn’t cover adjective quiz */
 }
 
 #resultsContent {
