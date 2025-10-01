@@ -9,7 +9,7 @@
 </head>
 <body class="bg-light">
   <div class="container">
-    <h1 class="mb-4 text-center">📘 Japanese て-Form Verb Quiz</h1>
+    <h1 class="mb-4 text-center">📘 Japanese て-Form Verb & Adjective Quiz</h1>
 
     <!-- Menu -->
     <div id="menu" class="mb-3">
@@ -55,12 +55,12 @@
       <div class="d-flex flex-wrap gap-2">
         <button class="btn btn-primary flex-fill" onclick="startQuiz()">Take a Verb Quiz</button>
         <button class="btn btn-secondary flex-fill" onclick="showList()">List All Verbs</button>
-        <button class="btn btn-success flex-fill" onclick="startAdjectiveQuiz()">Take an Adjective Quiz</button>
         <button class="btn btn-warning flex-fill" onclick="showAdjectives()">List All Adjectives</button>
+        <button class="btn btn-success flex-fill" onclick="startAdjectiveQuiz()">Take an Adjective Quiz</button>
       </div>
-    </div> <!-- ✅ closes #menu -->
+    </div>
 
-    <!-- Quiz -->
+    <!-- Verb Quiz -->
     <div id="quiz" style="display:none; min-height: 100vh;">
       <h2>Verb Quiz</h2>
       <div class="mb-3">
@@ -87,7 +87,6 @@
         <label class="form-check-label" for="skipIrregular">Skip irregular verbs</label>
       </div>
 
-      <!-- Quiz questions go here -->
       <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
 
       <div class="sticky-footer">
@@ -105,8 +104,12 @@
           <button type="button" class="btn btn-outline-secondary" onclick="setMaxAdjectiveQuestions()">Max</button>
         </div>
       </div>
+      <div class="mb-3">
+        <label class="form-label">Choose lesson(s):</label>
+        <select id="adjLessonFilter" class="form-select w-100 w-md-25 d-inline-block" multiple size="6"></select>
+        <button class="btn btn-success ms-2 mt-2 mt-md-0" onclick="generateAdjectiveQuiz()">Start</button>
+      </div>
 
-      <!-- Adjective quiz questions go here -->
       <form id="adjQuizForm" onsubmit="checkAdjectiveAnswers(); return false;"></form>
 
       <div class="sticky-footer">
@@ -132,7 +135,7 @@
       </div>
     </div>
 
-    <!-- Adjectives -->
+    <!-- Adjective List -->
     <div id="adjectives" style="display:none; min-height: 100vh;">
       <h2>All Adjectives by Lesson</h2>
       <div id="adjectiveTables"></div>

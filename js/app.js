@@ -1,6 +1,7 @@
 let verbs = [];
 let adjectives = [];
 
+// ------------------------- INIT -------------------------
 function initApp() {
   // Load verbs
   fetch("js/verbs.json")
@@ -11,7 +12,6 @@ function initApp() {
         .concat(data["ru-verbs"])
         .concat(data["irregular"]);
 
-      // Normalize lesson values
       verbs.forEach(v => {
         if (!Array.isArray(v.lesson)) v.lesson = [v.lesson];
       });
@@ -35,6 +35,7 @@ function initApp() {
 
 document.addEventListener("DOMContentLoaded", initApp);
 
+// ------------------------- VERB HELPERS -------------------------
 function updateTotalVerbs() {
   const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value);
   const skipIrregular = document.getElementById("skipIrregular").checked;
@@ -51,8 +52,6 @@ function updateTotalVerbs() {
 
   const max = pool.length;
   document.getElementById("totalVerbs").textContent = max;
-
-  // Always reset numQuestions to max
   document.getElementById("numQuestions").value = max;
 }
 
@@ -66,7 +65,6 @@ function buildLessonDropdown() {
     dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
   });
 
-  // Handle "all" vs multiple
   dropdown.addEventListener("change", () => {
     const selected = [...dropdown.selectedOptions].map(o => o.value);
     if (selected.length > 1 && selected.includes("all")) {
@@ -81,9 +79,54 @@ function buildLessonDropdown() {
   updateTotalVerbs();
 }
 
+// ------------------------- ADJECTIVE HELPERS -------------------------
+function buildAdjectiveLessonDropdown() {
+  const lessons = new Set();
+  adjectives.forEach(adj => adj.lesson.forEach(l => lessons.add(l)));
+
+  const dropdown = document.getElementById("adjLessonFilter");
+  dropdown.innerHTML = `<option value="all" selected>All Lessons</option>`;
+  [...lessons].sort((a, b) => a - b).forEach(l => {
+    dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
+  });
+
+  dropdown.addEventListener("change", () => {
+    const selected = [...dropdown.selectedOptions].map(o => o.value);
+    if (selected.length > 1 && selected.includes("all")) {
+      [...dropdown.options].forEach(opt => {
+        if (opt.value === "all") opt.selected = false;
+      });
+    }
+    updateTotalAdjectives();
+  });
+
+  updateTotalAdjectives();
+}
+
+function updateTotalAdjectives() {
+  const selected = [...document.getElementById("adjLessonFilter").selectedOptions].map(o => o.value);
+  let pool = adjectives;
+
+  if (!selected.includes("all")) {
+    const lessons = selected.map(Number);
+    pool = pool.filter(adj => adj.lesson.some(l => lessons.includes(l)));
+  }
+
+  const max = pool.length;
+  document.getElementById("totalAdjectives").textContent = max;
+  document.getElementById("numAdjQuestions").value = max;
+}
+
+// ------------------------- SHOW SECTIONS -------------------------
 function startQuiz() {
   document.getElementById("menu").style.display = "none";
   document.getElementById("quiz").style.display = "block";
+}
+
+function startAdjectiveQuiz() {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("adjQuiz").style.display = "block";
+  buildAdjectiveLessonDropdown();
 }
 
 function showList() {
@@ -164,6 +207,7 @@ function showAdjectives() {
   });
 }
 
+// ------------------------- QUIZZES -------------------------
 let currentQuestions = [];
 let currentType = "te";
 
@@ -219,49 +263,20 @@ function checkAnswers() {
   document.getElementById("resultsContent").innerHTML = output;
 }
 
-function reset() {
-  document.getElementById("quiz").style.display = "none";
-  document.getElementById("results").style.display = "none";
-  document.getElementById("list").style.display = "none";
-  document.getElementById("adjectives").style.display = "none";
-  document.getElementById("adjQuiz").style.display = "none"; // ✅ Added fix
-  document.getElementById("menu").style.display = "block";
-}
-
-function shuffle(array) {
-  let m = array.length, t, i;
-  while (m) {
-    i = Math.floor(Math.random() * m--);
-    t = array[m]; array[m] = array[i]; array[i] = t;
-  }
-  return array;
-}
-
-function setMaxQuestions() {
-  const max = parseInt(document.getElementById("totalVerbs").textContent);
-  document.getElementById("numQuestions").value = max;
-}
-
+// ------------------------- ADJECTIVE QUIZ -------------------------
 let currentAdjQuestions = [];
 
-function startAdjectiveQuiz() {
-  document.getElementById("menu").style.display = "none";
-  document.getElementById("adjQuiz").style.display = "block";
-
-  // Set max automatically
-  document.getElementById("totalAdjectives").textContent = adjectives.length;
-  document.getElementById("numAdjQuestions").value = adjectives.length;
-
-  generateAdjectiveQuiz();
-}
-
 function generateAdjectiveQuiz() {
-  const num = Math.min(
-    parseInt(document.getElementById("numAdjQuestions").value),
-    adjectives.length
-  );
+  const selected = [...document.getElementById("adjLessonFilter").selectedOptions].map(o => o.value);
+  let pool = adjectives;
 
-  currentAdjQuestions = shuffle([...adjectives]).slice(0, num);
+  if (!selected.includes("all")) {
+    const lessons = selected.map(Number);
+    pool = pool.filter(adj => adj.lesson.some(l => lessons.includes(l)));
+  }
+
+  const num = Math.min(parseInt(document.getElementById("numAdjQuestions").value), pool.length);
+  currentAdjQuestions = shuffle([...pool]).slice(0, num);
 
   const form = document.getElementById("adjQuizForm");
   form.innerHTML = "";
@@ -295,6 +310,30 @@ function checkAdjectiveAnswers() {
   document.getElementById("adjQuiz").style.display = "none";
   document.getElementById("results").style.display = "block";
   document.getElementById("resultsContent").innerHTML = output;
+}
+
+// ------------------------- UTIL -------------------------
+function reset() {
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("adjQuiz").style.display = "none";
+  document.getElementById("results").style.display = "none";
+  document.getElementById("list").style.display = "none";
+  document.getElementById("adjectives").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+}
+
+function shuffle(array) {
+  let m = array.length, t, i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = array[m]; array[m] = array[i]; array[i] = t;
+  }
+  return array;
+}
+
+function setMaxQuestions() {
+  const max = parseInt(document.getElementById("totalVerbs").textContent);
+  document.getElementById("numQuestions").value = max;
 }
 
 function setMaxAdjectiveQuestions() {
