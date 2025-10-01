@@ -32,18 +32,18 @@ h3.lesson-heading {
 
 /* Verb quiz spacing */
 #quizForm {
-  margin-bottom: 80px; /* space so footer doesn’t cover */
+  margin-bottom: 100px; /* space so footer doesn’t cover */
 }
 
 #resultsContent {
-  padding-bottom: 80px; /* space for sticky footer */
+  padding-bottom: 100px; /* space for sticky footer */
 }
 
 /* Adjective quiz spacing */
 #adjQuizForm {
-  margin-bottom: 80px; /* same space for consistency */
+  margin-bottom: 100px; /* same space for consistency */
 }
 
 #adjResultsContent {
-  padding-bottom: 80px; /* same space for consistency */
+  padding-bottom: 100px; /* same space for consistency */
 }
