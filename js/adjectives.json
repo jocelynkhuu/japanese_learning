@@ -1,0 +1,18 @@
+{
+  "adjectives": [
+    {
+      "dict": "たかい",
+      "kanji": "<ruby>高<rt>たか</rt></ruby>い",
+      "type": "い-adjective",
+      "meaning": "tall; expensive",
+      "lesson": 5
+    },
+    {
+      "dict": "しずか",
+      "kanji": "<ruby>静<rt>しず</rt></ruby>か",
+      "type": "な-adjective",
+      "meaning": "quiet",
+      "lesson": 5
+    }
+  ]
+}
