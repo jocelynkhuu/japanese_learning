@@ -213,6 +213,111 @@
       "te": ["ひまで", "暇で"],
       "meaning": "not busy; free (time)",
       "lesson": 5
+    },
+    {
+      "dict": "たいへん（な）",
+      "kanji": "<ruby>大変<rt>たいへん</rt></ruby>（な）",
+      "type": "な-adjective",
+      "te": ["たいへんで", "大変で"],
+      "meaning": "tough (situation)",
+      "lesson": 6
+    },
+    {
+      "dict": "ながい",
+      "kanji": "<ruby>長<rt>なが</rt></ruby>い",
+      "type": "い-adjective",
+      "te": [
+        "ながくて",
+        "長くて"
+      ],
+      "meaning": "long",
+      "lesson": 7
+    },
+    {
+      "dict": "みじかい",
+      "kanji": "<ruby>短<rt>みじか</rt></ruby>い",
+      "type": "い-adjective",
+      "te": [
+        "みじかくて",
+        "短くて"
+      ],
+      "meaning": "short (length)",
+      "lesson": 7
+    },
+    {
+      "dict": "はやい",
+      "kanji": "<ruby>速<rt>はや</rt></ruby>い",
+      "type": "い-adjective",
+      "te": [
+        "はやくて",
+        "速くて"
+      ],
+      "meaning": "fast",
+      "lesson": 7
+    },
+    {
+      "dict": "せがたかい",
+      "kanji": "<ruby>背<rt>せ</rt></ruby>が<ruby>高<rt>たか</rt></ruby>い",
+      "type": "い-adjective",
+      "te": [
+        "せがたかくて",
+        "背が高くて"
+      ],
+      "meaning": "tall (stature)",
+      "lesson": 7
+    },
+    {
+      "dict": "せがひくい",
+      "kanji": "<ruby>背<rt>せ</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>い",
+      "type": "い-adjective",
+      "te": [
+        "せがひくくて",
+        "背が低くて"
+      ],
+      "meaning": "short (stature)",
+      "lesson": 7
+    },
+    {
+      "dict": "あたまがいい",
+      "kanji": "<ruby>頭<rt>あたま</rt></ruby>がいい",
+      "type": "い-adjective",
+      "te": [
+        "あたまがよくて",
+        "頭がよくて"
+      ],
+      "meaning": "bright; smart; clever (conjugates like いい)",
+      "lesson": 7
+    },
+    {
+      "dict": "かわいい",
+      "type": "い-adjective",
+      "te": [
+        "かわいくて"
+      ],
+      "meaning": "cute",
+      "lesson": 7
+    },
+    {
+      "dict": "しんせつ（な）",
+      "kanji": "<ruby>親切<rt>しんせつ</rt></ruby>（な）",
+      "type": "な-adjective",
+      "te": [
+        "しんせつで",
+        "親切で"
+      ],
+      "meaning": "kind",
+      "lesson": 7
+    },
+    {
+      "dict": "べんり（な）",
+      "kanji": "<ruby>便利<rt>べんり</rt></ruby>（な）",
+      "type": "な-adjective",
+      "te": [
+        "べんりで",
+        "便利で"
+      ],
+      "meaning": "convenient",
+      "lesson": 7
     }
   ]
 }
