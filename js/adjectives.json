@@ -3,9 +3,7 @@
     {
       "dict": "いい",
       "type": "い-adjective",
-      "te": [
-                "よくて"
-            ],
+      "te": ["よくて"],
       "meaning": "good",
       "lesson": 3
     },
@@ -13,12 +11,208 @@
       "dict": "はやい",
       "kanji": "<ruby>早<rt>はや</rt></ruby>い",
       "type": "い-adjective",
-      "te": [
-                "はやくて",
-                "早くて"
-            ],
+      "te": ["はやくて", "早くて"],
       "meaning": "early",
       "lesson": 3
+    },
+    {
+      "dict": "あたらしい",
+      "kanji": "<ruby>新<rt>あたら</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["あたらしくて", "新しくて"],
+      "meaning": "new",
+      "lesson": 5
+    },
+    {
+      "dict": "ふるい",
+      "kanji": "<ruby>古<rt>ふる</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["ふるくて", "古くて"],
+      "meaning": "old (thing – not used for people)",
+      "lesson": 5
+    },
+    {
+      "dict": "あつい",
+      "kanji": "<ruby>暑<rt>あつ</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["あつくて", "暑くて"],
+      "meaning": "hot (weather)",
+      "lesson": 5
+    },
+    {
+      "dict": "さむい",
+      "kanji": "<ruby>寒<rt>さむ</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["さむくて", "寒くて"],
+      "meaning": "cold (weather – not used for things)",
+      "lesson": 5
+    },
+    {
+      "dict": "あつい",
+      "kanji": "<ruby>熱<rt>あつ</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["あつくて", "熱くて"],
+      "meaning": "hot (thing)",
+      "lesson": 5
+    },
+    {
+      "dict": "いそがしい",
+      "kanji": "<ruby>忙<rt>いそが</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["いそがしくて", "忙しくて"],
+      "meaning": "busy (people/days)",
+      "lesson": 5
+    },
+    {
+      "dict": "おおきい",
+      "kanji": "<ruby>大<rt>おお</rt></ruby>きい",
+      "type": "い-adjective",
+      "te": ["おおきくて", "大きくて"],
+      "meaning": "large",
+      "lesson": 5
+    },
+    {
+      "dict": "ちいさい",
+      "kanji": "<ruby>小<rt>ちい</rt></ruby>さい",
+      "type": "い-adjective",
+      "te": ["ちいさくて", "小さくて"],
+      "meaning": "small",
+      "lesson": 5
+    },
+    {
+      "dict": "おもしろい",
+      "kanji": "<ruby>面白<rt>おもしろ</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["おもしろくて", "面白くて"],
+      "meaning": "interesting; funny",
+      "lesson": 5
+    },
+    {
+      "dict": "つまらない",
+      "dict": "つまらない",
+      "type": "い-adjective",
+      "te": ["つまらなくて"],
+      "meaning": "boring",
+      "lesson": 5
+    },
+    {
+      "dict": "やさしい",
+      "kanji": "<ruby>優<rt>やさ</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["やさしくて", "優しくて"],
+      "meaning": "easy (problem); kind (person)",
+      "lesson": 5
+    },
+    {
+      "dict": "むずかしい",
+      "kanji": "<ruby>難<rt>むずか</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["むずかしくて", "難しくて"],
+      "meaning": "difficult",
+      "lesson": 5
+    },
+    {
+      "dict": "かっこいい",
+      "dict": "かっこいい",
+      "type": "い-adjective",
+      "te": ["かっこよくて"],
+      "meaning": "good-looking (conjugates like いい)",
+      "lesson": 5
+    },
+    {
+      "dict": "こわい",
+      "kanji": "<ruby>怖<rt>こわ</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["こわくて", "怖くて"],
+      "meaning": "frightening",
+      "lesson": 5
+    },
+    {
+      "dict": "たのしい",
+      "kanji": "<ruby>楽<rt>たの</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["たのしくて", "楽しくて"],
+      "meaning": "fun",
+      "lesson": 5
+    },
+    {
+      "dict": "やすい",
+      "kanji": "<ruby>安<rt>やす</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["やすくて", "安くて"],
+      "meaning": "inexpensive; cheap (thing)",
+      "lesson": 5
+    },
+    {
+      "dict": "すき（な）",
+      "kanji": "<ruby>好<rt>す</rt></ruby>き（な）",
+      "type": "な-adjective",
+      "te": ["すきで", "好きで"],
+      "meaning": "fond of; to like (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "きらい（な）",
+      "kanji": "<ruby>嫌<rt>きら</rt></ruby>い（な）",
+      "type": "な-adjective",
+      "te": ["きらいで", "嫌いで"],
+      "meaning": "disgusted with; to dislike (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "だいすき（な）",
+      "kanji": "<ruby>大好<rt>だいす</rt></ruby>き（な）",
+      "type": "な-adjective",
+      "te": ["だいすきで", "大好きで"],
+      "meaning": "very fond of; to love (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "だいきらい（な）",
+      "kanji": "<ruby>大嫌<rt>だいきら</rt></ruby>い（な）",
+      "type": "な-adjective",
+      "te": ["だいきらいで", "大嫌いで"],
+      "meaning": "to hate (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "きれい（な）",
+      "type": "な-adjective",
+      "te": ["きれいで"],
+      "meaning": "beautiful; clean",
+      "lesson": 5
+    },
+    {
+      "dict": "げんき（な）",
+      "kanji": "<ruby>元気<rt>げんき</rt></ruby>（な）",
+      "type": "な-adjective",
+      "te": ["げんきで", "元気で"],
+      "meaning": "healthy; energetic",
+      "lesson": 5
+    },
+    {
+      "dict": "しずか（な）",
+      "kanji": "<ruby>静<rt>しず</rt></ruby>か（な）",
+      "type": "な-adjective",
+      "te": ["しずかで", "静かで"],
+      "meaning": "quiet",
+      "lesson": 5
+    },
+    {
+      "dict": "にぎやか（な）",
+      "kanji": "<ruby>賑<rt>にぎ</rt></ruby>やか（な）",
+      "type": "な-adjective",
+      "te": ["にぎやかで", "賑やかで"],
+      "meaning": "lively",
+      "lesson": 5
+    },
+    {
+      "dict": "ひま（な）",
+      "kanji": "<ruby>暇<rt>ひま</rt></ruby>（な）",
+      "type": "な-adjective",
+      "te": ["ひまで", "暇で"],
+      "meaning": "not busy; free (time)",
+      "lesson": 5
     }
   ]
 }
