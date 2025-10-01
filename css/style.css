@@ -47,3 +47,13 @@ h3.lesson-heading {
 #adjResultsContent {
   padding-bottom: 100px; /* same space for consistency */
 }
+
+/* Verb list spacing */
+#verbTables {
+  padding-bottom: 100px; /* space so footer doesn’t cover last rows */
+}
+
+/* Adjective list spacing */
+#adjectiveTables {
+  padding-bottom: 100px; /* space so footer doesn’t cover last rows */
+}
