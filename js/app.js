@@ -283,8 +283,8 @@ function generateAdjectiveQuiz() {
   currentAdjQuestions.forEach((adj, i) => {
     form.innerHTML += `
       <div class="mb-3">
-        <label class="form-label">Q${i + 1}: ${(adj.kanji || adj.dict)} (${adj.meaning}) → What type?</label>
-        <input type="text" class="form-control" name="adjQ${i}" data-answer="${adj.type}">
+        <label class="form-label">Q${i + 1}: ${(adj.kanji || adj.dict)} (${adj.meaning}) → て-form?</label>
+        <input type="text" class="form-control" name="adjQ${i}" data-answers='${JSON.stringify(adj.te)}'>
       </div>`;
   });
   form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
@@ -296,13 +296,12 @@ function checkAdjectiveAnswers() {
   currentAdjQuestions.forEach((adj, i) => {
     const input = document.querySelector(`[name=adjQ${i}]`);
     const userAnswer = input.value.trim();
-    const correct = input.getAttribute("data-answer");
-
-    if (userAnswer === correct) {
+    const validAnswers = JSON.parse(input.getAttribute("data-answers"));
+    if (validAnswers.includes(userAnswer)) {
       score++;
-      output += `<div class="alert alert-success">✅ Q${i + 1}: Correct! (${adj.dict}) is a ${correct}</div>`;
+      output += `<div class="alert alert-success">✅ Q${i + 1}: Correct!<br>Your answer: <b>${userAnswer}</b><br>Answers: ${validAnswers.join(", ")}</div>`;
     } else {
-      output += `<div class="alert alert-danger">❌ Q${i + 1}: Incorrect<br>Your answer: <b>${userAnswer}</b><br>Correct: ${correct}</div>`;
+      output += `<div class="alert alert-danger">❌ Q${i + 1}: Incorrect<br>Your answer: <b>${userAnswer}</b><br>Answers: ${validAnswers.join(", ")}</div>`;
     }
   });
   output += `<p class="fw-bold">Final Score: ${score}/${currentAdjQuestions.length}</p>`;
