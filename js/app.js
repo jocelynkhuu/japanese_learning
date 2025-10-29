@@ -258,9 +258,17 @@ function checkAnswers() {
     const validAnswers = JSON.parse(input.getAttribute("data-answers"));
     if (validAnswers.includes(userAnswer)) {
       score++;
-      output += `<div class="alert alert-success">✅ Q${i + 1}: Correct!<br>Your answer: <b>${userAnswer}</b><br>Answers: ${validAnswers.join(", ")} (${v.type})</div>`;
+      output += `<div class="alert alert-success">
+        ✅ Q${i + 1}: ${(v.kanji || v.dict)} (${v.dict}) - Correct!<br>
+        Your answer: <b>${userAnswer}</b><br>
+        Answers: ${validAnswers.join(", ")} (${v.type})
+      </div>`;
     } else {
-      output += `<div class="alert alert-danger">❌ Q${i + 1}: Incorrect<br>Your answer: <b>${userAnswer}</b><br>Answers: ${validAnswers.join(", ")} (${v.type})</div>`;
+      output += `<div class="alert alert-danger">
+        ❌ Q${i + 1}: ${(v.kanji || v.dict)} (${v.dict}) - Incorrect<br>
+        Your answer: <b>${userAnswer}</b><br>
+        Answers: ${validAnswers.join(", ")} (${v.type})
+      </div>`;
     }
   });
   output += `<p class="fw-bold">Final Score: ${score}/${currentQuestions.length}</p>`;
@@ -268,6 +276,7 @@ function checkAnswers() {
   document.getElementById("results").style.display = "block";
   document.getElementById("resultsContent").innerHTML = output;
 }
+
 
 // ------------------------- ADJECTIVE QUIZ -------------------------
 let currentAdjQuestions = [];
