@@ -1,7 +1,9 @@
 body { 
   padding: 2rem; 
+  font-family: Arial, sans-serif;
 }
 
+/* Correct/Incorrect Answers */
 .correct { 
   color: green; 
   font-weight: bold; 
@@ -12,6 +14,7 @@ body {
   font-weight: bold; 
 }
 
+/* Sticky Footer */
 .sticky-footer {
   position: fixed;
   bottom: 0;
@@ -24,6 +27,7 @@ body {
   z-index: 1000;
 }
 
+/* Lesson Headings */
 h3.lesson-heading {
   margin-top: 2rem;
   padding-top: 1rem;
@@ -31,29 +35,67 @@ h3.lesson-heading {
 }
 
 /* Verb quiz spacing */
-#quizForm {
+#quizForm, #adjQuizForm {
   margin-bottom: 80px; /* space so footer doesn’t cover */
 }
 
-#resultsContent {
+/* Results spacing */
+#resultsContent, #adjResultsContent {
   padding-bottom: 100px; /* space for sticky footer */
 }
 
-/* Adjective quiz spacing */
-#adjQuizForm {
-  margin-bottom: 80px; /* same space for consistency */
-}
-
-#adjResultsContent {
-  padding-bottom: 100px; /* same space for consistency */
-}
-
-/* Verb list spacing */
-#verbTables {
+/* Verb and adjective lists spacing */
+#verbTables, #adjectiveTables {
   padding-bottom: 100px; /* space so footer doesn’t cover last rows */
 }
 
-/* Adjective list spacing */
-#adjectiveTables {
-  padding-bottom: 100px; /* space so footer doesn’t cover last rows */
+/* Table styling */
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+table.table th, table.table td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table.table th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* Highlight correct/incorrect cells in tables */
+td.correct {
+  background-color: #d4edda;
+}
+
+td.incorrect {
+  background-color: #f8d7da;
+}
+
+/* Form input spacing */
+input.form-control {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Verb past forms table cells */
+th.past-short, th.past-short-negative {
+  width: 120px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  table.table th, table.table td {
+    font-size: 0.85rem;
+  }
+  th.past-short, th.past-short-negative {
+    width: 90px;
+  }
 }

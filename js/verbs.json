@@ -4,26 +4,20 @@
             "dict": "あう",
             "kanji": "<ruby>会<rt>あ</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "あって",
-                "会って"
-            ],
-            "masu": [
-                "あいます",
-                "会います"
-            ],
+            "te": ["あって", "会って"],
+            "masu": ["あいます", "会います"],
+            "past_short": ["あった", "会った"],
+            "past_short_negative": ["あわなかった", "会わなかった"],
             "meaning": "to meet; to see (a person)",
             "lesson": 4
         },
         {
             "dict": "ある",
             "type": "u-verb",
-            "te": [
-                "あって"
-            ],
-            "masu": [
-                "あります"
-            ],
+            "te": ["あって"],
+            "masu": ["あります"],
+            "past_short": ["あった"],
+            "past_short_negative": ["なかった"],
             "meaning": "there is... (place に thing が)",
             "lesson": 4
         },
@@ -31,38 +25,30 @@
             "dict": "あそぶ",
             "kanji": "<ruby>遊<rt>あそ</rt></ruby>ぶ",
             "type": "u-verb",
-            "te": [
-                "あそんで",
-                "遊んで"
-            ],
-            "masu": [
-                "あそびます",
-                "遊びます"
-            ],
+            "te": ["あそんで", "遊んで"],
+            "masu": ["あそびます", "遊びます"],
+            "past_short": ["あそんだ", "遊んだ"],
+            "past_short_negative": ["あそばなかった", "遊ばなかった"],
             "meaning": "to play; to spend time pleasantly",
             "lesson": 6
         },
         {
             "dict": "かぶる",
             "type": "u-verb",
-            "te": [
-                "かぶって"
-            ],
-            "masu": [
-                "かぶります"
-            ],
+            "te": ["かぶって"],
+            "masu": ["かぶります"],
+            "past_short": ["かぶった"],
+            "past_short_negative": ["かぶらなかった"],
             "meaning": "to put on (a hat) (~を)",
             "lesson": 7
         },
         {
             "dict": "はく",
             "type": "u-verb",
-            "te": [
-                "はいて"
-            ],
-            "masu": [
-                "はきます"
-            ],
+            "te": ["はいて"],
+            "masu": ["はきます"],
+            "past_short": ["はいた"],
+            "past_short_negative": ["はかなかった"],
             "meaning": "to put on (items below waist) (~を)",
             "lesson": 7
         },
@@ -70,14 +56,10 @@
             "dict": "しる",
             "kanji": "<ruby>知<rt>し</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "しって",
-                "知って"
-            ],
-            "masu": [
-                "しります",
-                "知ります"
-            ],
+            "te": ["しって", "知って"],
+            "masu": ["しります", "知ります"],
+            "past_short": ["しった", "知った"],
+            "past_short_negative": ["しらなかった", "知らなかった"],
             "meaning": "to get to know (~を)",
             "lesson": 7
         },
@@ -85,14 +67,10 @@
             "dict": "はたらく",
             "kanji": "<ruby>働<rt>はたら</rt></ruby>く",
             "type": "u-verb",
-            "te": [
-                "はたらいて",
-                "働いて"
-            ],
-            "masu": [
-                "はたらきます",
-                "働きます"
-            ],
+            "te": ["はたらいて", "働いて"],
+            "masu": ["はたらきます", "働きます"],
+            "past_short": ["はたらいた", "働いた"],
+            "past_short_negative": ["はたらかなかった", "働かなかった"],
             "meaning": "to work",
             "lesson": 7
         },
@@ -100,14 +78,10 @@
             "dict": "ふとる",
             "kanji": "<ruby>太<rt>ふと</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "ふとって",
-                "太って"
-            ],
-            "masu": [
-                "ふとります",
-                "太ります"
-            ],
+            "te": ["ふとって", "太って"],
+            "masu": ["ふとります", "太ります"],
+            "past_short": ["ふとった", "太った"],
+            "past_short_negative": ["ふとらなかった", "太らなかった"],
             "meaning": "to gain weight",
             "lesson": 7
         },
@@ -115,14 +89,10 @@
             "dict": "いく",
             "kanji": "<ruby>行<rt>い</rt></ruby>く",
             "type": "u-verb (exception)",
-            "te": [
-                "いって",
-                "行って"
-            ],
-            "masu": [
-                "いきます",
-                "行きます"
-            ],
+            "te": ["いって", "行って"],
+            "masu": ["いきます", "行きます"],
+            "past_short": ["いった", "行った"],
+            "past_short_negative": ["いかなかった", "行かなかった"],
             "meaning": "to go",
             "lesson": 3
         },
@@ -130,14 +100,10 @@
             "dict": "いう",
             "kanji": "<ruby>言<rt>い</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "いって",
-                "言って"
-            ],
-            "masu": [
-                "いいます",
-                "言います"
-            ],
+            "te": ["いって", "言って"],
+            "masu": ["いいます", "言います"],
+            "past_short": ["いった", "言った"],
+            "past_short_negative": ["いわなかった", "言わなかった"],
             "meaning": "to say",
             "lesson": 8
         },
@@ -145,14 +111,10 @@
             "dict": "いそぐ",
             "kanji": "<ruby>急<rt>いそ</rt></ruby>ぐ",
             "type": "u-verb",
-            "te": [
-                "いそいで",
-                "急いで"
-            ],
-            "masu": [
-                "いそぎます",
-                "急ぎます"
-            ],
+            "te": ["いそいで", "急いで"],
+            "masu": ["いそぎます", "急ぎます"],
+            "past_short": ["いそいだ", "急いだ"],
+            "past_short_negative": ["いそがなかった", "急がなかった"],
             "meaning": "to hurry",
             "lesson": 6
         },
@@ -160,29 +122,21 @@
             "dict": "うたう",
             "kanji": "<ruby>歌<rt>うた</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "うたって",
-                "歌って"
-            ],
-            "masu": [
-                "うたいます",
-                "歌います"
-            ],
+            "te": ["うたって", "歌って"],
+            "masu": ["うたいます", "歌います"],
+            "past_short": ["うたった", "歌った"],
+            "past_short_negative": ["うたわなかった", "歌わなかった"],
             "meaning": "to sing (~を)",
             "lesson": 7
         },
-        {
+               {
             "dict": "おどる",
             "kanji": "<ruby>踊<rt>おど</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "おどって",
-                "踊って"
-            ],
-            "masu": [
-                "おどります",
-                "踊ります"
-            ],
+            "te": ["おどって", "踊って"],
+            "masu": ["おどります", "踊ります"],
+            "past_short": ["おどった", "踊った"],
+            "past_short_negative": ["おどらなかった", "踊らなかった"],
             "meaning": "to dance",
             "lesson": 9
         },
@@ -190,14 +144,10 @@
             "dict": "おわる",
             "kanji": "<ruby>終<rt>お</rt></ruby>わる",
             "type": "u-verb",
-            "te": [
-                "おわって",
-                "終わって"
-            ],
-            "masu": [
-                "おわります",
-                "終わります"
-            ],
+            "te": ["おわって", "終わって"],
+            "masu": ["おわります", "終わります"],
+            "past_short": ["おわった", "終わった"],
+            "past_short_negative": ["おわらなかった", "終わらなかった"],
             "meaning": "something ends (~が)",
             "lesson": 9
         },
@@ -205,14 +155,10 @@
             "dict": "およぐ",
             "kanji": "<ruby>泳<rt>およ</rt></ruby>ぐ",
             "type": "u-verb",
-            "te": [
-                "およいで",
-                "泳いで"
-            ],
-            "masu": [
-                "およぎます",
-                "泳ぎます"
-            ],
+            "te": ["およいで", "泳いで"],
+            "masu": ["およぎます", "泳ぎます"],
+            "past_short": ["およいだ", "泳いだ"],
+            "past_short_negative": ["およがなかった", "泳がなかった"],
             "meaning": "to swim",
             "lesson": 5
         },
@@ -220,14 +166,10 @@
             "dict": "かう",
             "kanji": "<ruby>買<rt>か</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "かって",
-                "買って"
-            ],
-            "masu": [
-                "かいます",
-                "買います"
-            ],
+            "te": ["かって", "買って"],
+            "masu": ["かいます", "買います"],
+            "past_short": ["かった", "買った"],
+            "past_short_negative": ["かわなかった", "買わなかった"],
             "meaning": "to buy",
             "lesson": 4
         },
@@ -235,14 +177,10 @@
             "dict": "かく",
             "kanji": "<ruby>書<rt>か</rt></ruby>く",
             "type": "u-verb",
-            "te": [
-                "かいて",
-                "書いて"
-            ],
-            "masu": [
-                "かきます",
-                "書きます"
-            ],
+            "te": ["かいて", "書いて"],
+            "masu": ["かきます", "書きます"],
+            "past_short": ["かいた", "書いた"],
+            "past_short_negative": ["かかなかった", "書かなかった"],
             "meaning": "to write",
             "lesson": 4
         },
@@ -250,29 +188,21 @@
             "dict": "かえす",
             "kanji": "<ruby>返<rt>かえ</rt></ruby>す",
             "type": "u-verb",
-            "te": [
-                "かえして",
-                "返して"
-            ],
-            "masu": [
-                "かえします",
-                "返します"
-            ],
+            "te": ["かえして", "返して"],
+            "masu": ["かえします", "返します"],
+            "past_short": ["かえした", "返した"],
+            "past_short_negative": ["かえさなかった", "返さなかった"],
             "meaning": "to return (a thing) (person に thing を)",
             "lesson": 6
         },
-        {
+              {
             "dict": "かす",
             "kanji": "<ruby>貸<rt>か</rt></ruby>す",
             "type": "u-verb",
-            "te": [
-                "かして",
-                "貸して"
-            ],
-            "masu": [
-                "かします",
-                "貸します"
-            ],
+            "te": ["かして", "貸して"],
+            "masu": ["かします", "貸します"],
+            "past_short": ["かした", "貸した"],
+            "past_short_negative": ["かさなかった", "貸さなかった"],
             "meaning": "to lend",
             "lesson": "None"
         },
@@ -280,32 +210,21 @@
             "dict": "きく",
             "kanji": "<ruby>聞<rt>き</rt></ruby>く",
             "type": "u-verb",
-            "te": [
-                "きいて",
-                "聞いて"
-            ],
-            "masu": [
-                "ききます",
-                "聞きます"
-            ],
+            "te": ["きいて", "聞いて"],
+            "masu": ["ききます", "聞きます"],
+            "past_short": ["きいた", "聞いた"],
+            "past_short_negative": ["きかなかった", "聞かなかった"],
             "meaning": "to ask; to listen",
-            "lesson": [
-                3,
-                5
-            ]
+            "lesson": [3, 5]
         },
         {
             "dict": "けす",
             "kanji": "<ruby>消<rt>け</rt></ruby>す",
             "type": "u-verb",
-            "te": [
-                "けして",
-                "消して"
-            ],
-            "masu": [
-                "けします",
-                "消します"
-            ],
+            "te": ["けして", "消して"],
+            "masu": ["けします", "消します"],
+            "past_short": ["けした", "消した"],
+            "past_short_negative": ["けさなかった", "消さなかった"],
             "meaning": "to erase; to turn off",
             "lesson": 6
         },
@@ -313,14 +232,10 @@
             "dict": "すわる",
             "kanji": "<ruby>座<rt>すわ</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "すわって",
-                "座って"
-            ],
-            "masu": [
-                "すわります",
-                "座ります"
-            ],
+            "te": ["すわって", "座って"],
+            "masu": ["すわります", "座ります"],
+            "past_short": ["すわった", "座った"],
+            "past_short_negative": ["すわらなかった", "座らなかった"],
             "meaning": "to sit down (seat に)",
             "lesson": 6
         },
@@ -328,14 +243,10 @@
             "dict": "たつ",
             "kanji": "<ruby>立<rt>た</rt></ruby>つ",
             "type": "u-verb",
-            "te": [
-                "たって",
-                "立って"
-            ],
-            "masu": [
-                "たちます",
-                "立ちます"
-            ],
+            "te": ["たって", "立って"],
+            "masu": ["たちます", "立ちます"],
+            "past_short": ["たった", "立った"],
+            "past_short_negative": ["たたなかった", "立たなかった"],
             "meaning": "to stand up",
             "lesson": 6
         },
@@ -343,14 +254,10 @@
             "dict": "つかう",
             "kanji": "<ruby>使<rt>つか</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "つかって",
-                "使って"
-            ],
-            "masu": [
-                "つかいます",
-                "使います"
-            ],
+            "te": ["つかって", "使って"],
+            "masu": ["つかいます", "使います"],
+            "past_short": ["つかった", "使った"],
+            "past_short_negative": ["つかわなかった", "使わなかった"],
             "meaning": "to use (~を)",
             "lesson": 6
         },
@@ -358,14 +265,10 @@
             "dict": "てつだう",
             "kanji": "<ruby>手伝<rt>てつだ</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "てつだって",
-                "手伝って"
-            ],
-            "masu": [
-                "てつだいます",
-                "手伝います"
-            ],
+            "te": ["てつだって", "手伝って"],
+            "masu": ["てつだいます", "手伝います"],
+            "past_short": ["てつだった", "手伝った"],
+            "past_short_negative": ["てつだわなかった", "手伝わなかった"],
             "meaning": "to help (person/task を)",
             "lesson": 6
         },
@@ -373,29 +276,21 @@
             "dict": "とる",
             "kanji": "<ruby>取<rt>と</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "とって",
-                "取って"
-            ],
-            "masu": [
-                "とります",
-                "取ります"
-            ],
+            "te": ["とって", "取って"],
+            "masu": ["とります", "取ります"],
+            "past_short": ["とった", "取った"],
+            "past_short_negative": ["とらなかった", "取らなかった"],
             "meaning": "to take (a class); to get (a grade) (~を)",
             "lesson": 11
         },
-        {
+         {
             "dict": "とる",
             "kanji": "<ruby>撮<rt>と</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "とって",
-                "撮って"
-            ],
-            "masu": [
-                "とります",
-                "撮ります"
-            ],
+            "te": ["とって", "撮って"],
+            "masu": ["とります", "撮ります"],
+            "past_short": ["とった", "撮った"],
+            "past_short_negative": ["とらなかった", "撮らなかった"],
             "meaning": "to take (a picture) (~を)",
             "lesson": 4
         },
@@ -403,14 +298,10 @@
             "dict": "なくす",
             "kanji": "<ruby>失<rt>な</rt></ruby>くす",
             "type": "u-verb",
-            "te": [
-                "なくして",
-                "失くして"
-            ],
-            "masu": [
-                "なくします",
-                "失くします"
-            ],
+            "te": ["なくして", "失くして"],
+            "masu": ["なくします", "失くします"],
+            "past_short": ["なくした", "失くした"],
+            "past_short_negative": ["なくさなかった", "失くさなかった"],
             "meaning": "to lose",
             "lesson": 12
         },
@@ -418,14 +309,10 @@
             "dict": "のむ",
             "kanji": "<ruby>飲<rt>の</rt></ruby>む",
             "type": "u-verb",
-            "te": [
-                "のんで",
-                "飲んで"
-            ],
-            "masu": [
-                "のみます",
-                "飲みます"
-            ],
+            "te": ["のんで", "飲んで"],
+            "masu": ["のみます", "飲みます"],
+            "past_short": ["のんだ", "飲んだ"],
+            "past_short_negative": ["のまなかった", "飲まなかった"],
             "meaning": "to drink",
             "lesson": 3
         },
@@ -433,14 +320,10 @@
             "dict": "しぬ",
             "kanji": "<ruby>死<rt>し</rt></ruby>ぬ",
             "type": "u-verb",
-            "te": [
-                "しんで",
-                "死んで"
-            ],
-            "masu": [
-                "しにます",
-                "死にます"
-            ],
+            "te": ["しんで", "死んで"],
+            "masu": ["しにます", "死にます"],
+            "past_short": ["しんだ", "死んだ"],
+            "past_short_negative": ["しななかった", "死ななかった"],
             "meaning": "to die",
             "lesson": 6
         },
@@ -448,14 +331,10 @@
             "dict": "のる",
             "kanji": "<ruby>乗<rt>の</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "のって",
-                "乗って"
-            ],
-            "masu": [
-                "のります",
-                "乗ります"
-            ],
+            "te": ["のって", "乗って"],
+            "masu": ["のります", "乗ります"],
+            "past_short": ["のった", "乗った"],
+            "past_short_negative": ["のらなかった", "乗らなかった"],
             "meaning": "to ride; to board (~に)",
             "lesson": 5
         },
@@ -463,14 +342,10 @@
             "dict": "はいる",
             "kanji": "<ruby>入<rt>はい</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "はいって",
-                "入って"
-            ],
-            "masu": [
-                "はいります",
-                "入ります"
-            ],
+            "te": ["はいって", "入って"],
+            "masu": ["はいります", "入ります"],
+            "past_short": ["はいった", "入った"],
+            "past_short_negative": ["はいらなかった", "入らなかった"],
             "meaning": "to enter (~に)",
             "lesson": 6
         },
@@ -478,29 +353,21 @@
             "dict": "はなす",
             "kanji": "<ruby>話<rt>はな</rt></ruby>す",
             "type": "u-verb",
-            "te": [
-                "はなして",
-                "話して"
-            ],
-            "masu": [
-                "はなします",
-                "話します"
-            ],
+            "te": ["はなして", "話して"],
+            "masu": ["はなします", "話します"],
+            "past_short": ["はなした", "話した"],
+            "past_short_negative": ["はなさなかった", "話さなかった"],
             "meaning": "to speak; to talk",
             "lesson": 3
         },
-        {
+                {
             "dict": "はらう",
             "kanji": "<ruby>払<rt>はら</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "はらって",
-                "払って"
-            ],
-            "masu": [
-                "はらいます",
-                "払います"
-            ],
+            "te": ["はらって", "払って"],
+            "masu": ["はらいます", "払います"],
+            "past_short": ["はらった", "払った"],
+            "past_short_negative": ["はらわなかった", "払わなかった"],
             "meaning": "to pay",
             "lesson": 12
         },
@@ -508,14 +375,10 @@
             "dict": "ひく",
             "kanji": "<ruby>弾<rt>ひ</rt></ruby>く",
             "type": "u-verb",
-            "te": [
-                "ひいて",
-                "弾いて"
-            ],
-            "masu": [
-                "ひきます",
-                "弾きます"
-            ],
+            "te": ["ひいて", "弾いて"],
+            "masu": ["ひきます", "弾きます"],
+            "past_short": ["ひいた", "弾いた"],
+            "past_short_negative": ["ひかなかった", "弾かなかった"],
             "meaning": "to play (a string instrument or piano) (~を)",
             "lesson": 9
         },
@@ -523,14 +386,10 @@
             "dict": "やすむ",
             "kanji": "<ruby>休<rt>やす</rt></ruby>む",
             "type": "u-verb",
-            "te": [
-                "やすんで",
-                "休んで"
-            ],
-            "masu": [
-                "やすみます",
-                "休みます"
-            ],
+            "te": ["やすんで", "休んで"],
+            "masu": ["やすみます", "休みます"],
+            "past_short": ["やすんだ", "休んだ"],
+            "past_short_negative": ["やすまなかった", "休まなかった"],
             "meaning": "to be absent (from...) (~を); to rest",
             "lesson": 6
         },
@@ -538,14 +397,10 @@
             "dict": "よむ",
             "kanji": "<ruby>読<rt>よ</rt></ruby>む",
             "type": "u-verb",
-            "te": [
-                "よんで",
-                "読んで"
-            ],
-            "masu": [
-                "よみます",
-                "読みます"
-            ],
+            "te": ["よんで", "読んで"],
+            "masu": ["よみます", "読みます"],
+            "past_short": ["よんだ", "読んだ"],
+            "past_short_negative": ["よまなかった", "読まなかった"],
             "meaning": "to read",
             "lesson": 3
         },
@@ -553,14 +408,10 @@
             "dict": "かえる",
             "kanji": "<ruby>帰<rt>かえ</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "かえって",
-                "帰って"
-            ],
-            "masu": [
-                "かえります",
-                "帰ります"
-            ],
+            "te": ["かえって", "帰って"],
+            "masu": ["かえります", "帰ります"],
+            "past_short": ["かえった", "帰った"],
+            "past_short_negative": ["かえらなかった", "帰らなかった"],
             "meaning": "to go back; to return",
             "lesson": 3
         },
@@ -568,14 +419,10 @@
             "dict": "まつ",
             "kanji": "<ruby>待<rt>ま</rt></ruby>つ",
             "type": "u-verb",
-            "te": [
-                "まって",
-                "待って"
-            ],
-            "masu": [
-                "まちます",
-                "待ちます"
-            ],
+            "te": ["まって", "待って"],
+            "masu": ["まちます", "待ちます"],
+            "past_short": ["まった", "待った"],
+            "past_short_negative": ["またなかった", "待たなかった"],
             "meaning": "to wait (~を)",
             "lesson": 4
         },
@@ -583,26 +430,20 @@
             "dict": "わかる",
             "kanji": "<ruby>分<rt>わ</rt></ruby>かる",
             "type": "u-verb",
-            "te": [
-                "わかって",
-                "分かって"
-            ],
-            "masu": [
-                "わかります",
-                "分かります"
-            ],
+            "te": ["わかって", "分かって"],
+            "masu": ["わかります", "分かります"],
+            "past_short": ["わかった", "分かった"],
+            "past_short_negative": ["わからなかった", "分からなかった"],
             "meaning": "to understand (~が)",
             "lesson": 4
         },
         {
             "dict": "やる",
             "type": "u-verb",
-            "te": [
-                "やって"
-            ],
-            "masu": [
-                "やります"
-            ],
+            "te": ["やって"],
+            "masu": ["やります"],
+            "past_short": ["やった"],
+            "past_short_negative": ["やらなかった"],
             "meaning": "to do; to perform (~を)",
             "lesson": 5
         },
@@ -610,14 +451,10 @@
             "dict": "タバコをすう",
             "kanji": "タバコを<ruby>吸<rt>す</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "タバコをすって",
-                "タバコを吸って"
-            ],
-            "masu": [
-                "タバコをすいます",
-                "タバコを吸います"
-            ],
+            "te": ["タバコをすって", "タバコを吸って"],
+            "masu": ["タバコをすいます", "タバコを吸います"],
+            "past_short": ["タバコをすった", "タバコを吸った"],
+            "past_short_negative": ["タバコをすわなかった", "タバコを吸わなかった"],
             "meaning": "to smoke",
             "lesson": 6
         },
@@ -625,14 +462,10 @@
             "dict": "もつ",
             "kanji": "<ruby>持<rt>も</rt></ruby>つ",
             "type": "u-verb",
-            "te": [
-                "もって",
-                "持って"
-            ],
-            "masu": [
-                "もちます",
-                "持ちます"
-            ],
+            "te": ["もって", "持って"],
+            "masu": ["もちます", "持ちます"],
+            "past_short": ["もった", "持った"],
+            "past_short_negative": ["もたなかった", "持たなかった"],
             "meaning": "to carry; to hold (~を)",
             "lesson": 6
         },
@@ -640,14 +473,10 @@
             "dict": "すむ",
             "kanji": "<ruby>住<rt>す</rt></ruby>む",
             "type": "u-verb",
-            "te": [
-                "すんで",
-                "住んで"
-            ],
-            "masu": [
-                "すみます",
-                "住みます"
-            ],
+            "te": ["すんで", "住んで"],
+            "masu": ["すみます", "住みます"],
+            "past_short": ["すんだ", "住んだ"],
+            "past_short_negative": ["すまなかった", "住まなかった"],
             "meaning": "to live (~もすんでいます)",
             "lesson": 7
         },
@@ -655,26 +484,20 @@
             "dict": "あらう",
             "kanji": "<ruby>洗<rt>あ</rt></ruby>らう",
             "type": "u-verb",
-            "te": [
-                "あらって",
-                "洗って"
-            ],
-            "masu": [
-                "あらいます",
-                "洗います"
-            ],
+            "te": ["あらって", "洗って"],
+            "masu": ["あらいます", "洗います"],
+            "past_short": ["あらった", "洗った"],
+            "past_short_negative": ["あらわなかった", "洗わなかった"],
             "meaning": "to wash (~を)",
             "lesson": 8
         },
         {
             "dict": "いる",
             "type": "u-verb",
-            "te": [
-                "いって"
-            ],
-            "masu": [
-                "いります"
-            ],
+            "te": ["いって"],
+            "masu": ["いります"],
+            "past_short": ["いった"],
+            "past_short_negative": ["いらなかった"],
             "meaning": "to need (~が)",
             "lesson": 8
         },
@@ -682,29 +505,21 @@
             "dict": "おそくなる",
             "kanji": "<ruby>遅<rt>おそ</rt></ruby>くなる",
             "type": "u-verb",
-            "te": [
-                "おそくなって",
-                "遅くなって"
-            ],
-            "masu": [
-                "おそくなります",
-                "遅くなります"
-            ],
+            "te": ["おそくなって", "遅くなって"],
+            "masu": ["おそくなります", "遅くなります"],
+            "past_short": ["おそくなった", "遅くなった"],
+            "past_short_negative": ["おそくならなかった", "遅くならなかった"],
             "meaning": "to be late",
             "lesson": 8
         },
-        {
+               {
             "dict": "おふろにはいる",
             "kanji": "お<ruby>風呂<rt>ふろ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "おふろにはいって",
-                "お風呂に入って"
-            ],
-            "masu": [
-                "おふろにはいるます",
-                "お風呂に入ります"
-            ],
+            "te": ["おふろにはいって", "お風呂に入って"],
+            "masu": ["おふろにはいります", "お風呂に入ります"],
+            "past_short": ["おふろにはいった", "お風呂に入った"],
+            "past_short_negative": ["おふろにはいらなかった", "お風呂に入らなかった"],
             "meaning": "to take a bath",
             "lesson": 8
         },
@@ -712,14 +527,10 @@
             "dict": "おもう",
             "kanji": "<ruby>思<rt>おも</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "おもって",
-                "思って"
-            ],
-            "masu": [
-                "おもいます",
-                "思います"
-            ],
+            "te": ["おもって", "思って"],
+            "masu": ["おもいます", "思います"],
+            "past_short": ["おもった", "思った"],
+            "past_short_negative": ["おもわなかった", "思わなかった"],
             "meaning": "to think",
             "lesson": 8
         },
@@ -727,14 +538,10 @@
             "dict": "きる",
             "kanji": "<ruby>切<rt>き</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "きって",
-                "切って"
-            ],
-            "masu": [
-                "きります",
-                "切ります"
-            ],
+            "te": ["きって", "切って"],
+            "masu": ["きります", "切ります"],
+            "past_short": ["きった", "切った"],
+            "past_short_negative": ["きらなかった", "切らなかった"],
             "meaning": "to cut (~を)",
             "lesson": 8
         },
@@ -742,14 +549,10 @@
             "dict": "つくる",
             "kanji": "<ruby>作<rt>つく</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "つくって",
-                "作って"
-            ],
-            "masu": [
-                "つくります",
-                "作ります"
-            ],
+            "te": ["つくって", "作って"],
+            "masu": ["つくります", "作ります"],
+            "past_short": ["つくった", "作った"],
+            "past_short_negative": ["つくらなかった", "作らなかった"],
             "meaning": "to make (~を)",
             "lesson": 8
         },
@@ -757,14 +560,10 @@
             "dict": "(あめ/ゆきが)ふる",
             "kanji": "<ruby>雨<rt>あめ</rt></ruby>/<ruby>雪<rt>ゆき</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "ふって",
-                "降って"
-            ],
-            "masu": [
-                "ふります",
-                "降ります"
-            ],
+            "te": ["ふって", "降って"],
+            "masu": ["ふります", "降ります"],
+            "past_short": ["ふった", "降った"],
+            "past_short_negative": ["ふらなかった", "降らなかった"],
             "meaning": "(rain/snow) falls",
             "lesson": 8
         },
@@ -772,14 +571,10 @@
             "dict": "もっていく",
             "kanji": "<ruby>持<rt>も</rt></ruby>っていく",
             "type": "u-verb",
-            "te": [
-                "もっていって",
-                "持っていって"
-            ],
-            "masu": [
-                "もっていきます",
-                "持っていきます"
-            ],
+            "te": ["もっていって", "持っていって"],
+            "masu": ["もっていきます", "持っていきます"],
+            "past_short": ["もっていった", "持っていった"],
+            "past_short_negative": ["もっていかなかった", "持っていかなかった"],
             "meaning": "to take (a thing) (~を)",
             "lesson": 8
         },
@@ -787,15 +582,10 @@
             "dict": "くすりをのむ",
             "kanji": "<ruby>薬<rt>くすり</rt></ruby>を<ruby>飲<rt>の</rt></ruby>む",
             "type": "u-verb",
-            "te": [
-                "くすりをのんで",
-                "薬を飲んで"
-            ],
-            "masu": [
-                "くすりをのみます",
-                "薬を飲みます",
-                "くすりを飲んで"
-            ],
+            "te": ["くすりをのんで", "薬を飲んで"],
+            "masu": ["くすりをのみます", "薬を飲みます"],
+            "past_short": ["くすりをのんだ", "薬を飲んだ"],
+            "past_short_negative": ["くすりをのまなかった", "薬を飲まなかった"],
             "meaning": "to take medicine",
             "lesson": 9
         },
@@ -803,14 +593,10 @@
             "dict": "にんきがある",
             "kanji": "<ruby>人気<rt>にんき</rt></ruby>がある",
             "type": "u-verb",
-            "te": [
-                "にんきがあって",
-                "人気があって"
-            ],
-            "masu": [
-                "にんきがあります",
-                "人気があります"
-            ],
+            "te": ["にんきがあって", "人気があって"],
+            "masu": ["にんきがあります", "人気があります"],
+            "past_short": ["にんきがあった", "人気があった"],
+            "past_short_negative": ["にんきがなかった", "人気がなかった"],
             "meaning": "to be popular",
             "lesson": 9
         },
@@ -818,38 +604,30 @@
             "dict": "はじまる",
             "kanji": "<ruby>始<rt>はじ</rt></ruby>まる",
             "type": "u-verb",
-            "te": [
-                "はじまって",
-                "始まって"
-            ],
-            "masu": [
-                "はじまります",
-                "始まります"
-            ],
+            "te": ["はじまって", "始まって"],
+            "masu": ["はじまります", "始まります"],
+            "past_short": ["はじまった", "始まった"],
+            "past_short_negative": ["はじまらなかった", "始まらなかった"],
             "meaning": "something begins (~が)",
             "lesson": 9
         },
         {
             "dict": "もらう",
             "type": "u-verb",
-            "te": [
-                "もらって"
-            ],
-            "masu": [
-                "もらいます"
-            ],
+            "te": ["もらって"],
+            "masu": ["もらいます"],
+            "past_short": ["もらった"],
+            "past_short_negative": ["もらわなかった"],
             "meaning": "to get (from somebody) (person に thing を)",
             "lesson": 9
         },
         {
             "dict": "かかる",
             "type": "u-verb",
-            "te": [
-                "かかって"
-            ],
-            "masu": [
-                "かかります"
-            ],
+            "te": ["かかって"],
+            "masu": ["かかります"],
+            "past_short": ["かかった"],
+            "past_short_negative": ["かからなかった"],
             "meaning": "to take (amount of time/money) (no particle)",
             "lesson": 10
         },
@@ -857,50 +635,40 @@
             "dict": "とまる",
             "kanji": "<ruby>泊<rt>と</rt></ruby>まる",
             "type": "u-verb",
-            "te": [
-                "とまって",
-                "泊まって"
-            ],
-            "masu": [
-                "とまります",
-                "泊まります"
-            ],
+            "te": ["とまって", "泊まって"],
+            "masu": ["とまります", "泊まります"],
+            "past_short": ["とまった", "泊まった"],
+            "past_short_negative": ["とまらなかった", "泊まらなかった"],
             "meaning": "to stay (at a hotel, etc.) (~に)",
             "lesson": 10
         },
         {
             "dict": "なる",
             "type": "u-verb",
-            "te": [
-                "なって"
-            ],
-            "masu": [
-                "なります"
-            ],
+            "te": ["なって"],
+            "masu": ["なります"],
+            "past_short": ["なった"],
+            "past_short_negative": ["ならなかった"],
             "meaning": "to become",
             "lesson": 10
         },
         {
             "dict": "うそをつく",
             "type": "u-verb",
-            "te": [
-                "うそをついて"
-            ],
-            "masu": [
-                "うそをつきます"
-            ],
+            "te": ["うそをついて"],
+            "masu": ["うそをつきます"],
+            "past_short": ["うそをついた"],
+            "past_short_negative": ["うそをつかなかった"],
             "meaning": "to tell a lie",
             "lesson": 11
         },
-        {
+               {
             "dict": "おなかがすく",
             "type": "u-verb",
-            "te": [
-                "おなかがすいて"
-            ],
-            "masu": [
-                "おなかがすきます"
-            ],
+            "te": ["おなかがすいて"],
+            "masu": ["おなかがすきます"],
+            "past_short": ["おなかがすいた"],
+            "past_short_negative": ["おなかがすかなかった"],
             "meaning": "to become hungry",
             "lesson": 11
         },
@@ -908,26 +676,20 @@
             "dict": "かう",
             "kanji": "<ruby>飼<rt>か</rt></ruby>う",
             "type": "u-verb",
-            "te": [
-                "かって",
-                "飼って"
-            ],
-            "masu": [
-                "かいます",
-                "飼います"
-            ],
+            "te": ["かって", "飼って"],
+            "masu": ["かいます", "飼います"],
+            "past_short": ["かった", "飼った"],
+            "past_short_negative": ["かわなかった", "飼わなかった"],
             "meaning": "to own (a pet) (~を)",
             "lesson": 11
         },
         {
             "dict": "サボる",
             "type": "u-verb",
-            "te": [
-                "サボって"
-            ],
-            "masu": [
-                "サボります"
-            ],
+            "te": ["サボって"],
+            "masu": ["サボります"],
+            "past_short": ["サボった"],
+            "past_short_negative": ["サボらなかった"],
             "meaning": "to cut (classes) (~を)",
             "lesson": 11
         },
@@ -935,14 +697,10 @@
             "dict": "ならう",
             "kanji": "<ruby>習<rt>な</rt></ruby>らう",
             "type": "u-verb",
-            "te": [
-                "ならって",
-                "習って"
-            ],
-            "masu": [
-                "ならいます",
-                "習います"
-            ],
+            "te": ["ならって", "習って"],
+            "masu": ["ならいます", "習います"],
+            "past_short": ["ならった", "習った"],
+            "past_short_negative": ["ならわなかった", "習わなかった"],
             "meaning": "to learn (~を)",
             "lesson": 11
         },
@@ -950,14 +708,10 @@
             "dict": "のぼる",
             "kanji": "<ruby>登<rt>の</rt></ruby>ぼる",
             "type": "u-verb",
-            "te": [
-                "のぼって",
-                "登って"
-            ],
-            "masu": [
-                "のぼります",
-                "登ります"
-            ],
+            "te": ["のぼって", "登って"],
+            "masu": ["のぼります", "登ります"],
+            "past_short": ["のぼった", "登った"],
+            "past_short_negative": ["のぼらなかった", "登らなかった"],
             "meaning": "to climb (place に)",
             "lesson": 11
         },
@@ -965,14 +719,10 @@
             "dict": "はしる",
             "kanji": "<ruby>走<rt>はし</rt></ruby>る",
             "type": "u-verb",
-            "te": [
-                "はしって",
-                "走って"
-            ],
-            "masu": [
-                "はしります",
-                "走ります"
-            ],
+            "te": ["はしって", "走って"],
+            "masu": ["はしります", "走ります"],
+            "past_short": ["はしった", "走った"],
+            "past_short_negative": ["はしらなかった", "走らなかった"],
             "meaning": "to run",
             "lesson": 11
         },
@@ -980,14 +730,10 @@
             "dict": "あるく",
             "kanji": "<ruby>歩<rt>ある</rt></ruby>く",
             "type": "u-verb",
-            "te": [
-                "あるいて",
-                "歩いて"
-            ],
-            "masu": [
-                "あるきます",
-                "歩きます"
-            ],
+            "te": ["あるいて", "歩いて"],
+            "masu": ["あるきます", "歩きます"],
+            "past_short": ["あるいた", "歩いた"],
+            "past_short_negative": ["あるかなかった", "歩かなかった"],
             "meaning": "to walk",
             "lesson": 12
         },
@@ -995,14 +741,10 @@
             "dict": "かぜをひく",
             "kanji": "<ruby>風<rt>かぜ</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>く",
             "type": "u-verb",
-            "te": [
-                "かぜをひいて",
-                "風を引いて"
-            ],
-            "masu": [
-                "かぜをひきます",
-                "風を引きます"
-            ],
+            "te": ["かぜをひいて", "風を引いて"],
+            "masu": ["かぜをひきます", "風を引きます"],
+            "past_short": ["かぜをひいた", "風を引いた"],
+            "past_short_negative": ["かぜをひかなかった", "風を引かなかった"],
             "meaning": "to catch a cold",
             "lesson": 12
         },
@@ -1010,14 +752,10 @@
             "dict": "ねつがある",
             "kanji": "<ruby>熱<rt>ねつ</rt></ruby>がある",
             "type": "u-verb",
-            "te": [
-                "ねつがあって",
-                "熱があって"
-            ],
-            "masu": [
-                "ねつがあります",
-                "熱があります"
-            ],
+            "te": ["ねつがあって", "熱があって"],
+            "masu": ["ねつがあります", "熱があります"],
+            "past_short": ["ねつがあった", "熱があった"],
+            "past_short_negative": ["ねつがなかった", "熱がなかった"],
             "meaning": "to have a fever",
             "lesson": 12
         },
@@ -1025,14 +763,10 @@
             "dict": "のどがかわく",
             "kanji": "のどが<ruby>渇<rt>かわ</rt></ruby>く",
             "type": "u-verb",
-            "te": [
-                "のどがかわいて",
-                "のどが渇いて"
-            ],
-            "masu": [
-                "のどがかわきます",
-                "のどが渇きます"
-            ],
+            "te": ["のどがかわいて", "のどが渇いて"],
+            "masu": ["のどがかわきます", "のどが渇きます"],
+            "past_short": ["のどがかわいた", "のどが渇いた"],
+            "past_short_negative": ["のどがかわかなかった", "のどが渇かなかった"],
             "meaning": "to become thirsty",
             "lesson": 12
         },
@@ -1040,14 +774,10 @@
             "dict": "きょうみがある",
             "kanji": "<ruby>興味<rt>きょうみ</rt></ruby>がある",
             "type": "u-verb",
-            "te": [
-                "きょうみがあって",
-                "興味があって"
-            ],
-            "masu": [
-                "きょうみがあります",
-                "興味があります"
-            ],
+            "te": ["きょうみがあって", "興味があって"],
+            "masu": ["きょうみがあります", "興味があります"],
+            "past_short": ["きょうみがあった", "興味があった"],
+            "past_short_negative": ["きょうみがなかった", "興味がなかった"],
             "meaning": "to be interested in (~に)",
             "lesson": 12
         }
@@ -1057,14 +787,10 @@
             "dict": "あける",
             "kanji": "<ruby>開<rt>あ</rt></ruby>ける",
             "type": "ru-verb",
-            "te": [
-                "あけて",
-                "開けて"
-            ],
-            "masu": [
-                "あけます",
-                "開けます"
-            ],
+            "te": ["あけて", "開けて"],
+            "masu": ["あけます", "開けます"],
+            "past_short": ["あけた", "開けた"],
+            "past_short_negative": ["あけなかった", "開けなかった"],
             "meaning": "to open (something) (~を)",
             "lesson": 6
         },
@@ -1072,14 +798,10 @@
             "dict": "あげる",
             "kanji": "<ruby>上<rt>あ</rt></ruby>げる",
             "type": "ru-verb",
-            "te": [
-                "あげて",
-                "上げて"
-            ],
-            "masu": [
-                "あげます",
-                "上げます"
-            ],
+            "te": ["あげて", "上げて"],
+            "masu": ["あげます", "上げます"],
+            "past_short": ["あげた", "上げた"],
+            "past_short_negative": ["あげなかった", "上げなかった"],
             "meaning": "to give",
             "lesson": "None"
         },
@@ -1087,14 +809,10 @@
             "dict": "おきる",
             "kanji": "<ruby>起<rt>お</rt></ruby>きる",
             "type": "ru-verb",
-            "te": [
-                "おきて",
-                "起きて"
-            ],
-            "masu": [
-                "おきます",
-                "起きます"
-            ],
+            "te": ["おきて", "起きて"],
+            "masu": ["おきます", "起きます"],
+            "past_short": ["おきた", "起きた"],
+            "past_short_negative": ["おきなかった", "起きなかった"],
             "meaning": "to get up",
             "lesson": 3
         },
@@ -1102,14 +820,10 @@
             "dict": "おしえる",
             "kanji": "<ruby>教<rt>おし</rt></ruby>える",
             "type": "ru-verb",
-            "te": [
-                "おしえて",
-                "教えて"
-            ],
-            "masu": [
-                "おしえます",
-                "教えます"
-            ],
+            "te": ["おしえて", "教えて"],
+            "masu": ["おしえます", "教えます"],
+            "past_short": ["おしえた", "教えた"],
+            "past_short_negative": ["おしえなかった", "教えなかった"],
             "meaning": "to teach; to instruct (person に thing を)",
             "lesson": 6
         },
@@ -1117,26 +831,20 @@
             "dict": "おりる",
             "kanji": "<ruby>降<rt>お</rt></ruby>りる",
             "type": "ru-verb",
-            "te": [
-                "おりて",
-                "降りて"
-            ],
-            "masu": [
-                "おります",
-                "降ります"
-            ],
+            "te": ["おりて", "降りて"],
+            "masu": ["おります", "降ります"],
+            "past_short": ["おりた", "降りた"],
+            "past_short_negative": ["おりなかった", "降りなかった"],
             "meaning": "to get off (~を)",
             "lesson": 6
         },
         {
             "dict": "かける",
             "type": "ru-verb",
-            "te": [
-                "かけて"
-            ],
-            "masu": [
-                "かけます"
-            ],
+            "te": ["かけて"],
+            "masu": ["かけます"],
+            "past_short": ["かけた"],
+            "past_short_negative": ["かけなかった"],
             "meaning": "to put on (glasses)",
             "lesson": 7
         },
@@ -1144,41 +852,31 @@
             "dict": "かりる",
             "kanji": "<ruby>借<rt>か</rt></ruby>りる",
             "type": "ru-verb",
-            "te": [
-                "かりて",
-                "借りて"
-            ],
-            "masu": [
-                "かります",
-                "借ります"
-            ],
+            "te": ["かりて", "借りて"],
+            "masu": ["かります", "借ります"],
+            "past_short": ["かりた", "借りた"],
+            "past_short_negative": ["かりなかった", "借りなかった"],
             "meaning": "to borrow (person に thing を)",
             "lesson": 6
         },
-        {
+               {
             "dict": "しめる",
             "kanji": "<ruby>閉<rt>し</rt></ruby>める",
             "type": "ru-verb",
-            "te": [
-                "しめて",
-                "閉めて"
-            ],
-            "masu": [
-                "しめます",
-                "閉めます"
-            ],
+            "te": ["しめて", "閉めて"],
+            "masu": ["しめます", "閉めます"],
+            "past_short": ["しめた", "閉めた"],
+            "past_short_negative": ["しめなかった", "閉めなかった"],
             "meaning": "to close (something) (~を)",
             "lesson": 6
         },
         {
             "dict": "つける",
             "type": "ru-verb",
-            "te": [
-                "つけて"
-            ],
-            "masu": [
-                "つけます"
-            ],
+            "te": ["つけて"],
+            "masu": ["つけます"],
+            "past_short": ["つけた"],
+            "past_short_negative": ["つけなかった"],
             "meaning": "to turn on",
             "lesson": 6
         },
@@ -1186,14 +884,10 @@
             "dict": "でかける",
             "kanji": "<ruby>出<rt>で</rt></ruby>かける",
             "type": "ru-verb",
-            "te": [
-                "でかけて",
-                "出かけて"
-            ],
-            "masu": [
-                "でかけます",
-                "出かけます"
-            ],
+            "te": ["でかけて", "出かけて"],
+            "masu": ["でかけます", "出かけます"],
+            "past_short": ["でかけた", "出かけた"],
+            "past_short_negative": ["でかけなかった", "出かけなかった"],
             "meaning": "to go out",
             "lesson": 5
         },
@@ -1201,32 +895,21 @@
             "dict": "でる",
             "kanji": "<ruby>出<rt>で</rt></ruby>る",
             "type": "ru-verb",
-            "te": [
-                "でて",
-                "出て"
-            ],
-            "masu": [
-                "でます",
-                "出ます"
-            ],
-            "meaning": "1. to appear; to atend (~に); 2. to to exit (~を)",
-            "lesson": [
-                6,
-                9
-            ]
+            "te": ["でて", "出て"],
+            "masu": ["でます", "出ます"],
+            "past_short": ["でた", "出た"],
+            "past_short_negative": ["でなかった", "出なかった"],
+            "meaning": "1. to appear; to attend (~に); 2. to exit (~を)",
+            "lesson": [6, 9]
         },
         {
             "dict": "ねる",
             "kanji": "<ruby>寝<rt>ね</rt></ruby>る",
             "type": "ru-verb",
-            "te": [
-                "ねて",
-                "寝て"
-            ],
-            "masu": [
-                "ねます",
-                "寝ます"
-            ],
+            "te": ["ねて", "寝て"],
+            "masu": ["ねます", "寝ます"],
+            "past_short": ["ねた", "寝た"],
+            "past_short_negative": ["ねなかった", "寝なかった"],
             "meaning": "to sleep",
             "lesson": 3
         },
@@ -1234,14 +917,10 @@
             "dict": "みる",
             "kanji": "<ruby>見<rt>み</rt></ruby>る",
             "type": "ru-verb",
-            "te": [
-                "みて",
-                "見て"
-            ],
-            "masu": [
-                "みます",
-                "見ます"
-            ],
+            "te": ["みて", "見て"],
+            "masu": ["みます", "見ます"],
+            "past_short": ["みた", "見た"],
+            "past_short_negative": ["みなかった", "見なかった"],
             "meaning": "to see; to look at; to watch",
             "lesson": 3
         },
@@ -1249,14 +928,10 @@
             "dict": "わすれる",
             "kanji": "<ruby>忘<rt>わす</rt></ruby>れる",
             "type": "ru-verb",
-            "te": [
-                "わすれて",
-                "忘れて"
-            ],
-            "masu": [
-                "わすれます",
-                "忘れます"
-            ],
+            "te": ["わすれて", "忘れて"],
+            "masu": ["わすれます", "忘れます"],
+            "past_short": ["わすれた", "忘れた"],
+            "past_short_negative": ["わすれなかった", "忘れなかった"],
             "meaning": "to forget; to leave behind (~を)",
             "lesson": 6
         },
@@ -1264,14 +939,10 @@
             "dict": "シャワーをあびる",
             "kanji": "シャワーをあびる",
             "type": "ru-verb",
-            "te": [
-                "シャワーをあびて",
-                "シャワーを浴びて"
-            ],
-            "masu": [
-                "シャワーをあびます",
-                "シャワーを浴びます"
-            ],
+            "te": ["シャワーをあびて", "シャワーを浴びて"],
+            "masu": ["シャワーをあびます", "シャワーを浴びます"],
+            "past_short": ["シャワーをあびた", "シャワーを浴びた"],
+            "past_short_negative": ["シャワーをあびなかった", "シャワーを浴びなかった"],
             "meaning": "to take a shower",
             "lesson": 6
         },
@@ -1279,26 +950,20 @@
             "dict": "たべる",
             "kanji": "<ruby>食<rt>た</rt></ruby>べる",
             "type": "ru-verb",
-            "te": [
-                "たべて",
-                "食べて"
-            ],
-            "masu": [
-                "たべます",
-                "食べます"
-            ],
+            "te": ["たべて", "食べて"],
+            "masu": ["たべます", "食べます"],
+            "past_short": ["たべた", "食べた"],
+            "past_short_negative": ["たべなかった", "食べなかった"],
             "meaning": "to eat",
             "lesson": 3
         },
         {
             "dict": "いる",
             "type": "ru-verb",
-            "te": [
-                "いて"
-            ],
-            "masu": [
-                "います"
-            ],
+            "te": ["いて"],
+            "masu": ["います"],
+            "past_short": ["いた"],
+            "past_short_negative": ["いなかった"],
             "meaning": "(a person) is in ...; stays at... (place に person が)",
             "lesson": 4
         },
@@ -1306,26 +971,20 @@
             "dict": "きる",
             "kanji": "<ruby>着<rt>き</rt></ruby>る",
             "type": "ru-verb",
-            "te": [
-                "きて",
-                "着て"
-            ],
-            "masu": [
-                "きます",
-                "着ます"
-            ],
+            "te": ["きて", "着て"],
+            "masu": ["きます", "着ます"],
+            "past_short": ["きた", "着た"],
+            "past_short_negative": ["きなかった", "着なかった"],
             "meaning": "to put on (clothes above your waist) (~を)",
             "lesson": 7
         },
         {
             "dict": "やせる",
             "type": "ru-verb",
-            "te": [
-                "やせて"
-            ],
-            "masu": [
-                "やせます"
-            ],
+            "te": ["やせて"],
+            "masu": ["やせます"],
+            "past_short": ["やせた"],
+            "past_short_negative": ["やせなかった"],
             "meaning": "to be thin; to lose",
             "lesson": 7
         },
@@ -1333,14 +992,10 @@
             "dict": "すてる",
             "kanji": "<ruby>捨<rt>す</rt></ruby>てる",
             "type": "ru-verb",
-            "te": [
-                "すてて",
-                "捨てて"
-            ],
-            "masu": [
-                "すてます",
-                "捨てます"
-            ],
+            "te": ["すてて", "捨てて"],
+            "masu": ["すてます", "捨てます"],
+            "past_short": ["すてた", "捨てた"],
+            "past_short_negative": ["すてなかった", "捨てなかった"],
             "meaning": "to throw away (~を)",
             "lesson": 8
         },
@@ -1348,14 +1003,10 @@
             "dict": "はじめる",
             "kanji": "<ruby>始<rt>はじ</rt></ruby>める",
             "type": "ru-verb",
-            "te": [
-                "はじめて",
-                "始めて"
-            ],
-            "masu": [
-                "はじめます",
-                "始めます"
-            ],
+            "te": ["はじめて", "始めて"],
+            "masu": ["はじめます", "始めます"],
+            "past_short": ["はじめた", "始めた"],
+            "past_short_negative": ["はじめなかった", "始めなかった"],
             "meaning": "to begin (~を)",
             "lesson": 8
         },
@@ -1363,41 +1014,31 @@
             "dict": "きめる",
             "kanji": "<ruby>決<rt>き</rt></ruby>める",
             "type": "ru-verb",
-            "te": [
-                "きめて",
-                "決めて"
-            ],
-            "masu": [
-                "きめます",
-                "決めます"
-            ],
+            "te": ["きめて", "決めて"],
+            "masu": ["きめます", "決めます"],
+            "past_short": ["きめた", "決めた"],
+            "past_short_negative": ["きめなかった", "決めなかった"],
             "meaning": "to decide (~を)",
             "lesson": 10
         },
-        {
+               {
             "dict": "つかれる",
             "kanji": "<ruby>疲<rt>つか</rt></ruby>れる",
             "type": "ru-verb",
-            "te": [
-                "つかれて",
-                "疲れて"
-            ],
-            "masu": [
-                "つかれます",
-                "疲れます"
-            ],
+            "te": ["つかれて", "疲れて"],
+            "masu": ["つかれます", "疲れます"],
+            "past_short": ["つかれた", "疲れた"],
+            "past_short_negative": ["つかれなかった", "疲れなかった"],
             "meaning": "to get tired",
             "lesson": 11
         },
         {
             "dict": "やめる",
             "type": "ru-verb",
-            "te": [
-                "やめて"
-            ],
-            "masu": [
-                "やめます"
-            ],
+            "te": ["やめて"],
+            "masu": ["やめます"],
+            "past_short": ["やめた"],
+            "past_short_negative": ["やめなかった"],
             "meaning": "to quit (~を)",
             "lesson": 11
         },
@@ -1405,14 +1046,10 @@
             "dict": "せきがでる",
             "kanji": "<ruby>咳<rt>せき</rt></ruby>がでる",
             "type": "ru-verb",
-            "te": [
-                "せきがでて",
-                "咳が出て"
-            ],
-            "masu": [
-                "せきがでます",
-                "咳が出ます"
-            ],
+            "te": ["せきがでて", "咳が出て"],
+            "masu": ["せきがでます", "咳が出ます"],
+            "past_short": ["せきがでた", "咳が出た"],
+            "past_short_negative": ["せきがでなかった", "咳が出なかった"],
             "meaning": "to cough",
             "lesson": 12
         },
@@ -1420,14 +1057,10 @@
             "dict": "わかれる",
             "kanji": "<ruby>別<rt>わか</rt></ruby>れる",
             "type": "ru-verb",
-            "te": [
-                "わかれて",
-                "別れて"
-            ],
-            "masu": [
-                "わかれます",
-                "別れます"
-            ],
+            "te": ["わかれて", "別れて"],
+            "masu": ["わかれます", "別れます"],
+            "past_short": ["わかれた", "別れた"],
+            "past_short_negative": ["わかれなかった", "別れなかった"],
             "meaning": "to break up; to separate (person と)",
             "lesson": 12
         },
@@ -1435,14 +1068,10 @@
             "dict": "おぼえる",
             "kanji": "<ruby>覚<rt>おぼ</rt></ruby>える",
             "type": "ru-verb",
-            "te": [
-                "おぼえて",
-                "覚えて"
-            ],
-            "masu": [
-                "おぼえます",
-                "覚えます"
-            ],
+            "te": ["おぼえて", "覚えて"],
+            "masu": ["おぼえます", "覚えます"],
+            "past_short": ["おぼえた", "覚えた"],
+            "past_short_negative": ["おぼえなかった", "覚えなかった"],
             "meaning": "to memorize (~を)",
             "lesson": 9
         }
@@ -1452,14 +1081,10 @@
             "dict": "くる",
             "kanji": "<ruby>来<rt>く</rt></ruby>る",
             "type": "irregular",
-            "te": [
-                "きて",
-                "来て"
-            ],
-            "masu": [
-                "きます",
-                "来ます"
-            ],
+            "te": ["きて", "来て"],
+            "masu": ["きます", "来ます"],
+            "past_short": ["きた", "来た"],
+            "past_short_negative": ["こなかった", "来なかった"],
             "meaning": "to come",
             "lesson": 3
         },
@@ -1467,12 +1092,10 @@
             "dict": "する",
             "kanji": "する",
             "type": "irregular",
-            "te": [
-                "して"
-            ],
-            "masu": [
-                "します"
-            ],
+            "te": ["して"],
+            "masu": ["します"],
+            "past_short": ["した"],
+            "past_short_negative": ["しなかった"],
             "meaning": "to do",
             "lesson": 3
         },
@@ -1480,14 +1103,10 @@
             "dict": "べんきょうする",
             "kanji": "<ruby>勉強<rt>べんきょう</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "べんきょうして",
-                "勉強して"
-            ],
-            "masu": [
-                "べんきょうします",
-                "勉強します"
-            ],
+            "te": ["べんきょうして", "勉強して"],
+            "masu": ["べんきょうします", "勉強します"],
+            "past_short": ["べんきょうした", "勉強した"],
+            "past_short_negative": ["べんきょうしなかった", "勉強しなかった"],
             "meaning": "to study",
             "lesson": 3
         },
@@ -1495,14 +1114,10 @@
             "dict": "けっこんする",
             "kanji": "<ruby>結婚<rt>けっこん</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "けっこんして",
-                "結婚して"
-            ],
-            "masu": [
-                "けっこんします",
-                "結婚します"
-            ],
+            "te": ["けっこんして", "結婚して"],
+            "masu": ["けっこんします", "結婚します"],
+            "past_short": ["けっこんした", "結婚した"],
+            "past_short_negative": ["けっこんしなかった", "結婚しなかった"],
             "meaning": "to get married (~と)",
             "lesson": 7
         },
@@ -1510,14 +1125,10 @@
             "dict": "さんぽする",
             "kanji": "<ruby>散歩<rt>さんぽ</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "さんぽして",
-                "散歩して"
-            ],
-            "masu": [
-                "さんぽします",
-                "散歩します"
-            ],
+            "te": ["さんぽして", "散歩して"],
+            "masu": ["さんぽします", "散歩します"],
+            "past_short": ["さんぽした", "散歩した"],
+            "past_short_negative": ["さんぽしなかった", "散歩しなかった"],
             "meaning": "to take a walk",
             "lesson": 9
         },
@@ -1525,14 +1136,10 @@
             "dict": "うんてんする",
             "kanji": "<ruby>運転<rt>うんてん</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "うんてんして",
-                "運転して"
-            ],
-            "masu": [
-                "うんてんします",
-                "運転します"
-            ],
+            "te": ["うんてんして", "運転して"],
+            "masu": ["うんてんします", "運転します"],
+            "past_short": ["うんてんした", "運転した"],
+            "past_short_negative": ["うんてんしなかった", "運転しなかった"],
             "meaning": "to drive (~を)",
             "lesson": 8
         },
@@ -1540,14 +1147,10 @@
             "dict": "りょこうする",
             "kanji": "<ruby>旅行<rt>りょこう</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "りょこうして",
-                "旅行して"
-            ],
-            "masu": [
-                "りょこうします",
-                "旅行します"
-            ],
+            "te": ["りょこうして", "旅行して"],
+            "masu": ["りょこうします", "旅行します"],
+            "past_short": ["りょこうした", "旅行した"],
+            "past_short_negative": ["りょこうしなかった", "旅行しなかった"],
             "meaning": "to travel",
             "lesson": 10
         },
@@ -1555,14 +1158,10 @@
             "dict": "そうじする",
             "kanji": "<ruby>掃除<rt>そうじ</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "そうじして",
-                "掃除して"
-            ],
-            "masu": [
-                "そうじします",
-                "掃除します"
-            ],
+            "te": ["そうじして", "掃除して"],
+            "masu": ["そうじします", "掃除します"],
+            "past_short": ["そうじした", "掃除した"],
+            "past_short_negative": ["そうじしなかった", "掃除しなかった"],
             "meaning": "to clean (~を)",
             "lesson": 8
         },
@@ -1570,14 +1169,10 @@
             "dict": "でんわする",
             "kanji": "<ruby>電話<rt>でんわ</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "でんわして",
-                "電話して"
-            ],
-            "masu": [
-                "でんわします",
-                "電話します"
-            ],
+            "te": ["でんわして", "電話して"],
+            "masu": ["でんわします", "電話します"],
+            "past_short": ["でんわした", "電話した"],
+            "past_short_negative": ["でんわしなかった", "電話しなかった"],
             "meaning": "to call (~に)",
             "lesson": 6
         },
@@ -1585,14 +1180,10 @@
             "dict": "つれてくる",
             "kanji": "<ruby>連<rt>つ</rt></ruby>れてくる",
             "type": "irregular",
-            "te": [
-                "つれてきて",
-                "連れてきて"
-            ],
-            "masu": [
-                "つれてきます",
-                "連れてきます"
-            ],
+            "te": ["つれてきて", "連れてきて"],
+            "masu": ["つれてきます", "連れてきます"],
+            "past_short": ["つれてきた", "連れてきた"],
+            "past_short_negative": ["つれてこなかった", "連れてこなかった"],
             "meaning": "to bring (a person) (~を)",
             "lesson": 6
         },
@@ -1600,14 +1191,10 @@
             "dict": "もってくる",
             "kanji": "<ruby>持<rt>も</rt></ruby>ってくる",
             "type": "irregular",
-            "te": [
-                "もってきて",
-                "持ってきて"
-            ],
-            "masu": [
-                "もってきます",
-                "持ってきます"
-            ],
+            "te": ["もってきて", "持ってきて"],
+            "masu": ["もってきます", "持ってきます"],
+            "past_short": ["もってきた", "持ってきた"],
+            "past_short_negative": ["もってこなかった", "持ってこなかった"],
             "meaning": "to bring (a thing) (~を)",
             "lesson": 6
         },
@@ -1615,14 +1202,10 @@
             "dict": "せんたくする",
             "kanji": "<ruby>洗濯<rt>せんたく</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "せんたくして",
-                "洗濯して"
-            ],
-            "masu": [
-                "せんたくします",
-                "洗濯します"
-            ],
+            "te": ["せんたくして", "洗濯して"],
+            "masu": ["せんたくします", "洗濯します"],
+            "past_short": ["せんたくした", "洗濯した"],
+            "past_short_negative": ["せんたくしなかった", "洗濯しなかった"],
             "meaning": "to do laundry (~を)",
             "lesson": 8
         },
@@ -1630,14 +1213,10 @@
             "dict": "りょうりする",
             "kanji": "<ruby>料理<rt>りょうり</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "りょうりして",
-                "料理して"
-            ],
-            "masu": [
-                "りょうりします",
-                "料理します"
-            ],
+            "te": ["りょうりして", "料理して"],
+            "masu": ["りょうりします", "料理します"],
+            "past_short": ["りょうりした", "料理した"],
+            "past_short_negative": ["りょうりしなかった", "料理しなかった"],
             "meaning": "to cook",
             "lesson": 8
         },
@@ -1645,53 +1224,41 @@
             "dict": "うんどうする",
             "kanji": "<ruby>運動<rt>うんどう</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "うんどうして",
-                "運動して"
-            ],
-            "masu": [
-                "うんどうします",
-                "運動します"
-            ],
+            "te": ["うんどうして", "運動して"],
+            "masu": ["うんどうします", "運動します"],
+            "past_short": ["うんどうした", "運動した"],
+            "past_short_negative": ["うんどうしなかった", "運動しなかった"],
             "meaning": "to exercise",
             "lesson": 9
         },
         {
             "dict": "ごろごろする",
             "type": "irregular",
-            "te": [
-                "ごろごろして"
-            ],
-            "masu": [
-                "ごろごろします"
-            ],
-            "meaning": "to chillout at home; to stay home and do nothing",
+            "te": ["ごろごろして"],
+            "masu": ["ごろごろします"],
+            "past_short": ["ごろごろした"],
+            "past_short_negative": ["ごろごろしなかった"],
+            "meaning": "to chill out at home; to stay home and do nothing",
             "lesson": 10
         },
         {
             "dict": "れんしゅうする",
             "kanji": "<ruby>練習<rt>れんしゅう</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "れんしゅうして",
-                "練習して"
-            ],
-            "masu": [
-                "れんしゅうします",
-                "練習します"
-            ],
+            "te": ["れんしゅうして", "練習して"],
+            "masu": ["れんしゅうします", "練習します"],
+            "past_short": ["れんしゅうした", "練習した"],
+            "past_short_negative": ["れんしゅうしなかった", "練習しなかった"],
             "meaning": "to practice (~を)",
             "lesson": 10
         },
         {
             "dict": "けんかする",
             "type": "irregular",
-            "te": [
-                "けんかして"
-            ],
-            "masu": [
-                "けんかします"
-            ],
+            "te": ["けんかして"],
+            "masu": ["けんかします"],
+            "past_short": ["けんかした"],
+            "past_short_negative": ["けんかしなかった"],
             "meaning": "to have a fight; to quarrel",
             "lesson": 11
         },
@@ -1699,14 +1266,10 @@
             "dict": "じょうかいする",
             "kanji": "<ruby>紹介<rt>しょうかい</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "しょうかいして",
-                "紹介して"
-            ],
-            "masu": [
-                "しょうかいします",
-                "紹介します"
-            ],
+            "te": ["しょうかいして", "紹介して"],
+            "masu": ["しょうかいします", "紹介します"],
+            "past_short": ["しょうかいした", "紹介した"],
+            "past_short_negative": ["しょうかいしなかった", "紹介しなかった"],
             "meaning": "to introduce (person に person を)",
             "lesson": 11
         },
@@ -1714,14 +1277,10 @@
             "dict": "ちこくする",
             "kanji": "<ruby>遅刻<rt>ちこく</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "ちこくして",
-                "遅刻して"
-            ],
-            "masu": [
-                "ちこくします",
-                "遅刻します"
-            ],
+            "te": ["ちこくして", "遅刻して"],
+            "masu": ["ちこくします", "遅刻します"],
+            "past_short": ["ちこくした", "遅刻した"],
+            "past_short_negative": ["ちこくしなかった", "遅刻しなかった"],
             "meaning": "to be late (for an appointment) (~に)",
             "lesson": 11
         },
@@ -1729,14 +1288,10 @@
             "dict": "きんちょうする",
             "kanji": "<ruby>緊張<rt>きんちょう</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "きんちょうして",
-                "緊張して"
-            ],
-            "masu": [
-                "きんちょうします",
-                "緊張します"
-            ],
+            "te": ["きんちょうして", "緊張して"],
+            "masu": ["きんちょうします", "緊張します"],
+            "past_short": ["きんちょうした", "緊張した"],
+            "past_short_negative": ["きんちょうしなかった", "緊張しなかった"],
             "meaning": "to get nervous",
             "lesson": 12
         },
@@ -1744,14 +1299,10 @@
             "dict": "しんぱいする",
             "kanji": "<ruby>心配<rt>しんぱい</rt></ruby>する",
             "type": "irregular",
-            "te": [
-                "しんぱいして",
-                "心配して"
-            ],
-            "masu": [
-                "しんぱいします",
-                "心配します"
-            ],
+            "te": ["しんぱいして", "心配して"],
+            "masu": ["しんぱいします", "心配します"],
+            "past_short": ["しんぱいした", "心配した"],
+            "past_short_negative": ["しんぱいしなかった", "心配しなかった"],
             "meaning": "to worry",
             "lesson": 12
         }

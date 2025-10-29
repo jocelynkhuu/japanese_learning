@@ -150,7 +150,8 @@ function showList() {
       <table class="table table-striped table-bordered">
         <thead class="table-dark">
           <tr>
-            <th>Kanji</th><th>Dict</th><th>て-form(s)</th><th>ます-form(s)</th><th>Type</th><th>Meaning</th>
+            <th>Kanji</th><th>Dict</th><th>て-form(s)</th><th>ます-form(s)</th>
+            <th>Past short</th><th>Past short negative</th><th>Type</th><th>Meaning</th>
           </tr>
         </thead><tbody>`;
     verbsForLesson.forEach(v => {
@@ -160,6 +161,8 @@ function showList() {
           <td>${v.dict}</td>
           <td>${v.te.join(", ")}</td>
           <td>${v.masu.join(", ")}</td>
+          <td>${(v.past_short || []).join(", ")}</td>
+          <td>${(v.past_short_negative || []).join(", ")}</td>
           <td>${v.type}</td>
           <td>${v.meaning}</td>
         </tr>`;
@@ -233,13 +236,16 @@ function generateQuiz() {
 
   const form = document.getElementById("quizForm");
   form.innerHTML = "";
+
   currentQuestions.forEach((v, i) => {
+    let answers = v[currentType] || [];
     form.innerHTML += `
       <div class="mb-3">
-        <label class="form-label">Q${i + 1}: ${(v.kanji || v.dict)} (${v.meaning}) → ${currentType}-form?</label>
-        <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(v[currentType])}'>
+        <label class="form-label">Q${i + 1}: ${(v.kanji || v.dict)} (${v.meaning}) → ${currentType.replace("_", " ")}?</label>
+        <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(answers)}'>
       </div>`;
   });
+
   form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
 }
 
