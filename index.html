@@ -13,24 +13,18 @@
 
     <!-- Menu -->
     <div id="menu" class="mb-3">
-      <!-- Collapsible Te-form Cheat Sheet -->
       <div class="mb-3">
         <button class="btn btn-info mb-2 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#teFormTable" aria-expanded="true">
           📖 Show/Hide て-form Conjugation Rules
         </button>
-
         <div class="collapse show" id="teFormTable">
           <div class="card">
-            <div class="card-header bg-primary text-white">
-              て-form Conjugation Rules
-            </div>
+            <div class="card-header bg-primary text-white">て-form Conjugation Rules</div>
             <div class="card-body table-responsive">
               <table class="table table-bordered table-sm text-center">
                 <thead class="table-light">
                   <tr>
-                    <th>Ending</th>
-                    <th>Rule → て-form</th>
-                    <th>Example</th>
+                    <th>Ending</th><th>Rule → て-form</th><th>Example</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,11 +34,7 @@
                   <tr><td>ぐ</td><td>→ いで</td><td>およぐ → およいで</td></tr>
                   <tr><td>す</td><td>→ して</td><td>はなす → はなして</td></tr>
                   <tr><td>る (Ru-verbs)</td><td>→ て</td><td>たべる → たべて</td></tr>
-                  <tr>
-                    <td>Irregular</td>
-                    <td>する → して <br> くる → きて <br> いく → いって</td>
-                    <td></td>
-                  </tr>
+                  <tr><td>Irregular</td><td>する → して <br> くる → きて <br> いく → いって</td><td></td></tr>
                 </tbody>
               </table>
             </div>
@@ -53,26 +43,26 @@
       </div>
 
       <div class="d-flex flex-wrap gap-2">
-        <button class="btn btn-primary flex-fill" onclick="startQuiz()">Take a Verb Quiz</button>
-        <button class="btn btn-success flex-fill" onclick="startAdjectiveQuiz()">Take an Adjective Quiz</button>
-        <button class="btn btn-secondary flex-fill" onclick="showList()">List All Verbs</button>
-        <button class="btn btn-warning flex-fill" onclick="showAdjectives()">List All Adjectives</button>
+        <button class="btn btn-primary flex-fill" id="btnVerbQuiz">Take a Verb Quiz</button>
+        <button class="btn btn-success flex-fill" id="btnAdjQuiz">Take an Adjective Quiz</button>
+        <button class="btn btn-secondary flex-fill" id="btnListVerbs">List All Verbs</button>
+        <button class="btn btn-warning flex-fill" id="btnListAdjs">List All Adjectives</button>
       </div>
     </div>
 
     <!-- Verb Quiz -->
-    <div id="quiz" style="display:none; min-height: 100vh;">
+    <div id="quiz" style="display:none; min-height:100vh;">
       <h2>Verb Quiz</h2>
       <div class="mb-3">
         <label class="form-label">How many questions? (1–<span id="totalVerbs"></span>):</label>
         <div class="d-flex gap-2">
-          <input type="number" id="numQuestions" class="form-control w-50 w-md-25 d-inline-block" min="1" value="5">
-          <button type="button" class="btn btn-outline-secondary" onclick="setMaxQuestions()">Max</button>
+          <input type="number" id="numQuestions" class="form-control w-50 w-md-25" min="1" value="5">
+          <button class="btn btn-outline-secondary" id="maxQuestionsBtn">Max</button>
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Choose form to practice:</label>
-        <select id="quizType" class="form-select w-100 w-md-25 d-inline-block">
+        <select id="quizType" class="form-select w-100 w-md-25">
           <option value="te">て-form</option>
           <option value="masu">ます-form</option>
           <option value="past_short">Short Past</option>
@@ -81,41 +71,45 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Choose lesson(s):</label>
-        <select id="lessonFilter" class="form-select w-100 w-md-25 d-inline-block" multiple size="6"></select>
-        <button class="btn btn-success ms-2 mt-2 mt-md-0" onclick="generateQuiz()">Start</button>
+        <select id="lessonFilter" class="form-select w-100 w-md-25" multiple size="6"></select>
+        <button class="btn btn-success ms-2 mt-2 mt-md-0" id="startVerbQuiz">Start</button>
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="skipIrregular">
         <label class="form-check-label" for="skipIrregular">Skip irregular verbs</label>
       </div>
-
-      <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
-
+      <form id="quizForm" onsubmit="return false;"></form>
       <div class="sticky-footer">
-        <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>
+        <button class="btn btn-primary w-100" id="backMenu1">🔙 Back to Menu</button>
       </div>
     </div>
 
     <!-- Adjective Quiz -->
-    <div id="adjQuiz" style="display:none; min-height: 100vh;">
+    <div id="adjQuiz" style="display:none; min-height:100vh;">
       <h2>Adjective Quiz</h2>
       <div class="mb-3">
         <label class="form-label">How many questions? (1–<span id="totalAdjectives"></span>):</label>
         <div class="d-flex gap-2">
-          <input type="number" id="numAdjQuestions" class="form-control w-50 w-md-25 d-inline-block" min="1" value="5">
-          <button type="button" class="btn btn-outline-secondary" onclick="setMaxAdjectiveQuestions()">Max</button>
+          <input type="number" id="numAdjQuestions" class="form-control w-50 w-md-25" min="1" value="5">
+          <button class="btn btn-outline-secondary" id="maxAdjQuestionsBtn">Max</button>
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Choose lesson(s):</label>
-        <select id="adjLessonFilter" class="form-select w-100 w-md-25 d-inline-block" multiple size="6"></select>
-        <button class="btn btn-success ms-2 mt-2 mt-md-0" onclick="generateAdjectiveQuiz()">Start</button>
+        <label class="form-label">Choose form to practice:</label>
+        <select id="adjQuizType" class="form-select w-100 w-md-25">
+          <option value="te">て-form</option>
+          <option value="past_short">Short Past</option>
+          <option value="past_short_negative">Short Past Negative</option>
+        </select>
       </div>
-
-      <form id="adjQuizForm" onsubmit="checkAdjectiveAnswers(); return false;"></form>
-
+      <div class="mb-3">
+        <label class="form-label">Choose lesson(s):</label>
+        <select id="adjLessonFilter" class="form-select w-100 w-md-25" multiple size="6"></select>
+        <button class="btn btn-success ms-2 mt-2 mt-md-0" id="startAdjQuiz">Start</button>
+      </div>
+      <form id="adjQuizForm" onsubmit="return false;"></form>
       <div class="sticky-footer">
-        <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>
+        <button class="btn btn-primary w-100" id="backMenu2">🔙 Back to Menu</button>
       </div>
     </div>
 
@@ -124,25 +118,25 @@
       <h2>Results</h2>
       <div id="resultsContent"></div>
       <div class="sticky-footer">
-        <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>
+        <button class="btn btn-primary w-100" id="backMenu3">🔙 Back to Menu</button>
       </div>
     </div>
 
     <!-- Verb List -->
-    <div id="list" style="display:none; min-height: 100vh;">
+    <div id="list" style="display:none; min-height:100vh;">
       <h2>All Verbs by Lesson</h2>
       <div id="verbTables"></div>
       <div class="sticky-footer">
-        <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>
+        <button class="btn btn-primary w-100" id="backMenu4">🔙 Back to Menu</button>
       </div>
     </div>
 
     <!-- Adjective List -->
-    <div id="adjectives" style="display:none; min-height: 100vh;">
+    <div id="adjectives" style="display:none; min-height:100vh;">
       <h2>All Adjectives by Lesson</h2>
       <div id="adjectiveTables"></div>
       <div class="sticky-footer">
-        <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>
+        <button class="btn btn-primary w-100" id="backMenu5">🔙 Back to Menu</button>
       </div>
     </div>
   </div>
