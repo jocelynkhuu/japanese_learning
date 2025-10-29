@@ -1,114 +1,123 @@
 let verbs = [];
 let adjectives = [];
 
-// Load JSON files
-async function loadData() {
-  const [verbRes, adjRes] = await Promise.all([
-    fetch("verbs.json"),
-    fetch("adjectives.json")
-  ]);
-  verbs = await verbRes.json();
-  adjectives = await adjRes.json();
+// ------------------------- INIT -------------------------
+function initApp() {
+  fetch("js/verbs.json")
+    .then(r => r.json())
+    .then(data => {
+      verbs = [].concat(data["u-verbs"], data["ru-verbs"], data["irregular"]);
+      verbs.forEach(v => { if (!Array.isArray(v.lesson)) v.lesson = [v.lesson]; });
+      buildLessonDropdown();
+      updateTotalVerbs();
+    });
+
+  fetch("js/adjectives.json")
+    .then(r => r.json())
+    .then(data => {
+      adjectives = data["adjectives"];
+      adjectives.forEach(a => { if (!Array.isArray(a.lesson)) a.lesson = [a.lesson]; });
+    });
 }
 
-// Utility: shuffle array
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
+document.addEventListener("DOMContentLoaded", initApp);
+
+// ------------------------- VERB HELPERS -------------------------
+function buildLessonDropdown() {
+  const lessons = new Set();
+  verbs.forEach(v => v.lesson.forEach(l => lessons.add(l)));
+  const dropdown = document.getElementById("lessonFilter");
+  dropdown.innerHTML = `<option value="all" selected>All Lessons</option>`;
+  [...lessons].sort((a,b)=>a-b).forEach(l => dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`);
+  dropdown.addEventListener("change", updateTotalVerbs);
+  document.getElementById("skipIrregular").onchange = updateTotalVerbs;
 }
 
-// Normalize answers for comparison
-function normalize(str) {
-  return str.replace(/\s+/g, "").toLowerCase();
-}
-
-// Generate quiz question
-function generateQuiz(data, type, count = 10) {
-  const selected = shuffle(data).slice(0, count);
-  return selected.map(item => ({
-    ...item,
-    correct: getAnswer(item, type)
-  }));
-}
-
-// Return correct form depending on quiz type
-function getAnswer(item, type) {
-  switch (type) {
-    case "te": return item.te?.[0] || "";
-    case "shortPresent": return item.short?.[0] || "";
-    case "shortNegative": return item.shortNegative?.[0] || "";
-    case "past": return item.past?.[0] || "";
-    case "pastNegative": return item.pastNegative?.[0] || "";
-    default: return "";
+function updateTotalVerbs() {
+  const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o=>o.value);
+  let pool = verbs;
+  if(!selected.includes("all")) {
+    const lessons = selected.map(Number);
+    pool = pool.filter(v=>v.lesson.some(l=>lessons.includes(l)));
   }
+  if(document.getElementById("skipIrregular").checked) pool = pool.filter(v=>v.type!=="irregular");
+  document.getElementById("totalVerbs").textContent = pool.length;
+  document.getElementById("numQuestions").value = pool.length;
 }
 
-// Render quiz
-function renderQuiz(container, quizData, type) {
-  container.innerHTML = `
-    <form id="quizForm">
-      ${quizData.map((q, i) => `
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">${q.kanji || q.dict}</h5>
-            <p class="card-text text-muted">(${q.meaning})</p>
-            <input type="text" class="form-control" name="q${i}" placeholder="Your answer">
-          </div>
-        </div>
-      `).join("")}
-      <button type="submit" class="btn btn-primary">Submit Answers</button>
-    </form>
-  `;
-
-  const form = container.querySelector("#quizForm");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    let correct = 0;
-    const results = quizData.map((q, i) => {
-      const userAnswer = formData.get(`q${i}`).trim();
-      const isCorrect = normalize(userAnswer) === normalize(q.correct);
-      if (isCorrect) correct++;
-      return { q, userAnswer, isCorrect };
-    });
-
-    container.innerHTML = `
-      <h4>Results</h4>
-      <p>You got ${correct}/${quizData.length} correct.</p>
-      ${results.map(r => `
-        <div class="card mb-2 ${r.isCorrect ? 'border-success' : 'border-danger'}">
-          <div class="card-body">
-            <strong>${r.q.dict}</strong> (${r.q.meaning})<br>
-            <span class="text-muted">${r.q.type || ""}</span><br>
-            <span>${r.isCorrect ? "✅ Correct!" : "❌ Incorrect"}</span><br>
-            <b>Your answer:</b> ${r.userAnswer || "(blank)"}<br>
-            <b>Correct answer:</b> ${r.correct}
-          </div>
-        </div>
-      `).join("")}
-      <button class="btn btn-secondary mt-3" id="restartQuiz">Restart Quiz</button>
-    `;
-
-    container.querySelector("#restartQuiz").addEventListener("click", () => {
-      renderQuiz(container, quizData, type);
-    });
-  });
+// ------------------------- ADJECTIVE HELPERS -------------------------
+function buildAdjectiveLessonDropdown() {
+  const lessons = new Set();
+  adjectives.forEach(adj => adj.lesson.forEach(l => lessons.add(l)));
+  const dropdown = document.getElementById("adjLessonFilter");
+  dropdown.innerHTML = `<option value="all" selected>All Lessons</option>`;
+  [...lessons].sort((a,b)=>a-b).forEach(l => dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`);
+  dropdown.addEventListener("change", updateTotalAdjectives);
+  updateTotalAdjectives();
 }
 
-// Initialize app
-document.addEventListener("DOMContentLoaded", async () => {
-  await loadData();
+function updateTotalAdjectives() {
+  const selected = [...document.getElementById("adjLessonFilter").selectedOptions].map(o=>o.value);
+  let pool = adjectives;
+  if(!selected.includes("all")) {
+    const lessons = selected.map(Number);
+    pool = pool.filter(adj=>adj.lesson.some(l=>lessons.includes(l)));
+  }
+  document.getElementById("totalAdjectives").textContent = pool.length;
+  document.getElementById("numAdjQuestions").value = pool.length;
+}
 
-  // Verb quiz
-  document.getElementById("startVerbQuiz").addEventListener("click", () => {
-    const type = document.getElementById("verbQuizType").value;
-    const quizData = generateQuiz(verbs, type);
-    renderQuiz(document.getElementById("verbQuizContainer"), quizData, type);
-  });
+// ------------------------- SHOW SECTIONS -------------------------
+function startQuiz() { document.getElementById("menu").style.display="none"; document.getElementById("quiz").style.display="block"; }
+function startAdjectiveQuiz() { document.getElementById("menu").style.display="none"; document.getElementById("adjQuiz").style.display="block"; buildAdjectiveLessonDropdown(); }
+function showList() { /* existing verb table code */ }
+function showAdjectives() { /* existing adjective table code */ }
 
-  // Adjective quiz
-  document.getElementById("startAdjectiveQuiz").addEventListener("click", () => {
-    const type = document.getElementById("adjectiveQuizType").value;
-    const quizData = generateQuiz(adjectives, type);
-    renderQuiz(document.getElementById("adjectiveQuizContainer"), quizData, type);
+// ------------------------- QUIZZES -------------------------
+let currentQuestions=[], currentType="te";
+function generateQuiz() {
+  const num = parseInt(document.getElementById("numQuestions").value);
+  currentType = document.getElementById("quizType").value;
+  let pool = verbs;
+  const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o=>o.value);
+  if(!selected.includes("all")) { const lessons = selected.map(Number); pool = pool.filter(v=>v.lesson.some(l=>lessons.includes(l))); }
+  if(document.getElementById("skipIrregular").checked) pool = pool.filter(v=>v.type!=="irregular");
+  currentQuestions = shuffle([...pool]).slice(0,num);
+  const form = document.getElementById("quizForm"); form.innerHTML="";
+  currentQuestions.forEach((v,i)=>{
+    let answers = v[currentType]||[];
+    form.innerHTML += `<div class="mb-3">
+      <label class="form-label">Q${i+1}: ${(v.kanji||v.dict)} (${v.meaning}) → ${currentType.replace("_"," ")}?</label>
+      <input type="text" class="form-control" name="q${i}" data-answers='${JSON.stringify(answers)}'>
+    </div>`;
   });
-});
+  form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
+}
+
+function checkAnswers() {
+  let score=0,output="";
+  currentQuestions.forEach((v,i)=>{
+    const input=document.querySelector(`[name=q${i}]`);
+    const ans=input.value.trim();
+    const valid=JSON.parse(input.getAttribute("data-answers"))||[];
+    const correct = valid.some(a=>a.replace(/\s+/g,"")===ans.replace(/\s+/g,""));
+    if(correct) score++;
+    output += `<div class="alert ${correct?"alert-success":"alert-danger"}">
+      ${correct?"✅ Correct!":"❌ Incorrect"}<br>Q${i+1}: ${(v.kanji||v.dict)} (${v.meaning})<br>
+      Your answer: <b>${ans}</b><br>Correct answer(s): ${valid.join(", ")}</div>`;
+  });
+  output+=`<p class="fw-bold">Final Score: ${score}/${currentQuestions.length}</p>`;
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("results").style.display="block";
+  document.getElementById("resultsContent").innerHTML=output;
+}
+
+// ------------------------- ADJECTIVE QUIZ -------------------------
+let currentAdjQuestions=[],currentAdjType="te";
+function generateAdjectiveQuiz() {
+  const num=parseInt(document.getElementById("numAdjQuestions").value);
+  currentAdjType=document.getElementById("adjQuizType").value;
+  let pool=adjectives;
+  const selected=[...document.getElementById("adjLessonFilter").selectedOptions].map(o=>o.value);
+  if(!selected.includes("all")) { const lessons=selected.map(Number); pool=pool.filter(a=>a.lesson.some(l=>lessons.includes(l))); }
+  currentAdjQuestions=shuffle([...pool]).slice(0,num
