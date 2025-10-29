@@ -4,8 +4,6 @@
       "dict": "いい",
       "type": "い-adjective",
       "te": ["よくて"],
-      "past_short": ["よかった"],
-      "past_short_negative": ["よくなかった"],
       "meaning": "good",
       "lesson": 3
     },
@@ -14,8 +12,6 @@
       "kanji": "<ruby>早<rt>はや</rt></ruby>い",
       "type": "い-adjective",
       "te": ["はやくて", "早くて"],
-      "past_short": ["はやかった", "早かった"],
-      "past_short_negative": ["はやくなかった", "早くなかった"],
       "meaning": "early",
       "lesson": 3
     },
@@ -24,8 +20,6 @@
       "kanji": "<ruby>新<rt>あたら</rt></ruby>しい",
       "type": "い-adjective",
       "te": ["あたらしくて", "新しくて"],
-      "past_short": ["あたらしかった", "新しかった"],
-      "past_short_negative": ["あたらしくなかった", "新しくなかった"],
       "meaning": "new",
       "lesson": 5
     },
@@ -34,8 +28,6 @@
       "kanji": "<ruby>古<rt>ふる</rt></ruby>い",
       "type": "い-adjective",
       "te": ["ふるくて", "古くて"],
-      "past_short": ["ふるかった", "古かった"],
-      "past_short_negative": ["ふるくなかった", "古くなかった"],
       "meaning": "old (thing – not used for people)",
       "lesson": 5
     },
@@ -44,8 +36,6 @@
       "kanji": "<ruby>暑<rt>あつ</rt></ruby>い",
       "type": "い-adjective",
       "te": ["あつくて", "暑くて"],
-      "past_short": ["あつかった", "暑かった"],
-      "past_short_negative": ["あつくなかった", "暑くなかった"],
       "meaning": "hot (weather)",
       "lesson": 5
     },
@@ -54,8 +44,6 @@
       "kanji": "<ruby>寒<rt>さむ</rt></ruby>い",
       "type": "い-adjective",
       "te": ["さむくて", "寒くて"],
-      "past_short": ["さむかった", "寒かった"],
-      "past_short_negative": ["さむくなかった", "寒くなかった"],
       "meaning": "cold (weather – not used for things)",
       "lesson": 5
     },
@@ -64,8 +52,6 @@
       "kanji": "<ruby>熱<rt>あつ</rt></ruby>い",
       "type": "い-adjective",
       "te": ["あつくて", "熱くて"],
-      "past_short": ["あつかった", "熱かった"],
-      "past_short_negative": ["あつくなかった", "熱くなかった"],
       "meaning": "hot (thing)",
       "lesson": 5
     },
@@ -74,8 +60,6 @@
       "kanji": "<ruby>忙<rt>いそが</rt></ruby>しい",
       "type": "い-adjective",
       "te": ["いそがしくて", "忙しくて"],
-      "past_short": ["いそがしかった", "忙しかった"],
-      "past_short_negative": ["いそがしくなかった", "忙しくなかった"],
       "meaning": "busy (people/days)",
       "lesson": 5
     },
@@ -84,8 +68,6 @@
       "kanji": "<ruby>大<rt>おお</rt></ruby>きい",
       "type": "い-adjective",
       "te": ["おおきくて", "大きくて"],
-      "past_short": ["おおきかった", "大きかった"],
-      "past_short_negative": ["おおきくなかった", "大きくなかった"],
       "meaning": "large",
       "lesson": 5
     },
@@ -94,8 +76,6 @@
       "kanji": "<ruby>小<rt>ちい</rt></ruby>さい",
       "type": "い-adjective",
       "te": ["ちいさくて", "小さくて"],
-      "past_short": ["ちいさかった", "小さかった"],
-      "past_short_negative": ["ちいさくなかった", "小さくなかった"],
       "meaning": "small",
       "lesson": 5
     },
@@ -104,18 +84,125 @@
       "kanji": "<ruby>面白<rt>おもしろ</rt></ruby>い",
       "type": "い-adjective",
       "te": ["おもしろくて", "面白くて"],
-      "past_short": ["おもしろかった", "面白かった"],
-      "past_short_negative": ["おもしろくなかった", "面白くなかった"],
       "meaning": "interesting; funny",
       "lesson": 5
     },
-       {
+    {
+      "dict": "つまらない",
+      "dict": "つまらない",
+      "type": "い-adjective",
+      "te": ["つまらなくて"],
+      "meaning": "boring",
+      "lesson": 5
+    },
+    {
+      "dict": "やさしい",
+      "kanji": "<ruby>優<rt>やさ</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["やさしくて", "優しくて"],
+      "meaning": "easy (problem); kind (person)",
+      "lesson": 5
+    },
+    {
+      "dict": "むずかしい",
+      "kanji": "<ruby>難<rt>むずか</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["むずかしくて", "難しくて"],
+      "meaning": "difficult",
+      "lesson": 5
+    },
+    {
+      "dict": "かっこいい",
+      "dict": "かっこいい",
+      "type": "い-adjective",
+      "te": ["かっこよくて"],
+      "meaning": "good-looking (conjugates like いい)",
+      "lesson": 5
+    },
+    {
+      "dict": "こわい",
+      "kanji": "<ruby>怖<rt>こわ</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["こわくて", "怖くて"],
+      "meaning": "frightening",
+      "lesson": 5
+    },
+    {
+      "dict": "たのしい",
+      "kanji": "<ruby>楽<rt>たの</rt></ruby>しい",
+      "type": "い-adjective",
+      "te": ["たのしくて", "楽しくて"],
+      "meaning": "fun",
+      "lesson": 5
+    },
+    {
+      "dict": "やすい",
+      "kanji": "<ruby>安<rt>やす</rt></ruby>い",
+      "type": "い-adjective",
+      "te": ["やすくて", "安くて"],
+      "meaning": "inexpensive; cheap (thing)",
+      "lesson": 5
+    },
+    {
+      "dict": "すき（な）",
+      "kanji": "<ruby>好<rt>す</rt></ruby>き（な）",
+      "type": "な-adjective",
+      "te": ["すきで", "好きで"],
+      "meaning": "fond of; to like (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "きらい（な）",
+      "kanji": "<ruby>嫌<rt>きら</rt></ruby>い（な）",
+      "type": "な-adjective",
+      "te": ["きらいで", "嫌いで"],
+      "meaning": "disgusted with; to dislike (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "だいすき（な）",
+      "kanji": "<ruby>大好<rt>だいす</rt></ruby>き（な）",
+      "type": "な-adjective",
+      "te": ["だいすきで", "大好きで"],
+      "meaning": "very fond of; to love (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "だいきらい（な）",
+      "kanji": "<ruby>大嫌<rt>だいきら</rt></ruby>い（な）",
+      "type": "な-adjective",
+      "te": ["だいきらいで", "大嫌いで"],
+      "meaning": "to hate (~が)",
+      "lesson": 5
+    },
+    {
+      "dict": "きれい（な）",
+      "type": "な-adjective",
+      "te": ["きれいで"],
+      "meaning": "beautiful; clean",
+      "lesson": 5
+    },
+    {
+      "dict": "げんき（な）",
+      "kanji": "<ruby>元気<rt>げんき</rt></ruby>（な）",
+      "type": "な-adjective",
+      "te": ["げんきで", "元気で"],
+      "meaning": "healthy; energetic",
+      "lesson": 5
+    },
+    {
+      "dict": "しずか（な）",
+      "kanji": "<ruby>静<rt>しず</rt></ruby>か（な）",
+      "type": "な-adjective",
+      "te": ["しずかで", "静かで"],
+      "meaning": "quiet",
+      "lesson": 5
+    },
+    {
       "dict": "にぎやか（な）",
       "kanji": "<ruby>賑<rt>にぎ</rt></ruby>やか（な）",
       "type": "な-adjective",
       "te": ["にぎやかで", "賑やかで"],
-      "past_short": ["にぎやかだった", "賑やかだった"],
-      "past_short_negative": ["にぎやかじゃなかった", "賑やかじゃなかった"],
       "meaning": "lively",
       "lesson": 5
     },
@@ -124,8 +211,6 @@
       "kanji": "<ruby>暇<rt>ひま</rt></ruby>（な）",
       "type": "な-adjective",
       "te": ["ひまで", "暇で"],
-      "past_short": ["ひまだった", "暇だった"],
-      "past_short_negative": ["ひまじゃなかった", "暇じゃなかった"],
       "meaning": "not busy; free (time)",
       "lesson": 5
     },
@@ -134,8 +219,6 @@
       "kanji": "<ruby>大変<rt>たいへん</rt></ruby>（な）",
       "type": "な-adjective",
       "te": ["たいへんで", "大変で"],
-      "past_short": ["たいへんだった", "大変だった"],
-      "past_short_negative": ["たいへんじゃなかった", "大変じゃなかった"],
       "meaning": "tough (situation)",
       "lesson": 6
     },
@@ -143,9 +226,10 @@
       "dict": "ながい",
       "kanji": "<ruby>長<rt>なが</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["ながくて", "長くて"],
-      "past_short": ["ながかった", "長かった"],
-      "past_short_negative": ["ながくなかった", "長くなかった"],
+      "te": [
+        "ながくて",
+        "長くて"
+      ],
       "meaning": "long",
       "lesson": 7
     },
@@ -153,9 +237,10 @@
       "dict": "みじかい",
       "kanji": "<ruby>短<rt>みじか</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["みじかくて", "短くて"],
-      "past_short": ["みじかかった", "短かった"],
-      "past_short_negative": ["みじかくなかった", "短くなかった"],
+      "te": [
+        "みじかくて",
+        "短くて"
+      ],
       "meaning": "short (length)",
       "lesson": 7
     },
@@ -163,9 +248,10 @@
       "dict": "はやい",
       "kanji": "<ruby>速<rt>はや</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["はやくて", "速くて"],
-      "past_short": ["はやかった", "速かった"],
-      "past_short_negative": ["はやくなかった", "速くなかった"],
+      "te": [
+        "はやくて",
+        "速くて"
+      ],
       "meaning": "fast",
       "lesson": 7
     },
@@ -173,9 +259,10 @@
       "dict": "せがたかい",
       "kanji": "<ruby>背<rt>せ</rt></ruby>が<ruby>高<rt>たか</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["せがたかくて", "背が高くて"],
-      "past_short": ["せがたかかった", "背が高かった"],
-      "past_short_negative": ["せがたかくなかった", "背が高くなかった"],
+      "te": [
+        "せがたかくて",
+        "背が高くて"
+      ],
       "meaning": "tall (stature)",
       "lesson": 7
     },
@@ -183,9 +270,10 @@
       "dict": "せがひくい",
       "kanji": "<ruby>背<rt>せ</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["せがひくくて", "背が低くて"],
-      "past_short": ["せがひくかった", "背が低かった"],
-      "past_short_negative": ["せがひくくなかった", "背が低くなかった"],
+      "te": [
+        "せがひくくて",
+        "背が低くて"
+      ],
       "meaning": "short (stature)",
       "lesson": 7
     },
@@ -193,18 +281,19 @@
       "dict": "あたまがいい",
       "kanji": "<ruby>頭<rt>あたま</rt></ruby>がいい",
       "type": "い-adjective",
-      "te": ["あたまがよくて", "頭がよくて"],
-      "past_short": ["あたまがよかった", "頭がよかった"],
-      "past_short_negative": ["あたまがよくなかった", "頭がよくなかった"],
+      "te": [
+        "あたまがよくて",
+        "頭がよくて"
+      ],
       "meaning": "bright; smart; clever (conjugates like いい)",
       "lesson": 7
     },
     {
       "dict": "かわいい",
       "type": "い-adjective",
-      "te": ["かわいくて"],
-      "past_short": ["かわいかった"],
-      "past_short_negative": ["かわいくなかった"],
+      "te": [
+        "かわいくて"
+      ],
       "meaning": "cute",
       "lesson": 7
     },
@@ -212,9 +301,10 @@
       "dict": "しんせつ（な）",
       "kanji": "<ruby>親切<rt>しんせつ</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["しんせつで", "親切で"],
-      "past_short": ["しんせつだった", "親切だった"],
-      "past_short_negative": ["しんせつじゃなかった", "親切じゃなかった"],
+      "te": [
+        "しんせつで",
+        "親切で"
+      ],
       "meaning": "kind",
       "lesson": 7
     },
@@ -222,9 +312,10 @@
       "dict": "べんり（な）",
       "kanji": "<ruby>便利<rt>べんり</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["べんりで", "便利で"],
-      "past_short": ["べんりだった", "便利だった"],
-      "past_short_negative": ["べんりじゃなかった", "便利じゃなかった"],
+      "te": [
+        "べんりで",
+        "便利で"
+      ],
       "meaning": "convenient",
       "lesson": 7
     },
@@ -232,9 +323,10 @@
       "dict": "じょうず（な）",
       "kanji": "<ruby>上手<rt>じょうず</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["じょうずで", "上手で"],
-      "past_short": ["じょうずだった", "上手だった"],
-      "past_short_negative": ["じょうずじゃなかった", "上手じゃなかった"],
+      "te": [
+        "じょうずで",
+        "上手で"
+      ],
       "meaning": "skillful; good at... (~が)",
       "lesson": 8
     },
@@ -242,9 +334,10 @@
       "dict": "へた（な）",
       "kanji": "<ruby>下手<rt>へた</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["へたで", "下手で"],
-      "past_short": ["へただった", "下手だった"],
-      "past_short_negative": ["へたじゃなかった", "下手じゃなかった"],
+      "te": [
+        "へたで",
+        "下手で"
+      ],
       "meaning": "clumsy; poor at... (~が)",
       "lesson": 8
     },
@@ -252,19 +345,21 @@
       "dict": "ゆうめい（な）",
       "kanji": "<ruby>有名<rt>ゆうめい</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["ゆうめいで", "有名で"],
-      "past_short": ["ゆうめいだった", "有名だった"],
-      "past_short_negative": ["ゆうめいじゃなかった", "有名じゃなかった"],
+      "te": [
+        "ゆうめいで",
+        "有名で"
+      ],
       "meaning": "famous",
       "lesson": 8
     },
-    {
+      {
       "dict": "あおい",
       "kanji": "<ruby>青<rt>あお</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["あおくて", "青くて"],
-      "past_short": ["あおかった", "青かった"],
-      "past_short_negative": ["あおくなかった", "青くなかった"],
+      "te": [
+        "あおくて",
+        "青くて"
+      ],
       "meaning": "blue",
       "lesson": 9
     },
@@ -272,9 +367,10 @@
       "dict": "あかい",
       "kanji": "<ruby>赤<rt>あか</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["あかくて", "赤くて"],
-      "past_short": ["あかかった", "赤かった"],
-      "past_short_negative": ["あかくなかった", "赤くなかった"],
+      "te": [
+        "あかくて",
+        "赤くて"
+      ],
       "meaning": "red",
       "lesson": 9
     },
@@ -282,9 +378,10 @@
       "dict": "くろい",
       "kanji": "<ruby>黒<rt>くろ</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["くろくて", "黒くて"],
-      "past_short": ["くろかった", "黒かった"],
-      "past_short_negative": ["くろくなかった", "黒くなかった"],
+      "te": [
+        "くろくて",
+        "黒くて"
+      ],
       "meaning": "black",
       "lesson": 9
     },
@@ -292,9 +389,10 @@
       "dict": "しろい",
       "kanji": "<ruby>白<rt>しろ</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["しろくて", "白くて"],
-      "past_short": ["しろかった", "白かった"],
-      "past_short_negative": ["しろくなかった", "白くなかった"],
+      "te": [
+        "しろくて",
+        "白くて"
+      ],
       "meaning": "white",
       "lesson": 9
     },
@@ -302,9 +400,10 @@
       "dict": "さびしい",
       "kanji": "<ruby>寂<rt>さび</rt></ruby>しい",
       "type": "い-adjective",
-      "te": ["さびしくて", "寂しくて"],
-      "past_short": ["さびしかった", "寂しかった"],
-      "past_short_negative": ["さびしくなかった", "寂しくなかった"],
+      "te": [
+        "さびしくて",
+        "寂しくて"
+      ],
       "meaning": "lonely",
       "lesson": 9
     },
@@ -312,9 +411,10 @@
       "dict": "わかい",
       "kanji": "<ruby>若<rt>わ</rt></ruby>かい",
       "type": "い-adjective",
-      "te": ["わかくて", "若くて"],
-      "past_short": ["わかかった", "若かった"],
-      "past_short_negative": ["わかくなかった", "若くなかった"],
+      "te": [
+        "わかくて",
+        "若くて"
+      ],
       "meaning": "young",
       "lesson": 9
     },
@@ -322,19 +422,21 @@
       "dict": "いじわる（な）",
       "kanji": "<ruby>意地悪<rt>いじわる</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["いじわるで", "意地悪で"],
-      "past_short": ["いじわるだった", "意地悪だった"],
-      "past_short_negative": ["いじわるじゃなかった", "意地悪じゃなかった"],
+      "te": [
+        "いじわるで",
+        "意地悪で"
+      ],
       "meaning": "mean-spirited",
       "lesson": 9
     },
-    {
+        {
       "dict": "あたたかい",
       "kanji": "<ruby>暖<rt>あたた</rt></ruby>かい",
       "type": "い-adjective",
-      "te": ["あたたかくて", "暖かくて"],
-      "past_short": ["あたたかかった", "暖かかった"],
-      "past_short_negative": ["あたたかくなかった", "暖かくなかった"],
+      "te": [
+        "あたたかくて",
+        "暖かくて"
+      ],
       "meaning": "warm (weather/thing)",
       "lesson": 10
     },
@@ -342,9 +444,10 @@
       "dict": "すずしい",
       "kanji": "<ruby>涼<rt>すず</rt></ruby>しい",
       "type": "い-adjective",
-      "te": ["すずしくて", "涼しくて"],
-      "past_short": ["すずしかった", "涼しかった"],
-      "past_short_negative": ["すずしくなかった", "涼しくなかった"],
+      "te": [
+        "すずしくて",
+        "涼しくて"
+      ],
       "meaning": "cool (weather - not for things)",
       "lesson": 10
     },
@@ -352,9 +455,10 @@
       "dict": "つめたい",
       "kanji": "<ruby>冷<rt>つめ</rt></ruby>たい",
       "type": "い-adjective",
-      "te": ["つめたくて", "冷たくて"],
-      "past_short": ["つめたかった", "冷たかった"],
-      "past_short_negative": ["つめたくなかった", "冷たくなかった"],
+      "te": [
+        "つめたくて",
+        "冷たくて"
+      ],
       "meaning": "cold (things/people)",
       "lesson": 10
     },
@@ -362,9 +466,10 @@
       "dict": "おそい",
       "kanji": "<ruby>遅<rt>おそ</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["おそくて", "遅くて"],
-      "past_short": ["おそかった", "遅かった"],
-      "past_short_negative": ["おそくなかった", "遅くなかった"],
+      "te": [
+        "おそくて",
+        "遅くて"
+      ],
       "meaning": "slow; late",
       "lesson": 10
     },
@@ -372,9 +477,10 @@
       "dict": "ねむい",
       "kanji": "<ruby>眠<rt>ねむ</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["ねむくて", "眠くて"],
-      "past_short": ["ねむかった", "眠かった"],
-      "past_short_negative": ["ねむくなかった", "眠くなかった"],
+      "te": [
+        "ねむくて",
+        "眠くて"
+      ],
       "meaning": "sleepy",
       "lesson": 10
     },
@@ -382,19 +488,21 @@
       "dict": "かんたん（な）",
       "kanji": "<ruby>簡単<rt>かんたん</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["かんたんで", "簡単で"],
-      "past_short": ["かんたんだった", "簡単だった"],
-      "past_short_negative": ["かんたんじゃなかった", "簡単じゃなかった"],
+      "te": [
+        "かんたんで",
+        "簡単で"
+      ],
       "meaning": "easy; simple",
       "lesson": 10
     },
-    {
+      {
       "dict": "せまい",
       "kanji": "<ruby>狭<rt>せま</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["せまくて", "狭くて"],
-      "past_short": ["せまかった", "狭かった"],
-      "past_short_negative": ["せまくなかった", "狭くなかった"],
+      "te": [
+        "せまくて",
+        "狭くて"
+      ],
       "meaning": "narrow; not spacious",
       "lesson": 12
     },
@@ -402,9 +510,10 @@
       "dict": "ひろい",
       "kanji": "<ruby>広<rt>ひろ</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["ひろくて", "広くて"],
-      "past_short": ["ひろかった", "広かった"],
-      "past_short_negative": ["ひろくなかった", "広くなかった"],
+      "te": [
+        "ひろくて",
+        "広くて"
+      ],
       "meaning": "wide; spacious",
       "lesson": 12
     },
@@ -412,9 +521,10 @@
       "dict": "わるい",
       "kanji": "<ruby>悪<rt>わる</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["わるくて", "悪くて"],
-      "past_short": ["わるかった", "悪かった"],
-      "past_short_negative": ["わるくなかった", "悪くなかった"],
+      "te": [
+        "わるくて",
+        "悪くて"
+      ],
       "meaning": "bad",
       "lesson": 12
     },
@@ -422,9 +532,10 @@
       "dict": "いたい",
       "kanji": "<ruby>痛<rt>いた</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["いたくて", "痛くて"],
-      "past_short": ["いたかった", "痛かった"],
-      "past_short_negative": ["いたくなかった", "痛くなかった"],
+      "te": [
+        "いたくて",
+        "痛くて"
+      ],
       "meaning": "hurt; painful",
       "lesson": 12
     },
@@ -432,9 +543,10 @@
       "dict": "あまい",
       "kanji": "<ruby>甘<rt>あま</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["あまくて", "甘くて"],
-      "past_short": ["あまかった", "甘かった"],
-      "past_short_negative": ["あまくなかった", "甘くなかった"],
+      "te": [
+        "あまくて",
+        "甘くて"
+      ],
       "meaning": "sweet",
       "lesson": 12
     },
@@ -442,9 +554,10 @@
       "dict": "おおい",
       "kanji": "<ruby>多<rt>おお</rt></ruby>い",
       "type": "い-adjective",
-      "te": ["おおくて", "多くて"],
-      "past_short": ["おおかった", "多かった"],
-      "past_short_negative": ["おおくなかった", "多くなかった"],
+      "te": [
+        "おおくて",
+        "多くて"
+      ],
       "meaning": "there are many...",
       "lesson": 12
     },
@@ -452,9 +565,10 @@
       "dict": "すてき（な）",
       "kanji": "<ruby>素敵<rt>すてき</rt></ruby>（な）",
       "type": "な-adjective",
-      "te": ["すてきで", "素敵で"],
-      "past_short": ["すてきだった", "素敵だった"],
-      "past_short_negative": ["すてきじゃなかった", "素敵じゃなかった"],
+      "te": [
+        "すてきで",
+        "素敵で"
+      ],
       "meaning": "nice",
       "lesson": 12
     }
