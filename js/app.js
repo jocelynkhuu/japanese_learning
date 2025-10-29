@@ -16,6 +16,11 @@ function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
+// Normalize answers for comparison
+function normalize(str) {
+  return str.replace(/\s+/g, "").toLowerCase();
+}
+
 // Generate quiz question
 function generateQuiz(data, type, count = 10) {
   const selected = shuffle(data).slice(0, count);
@@ -61,7 +66,7 @@ function renderQuiz(container, quizData, type) {
     let correct = 0;
     const results = quizData.map((q, i) => {
       const userAnswer = formData.get(`q${i}`).trim();
-      const isCorrect = q.correct === userAnswer;
+      const isCorrect = normalize(userAnswer) === normalize(q.correct);
       if (isCorrect) correct++;
       return { q, userAnswer, isCorrect };
     });
@@ -73,7 +78,7 @@ function renderQuiz(container, quizData, type) {
         <div class="card mb-2 ${r.isCorrect ? 'border-success' : 'border-danger'}">
           <div class="card-body">
             <strong>${r.q.dict}</strong> (${r.q.meaning})<br>
-            <span class="text-muted">${r.q.type}</span><br>
+            <span class="text-muted">${r.q.type || ""}</span><br>
             <span>${r.isCorrect ? "✅ Correct!" : "❌ Incorrect"}</span><br>
             <b>Your answer:</b> ${r.userAnswer || "(blank)"}<br>
             <b>Correct answer:</b> ${r.correct}
