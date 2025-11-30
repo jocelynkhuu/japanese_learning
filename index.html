@@ -8,14 +8,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <style>
-    /* Sticky menu at the bottom */
-    #menuBottom {
+    /* Sticky back button at bottom of page */
+    #backButtonSticky {
       position: sticky;
       bottom: 0;
       z-index: 1000;
       background-color: #f8f9fa;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding: 10px;
       border-top: 1px solid #dee2e6;
     }
   </style>
@@ -24,6 +23,14 @@
 <body class="bg-light">
   <div class="container">
     <h1 class="mb-4 text-center">📘 Japanese Verb & Adjective Quiz</h1>
+
+    <!-- Main Menu Buttons -->
+    <div id="menu" class="mb-3">
+      <button class="btn btn-primary w-100 mb-2" onclick="showList()">📚 List All Verbs</button>
+      <button class="btn btn-success w-100 mb-2" onclick="showAdjectives()">📚 List All Adjectives</button>
+      <button class="btn btn-warning w-100 mb-2" onclick="showVerbQuizMenu()">📝 Verb Quiz</button>
+      <button class="btn btn-info w-100 mb-2" onclick="showAdjQuizMenu()">📝 Adjective Quiz</button>
+    </div>
 
     <!-- Collapsible Te-form Cheat Sheet -->
     <div class="mb-3">
@@ -109,14 +116,12 @@
     <div id="list" style="display:none; min-height: 100vh;">
       <h2>All Verbs by Lesson</h2>
       <div id="verbTables"></div>
-      <button class="btn btn-primary w-100 mt-3" onclick="reset()">🔙 Back to Menu</button>
     </div>
 
     <!-- Adjective List -->
     <div id="adjectives" style="display:none; min-height: 100vh;">
       <h2>All Adjectives by Lesson</h2>
       <div id="adjectiveTables"></div>
-      <button class="btn btn-primary w-100 mt-3" onclick="reset()">🔙 Back to Menu</button>
     </div>
 
     <!-- Verb Quiz -->
@@ -149,7 +154,6 @@
         <label class="form-check-label" for="skipIrregular">Skip irregular verbs</label>
       </div>
       <form id="quizForm" onsubmit="checkAnswers(); return false;"></form>
-      <button class="btn btn-primary w-100 mt-3" onclick="reset()">🔙 Back to Menu</button>
     </div>
 
     <!-- Adjective Quiz -->
@@ -178,15 +182,11 @@
         <button class="btn btn-success ms-2 mt-2 mt-md-0" onclick="generateAdjectiveQuiz()">Start</button>
       </div>
       <form id="adjQuizForm" onsubmit="checkAdjectiveAnswers(); return false;"></form>
-      <button class="btn btn-primary w-100 mt-3" onclick="reset()">🔙 Back to Menu</button>
     </div>
 
-    <!-- Sticky Bottom Menu Buttons -->
-    <div id="menuBottom">
-      <button class="btn btn-primary w-100 mb-2" onclick="showList()">📚 List All Verbs</button>
-      <button class="btn btn-success w-100 mb-2" onclick="showAdjectives()">📚 List All Adjectives</button>
-      <button class="btn btn-warning w-100 mb-2" onclick="showVerbQuizMenu()">📝 Verb Quiz</button>
-      <button class="btn btn-info w-100 mb-2" onclick="showAdjQuizMenu()">📝 Adjective Quiz</button>
+    <!-- Sticky Back to Menu Button -->
+    <div id="backButtonSticky" style="display:none;">
+      <button class="btn btn-primary w-100" onclick="reset()">🔙 Back to Menu</button>
     </div>
 
   </div>
