@@ -8,6 +8,7 @@ let currentAdjQuestions = [];
 
 // ------------------------- INIT -------------------------
 function initApp() {
+  // Load verbs
   fetch("js/verbs.json")
     .then(r => r.json())
     .then(data => {
@@ -20,6 +21,7 @@ function initApp() {
       updateTotalVerbs();
     }).catch(e => console.error("Error loading verbs.json:", e));
 
+  // Load adjectives
   fetch("js/adjectives.json")
     .then(r => r.json())
     .then(data => {
@@ -32,11 +34,18 @@ function initApp() {
   // Handle browser back/forward buttons
   window.addEventListener("popstate", e => {
     const section = (e.state && e.state.section) || "menu";
-    showSection(section);
+    showSection(section, false); // false => don’t push new history
   });
 
+  // Initialize te-form table open by default
+  const teFormTable = document.getElementById("teFormTable");
+  if (teFormTable) {
+    const bsCollapse = new bootstrap.Collapse(teFormTable, { toggle: false });
+    bsCollapse.show();
+  }
+
   // Show menu on first load
-  showSection("menu");
+  showSection("menu", false);
 }
 
 document.addEventListener("DOMContentLoaded", initApp);
@@ -86,7 +95,7 @@ function updateTotalAdjectives() {
 }
 
 // ------------------------- NAVIGATION -------------------------
-function showSection(section) {
+function showSection(section, pushHistory = true) {
   // hide all sections
   document.querySelectorAll("body > .container > div").forEach(div => div.style.display = "none");
 
@@ -109,7 +118,9 @@ function showSection(section) {
   if (section === "adjectives") buildAdjectiveTables();
 
   // Push history
-  history.pushState({section}, null, `#${section}`);
+  if (pushHistory) {
+    history.pushState({section}, null, `#${section}`);
+  }
 }
 
 // ------------------------- BUTTON SHORTCUTS -------------------------
@@ -193,12 +204,6 @@ function buildAdjectiveTables() {
     container.innerHTML += table;
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const teFormTable = document.getElementById("teFormTable");
-  const bsCollapse = new bootstrap.Collapse(teFormTable, { toggle: false });
-});
-
 
 // ------------------------- QUIZ GENERATION -------------------------
 const typeMap = {
@@ -305,8 +310,6 @@ function generateAdjectiveQuiz() {
 
 function checkAdjectiveAnswers() {
   let score = 0, output = "";
-  const type = document.getElementById("adjQuizType").value;
-
   currentAdjQuestions.forEach((a,i)=>{
     const input = document.querySelector(`[name=adjQ${i}]`);
     const userAnswer = input.value.trim();
@@ -328,7 +331,6 @@ function checkAdjectiveAnswers() {
 // ------------------------- BACK TO QUIZ -------------------------
 function goBackToQuiz() {
   if (lastQuizType === "verb") {
-    // Restore verb quiz
     [...document.getElementById("lessonFilter").options].forEach(opt=>{
       opt.selected = lastQuizSettings.selectedLessons.includes(opt.value);
     });
