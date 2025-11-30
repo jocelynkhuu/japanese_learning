@@ -136,7 +136,7 @@ function buildVerbTables() {
         <tr>
           <th>Kanji</th><th>Dict</th><th>て-form(s)</th>
           <th>ます-form(s)</th><th>Present Short Negative</th>
-          <th>Past Short</th><th>Past Short Negative</th>
+          <th>Past Short Affirmative</th><th>Past Short Negative</th>
           <th>Type</th><th>Meaning</th>
         </tr>
       </thead><tbody>`;
@@ -173,7 +173,7 @@ function buildAdjectiveTables() {
       <thead class="table-dark">
         <tr>
           <th>Kanji</th><th>Dict</th><th>て-form(s)</th>
-          <th>Present Short Negative</th><th>Past Short</th>
+          <th>Present Short Negative</th><th>Past Short Affirmative</th>
           <th>Past Short Negative</th><th>Type</th><th>Meaning</th>
         </tr>
       </thead><tbody>`;
