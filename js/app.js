@@ -6,16 +6,16 @@ let lastQuizSettings = {}; // store lesson selection, number of questions, and f
 let currentQuestions = [], currentType = "te";
 let currentAdjQuestions = [];
 
+// Collapse instance for teFormTable
+let teFormCollapse = null;
+
 // ------------------------- INIT -------------------------
 function initApp() {
   // Load verbs
   fetch("js/verbs.json")
     .then(r => r.json())
     .then(data => {
-      verbs = []
-        .concat(data["u-verbs"])
-        .concat(data["ru-verbs"])
-        .concat(data["irregular"]);
+      verbs = [].concat(data["u-verbs"], data["ru-verbs"], data["irregular"]);
       verbs.forEach(v => { if (!Array.isArray(v.lesson)) v.lesson = [v.lesson]; });
       buildLessonDropdown();
       updateTotalVerbs();
@@ -31,20 +31,17 @@ function initApp() {
       updateTotalAdjectives();
     }).catch(e => console.error("Error loading adjectives.json:", e));
 
+  // Initialize collapse
+  const teFormEl = document.getElementById("teFormTable");
+  if (teFormEl) teFormCollapse = new bootstrap.Collapse(teFormEl, { toggle: false });
+
   // Handle browser back/forward buttons
   window.addEventListener("popstate", e => {
     const section = (e.state && e.state.section) || "menu";
-    showSection(section, false); // false => don’t push new history
+    showSection(section, false);
   });
 
-  // Initialize te-form table open by default
-  const teFormTable = document.getElementById("teFormTable");
-  if (teFormTable) {
-    const bsCollapse = new bootstrap.Collapse(teFormTable, { toggle: false });
-    bsCollapse.show();
-  }
-
-  // Show menu on first load
+  // Show menu by default
   showSection("menu", false);
 }
 
@@ -105,22 +102,14 @@ function showSection(section, pushHistory = true) {
   el.style.display = "block";
 
   // Show teFormTable if on menu
-  if (section === "menu") {
-    const teFormEl = document.getElementById('teFormTable');
-    if (teFormEl) {
-      const collapseInstance = bootstrap.Collapse.getOrCreateInstance(teFormEl);
-      collapseInstance.show();
-    }
-  }
+  if (section === "menu" && teFormCollapse) teFormCollapse.show();
 
   // Build tables for list sections
   if (section === "list") buildVerbTables();
   if (section === "adjectives") buildAdjectiveTables();
 
   // Push history
-  if (pushHistory) {
-    history.pushState({section}, null, `#${section}`);
-  }
+  if (pushHistory) history.pushState({section}, null, `#${section}`);
 }
 
 // ------------------------- BUTTON SHORTCUTS -------------------------
@@ -269,7 +258,6 @@ function checkAnswers() {
 // ------------------------- ADJECTIVE QUIZ -------------------------
 const typeMapAdj = {
   "te": "te-form",
-  "past_short": "past_short_affirmative",
   "present_short_negative": "present_short_negative",
   "past_short_affirmative": "past_short_affirmative",
   "past_short_negative": "past_short_negative"
