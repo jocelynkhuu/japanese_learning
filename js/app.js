@@ -2,8 +2,7 @@
 let verbs = [];
 let adjectives = [];
 let lastQuizType = null; // "verb" or "adjective"
-let lastQuizSettings = {}; // store lesson selection, number of questions, and form type
-
+let lastQuizSettings = {}; // store lesson selection, number of questions, quiz type, skip irregular
 let currentQuestions = [], currentType = "te";
 let currentAdjQuestions = [];
 
@@ -12,7 +11,10 @@ function initApp() {
   fetch("js/verbs.json")
     .then(r => r.json())
     .then(data => {
-      verbs = [].concat(data["u-verbs"]).concat(data["ru-verbs"]).concat(data["irregular"]);
+      verbs = []
+        .concat(data["u-verbs"])
+        .concat(data["ru-verbs"])
+        .concat(data["irregular"]);
       verbs.forEach(v => { if (!Array.isArray(v.lesson)) v.lesson = [v.lesson]; });
       buildLessonDropdown();
       updateTotalVerbs();
@@ -27,46 +29,33 @@ function initApp() {
       updateTotalAdjectives();
     }).catch(e => console.error("Error loading adjectives.json:", e));
 
-  // Show section based on URL hash or default to menu
-  const hash = window.location.hash.replace("#", "");
-  if (hash && document.getElementById(hash)) {
-    showSection(hash);
+  // Handle browser back/forward buttons
+  window.onpopstate = function(e) {
+    if (e.state && e.state.section) {
+      navigate(e.state.section, true);
+    }
+  };
+
+  // Navigate to default section on load
+  if (!location.hash) {
+    navigate("menu", true);
   } else {
-    showSection("menu");
+    const section = location.hash.substring(1);
+    navigate(section, true);
   }
 }
-
-// ------------------------- HISTORY API -------------------------
-function showSection(sectionId) {
-  const sections = ["menu","quiz","adjQuiz","results","list","adjectives"];
-  sections.forEach(s => {
-    document.getElementById(s).style.display = s === sectionId ? "block" : "none";
-  });
-}
-
-function navigate(sectionId) {
-  showSection(sectionId);
-  history.pushState({section: sectionId}, "", "#" + sectionId);
-}
-
-// Handle browser back/forward
-window.addEventListener("popstate", (event) => {
-  if (event.state && event.state.section) {
-    showSection(event.state.section);
-  } else {
-    showSection("menu");
-  }
-});
 
 document.addEventListener("DOMContentLoaded", initApp);
 
-// ------------------------- VERB HELPERS -------------------------
+// ------------------------- BUILD DROPDOWNS -------------------------
 function buildLessonDropdown() {
   const lessons = new Set();
   verbs.forEach(v => v.lesson.forEach(l => lessons.add(l)));
   const dropdown = document.getElementById("lessonFilter");
   dropdown.innerHTML = `<option value="all" selected>All Lessons</option>`;
-  [...lessons].sort((a, b) => a - b).forEach(l => dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`);
+  [...lessons].sort((a, b) => a - b).forEach(l => {
+    dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
+  });
   dropdown.addEventListener("change", updateTotalVerbs);
   document.getElementById("skipIrregular").onchange = updateTotalVerbs;
 }
@@ -83,13 +72,14 @@ function updateTotalVerbs() {
   document.getElementById("numQuestions").value = pool.length;
 }
 
-// ------------------------- ADJECTIVE HELPERS -------------------------
 function buildAdjectiveLessonDropdown() {
   const lessons = new Set();
   adjectives.forEach(a => a.lesson.forEach(l => lessons.add(l)));
   const dropdown = document.getElementById("adjLessonFilter");
   dropdown.innerHTML = `<option value="all" selected>All Lessons</option>`;
-  [...lessons].sort((a, b) => a - b).forEach(l => dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`);
+  [...lessons].sort((a, b) => a - b).forEach(l => {
+    dropdown.innerHTML += `<option value="${l}">Lesson ${l}</option>`;
+  });
   dropdown.addEventListener("change", updateTotalAdjectives);
   updateTotalAdjectives();
 }
@@ -105,34 +95,32 @@ function updateTotalAdjectives() {
   document.getElementById("numAdjQuestions").value = pool.length;
 }
 
-// ------------------------- SHOW SECTIONS -------------------------
-function startQuiz() { 
-  buildLessonDropdown();
-  navigate("quiz");
+// ------------------------- NAVIGATION -------------------------
+function navigate(section, replace=false) {
+  // Hide all sections
+  document.querySelectorAll("div[id]").forEach(d => d.style.display = "none");
+
+  // Show the right section and rebuild if needed
+  if (section === "list") showList();
+  else if (section === "adjectives") showAdjectives();
+  else if (section === "quiz") document.getElementById("quiz").style.display = "block";
+  else if (section === "adjQuiz") document.getElementById("adjQuiz").style.display = "block";
+  else if (section === "results") document.getElementById("results").style.display = "block";
+  else document.getElementById(section).style.display = "block";
+
+  // Update browser history
+  if (replace) {
+    history.replaceState({ section }, "", "#" + section);
+  } else {
+    history.pushState({ section }, "", "#" + section);
+  }
 }
 
-function startAdjectiveQuiz() { 
-  buildAdjectiveLessonDropdown();
-  navigate("adjQuiz");
-}
-
-function showList() {
-  buildVerbTables();
-  navigate("list");
-}
-
-function showAdjectives() {
-  buildAdjectiveTables();
-  navigate("adjectives");
-}
-
-function reset() {
-  navigate("menu");
-}
-
+// ------------------------- BACK TO QUIZ -------------------------
 function goBackToQuiz() {
+  if (!lastQuizType) return navigate("menu");
   if (lastQuizType === "verb") {
-    // Restore quiz settings
+    // Restore verb quiz settings
     const lessonDropdown = document.getElementById("lessonFilter");
     [...lessonDropdown.options].forEach(opt => {
       opt.selected = lastQuizSettings.selectedLessons.includes(opt.value);
@@ -154,7 +142,118 @@ function goBackToQuiz() {
   }
 }
 
-// ------------------------- VERB QUIZ -------------------------
+// ------------------------- RESET -------------------------
+function reset() {
+  navigate("menu");
+}
+
+// ------------------------- VERB LIST -------------------------
+function showList() {
+  navigate("list", true);
+  const container = document.getElementById("verbTables");
+  container.innerHTML = "";
+
+  const grouped = {};
+  verbs.forEach(v => v.lesson.forEach(l => {
+    if (!grouped[l]) grouped[l] = [];
+    grouped[l].push(v);
+  }));
+
+  Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
+    let verbsForLesson = grouped[lesson];
+    let table = `
+      <h3 class="lesson-heading">Lesson ${lesson}</h3>
+      <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Kanji</th>
+          <th>Dict</th>
+          <th>て-form(s)</th>
+          <th>ます-form(s)</th>
+          <th>Present Short Negative</th>
+          <th>Past Short</th>
+          <th>Past Short Negative</th>
+          <th>Type</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+    `;
+
+    verbsForLesson.forEach(v => {
+      table += `
+        <tr>
+          <td>${v.kanji || ""}</td>
+          <td>${v.dict}</td>
+          <td>${(v["te-form"] || []).join(", ")}</td>
+          <td>${(v.masu || []).join(", ")}</td>
+          <td>${(v.present_short_negative || []).join(", ")}</td>
+          <td>${(v.past_short_affirmative || []).join(", ")}</td>
+          <td>${(v.past_short_negative || []).join(", ")}</td>
+          <td>${v.type}</td>
+          <td>${v.meaning}</td>
+        </tr>
+      `;
+    });
+
+    table += "</tbody></table>";
+    container.innerHTML += table;
+  });
+}
+
+// ------------------------- ADJECTIVE LIST -------------------------
+function showAdjectives() {
+  navigate("adjectives", true);
+  const container = document.getElementById("adjectiveTables");
+  container.innerHTML = "";
+
+  const grouped = {};
+  adjectives.forEach(a => a.lesson.forEach(l => {
+    if (!grouped[l]) grouped[l] = [];
+    grouped[l].push(a);
+  }));
+
+  Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
+    let adjForLesson = grouped[lesson];
+    let table = `
+      <h3 class="lesson-heading">Lesson ${lesson}</h3>
+      <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Kanji</th>
+          <th>Dict</th>
+          <th>て-form(s)</th>
+          <th>Present Short Negative</th>
+          <th>Past Short</th>
+          <th>Past Short Negative</th>
+          <th>Type</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+    `;
+
+    adjForLesson.forEach(a => {
+      table += `
+        <tr>
+          <td>${a.kanji || ""}</td>
+          <td>${a.dict}</td>
+          <td>${(a["te-form"] || []).join(", ")}</td>
+          <td>${(a.present_short_negative || []).join(", ")}</td>
+          <td>${(a.past_short_affirmative || []).join(", ")}</td>
+          <td>${(a.past_short_negative || []).join(", ")}</td>
+          <td>${a.type}</td>
+          <td>${a.meaning}</td>
+        </tr>
+      `;
+    });
+
+    table += "</tbody></table>";
+    container.innerHTML += table;
+  });
+}
+
+// ------------------------- QUIZ HELPERS -------------------------
 const typeMap = {
   "te": "te-form",
   "masu": "masu",
@@ -198,6 +297,8 @@ function generateQuiz() {
     quizType: document.getElementById("quizType").value,
     skipIrregular: document.getElementById("skipIrregular").checked
   };
+
+  navigate("quiz");
 }
 
 function checkAnswers() {
@@ -214,8 +315,8 @@ function checkAnswers() {
     }
   });
   output += `<p class="fw-bold">Final Score: ${score}/${currentQuestions.length}</p>`;
-  navigate("results");
   document.getElementById("resultsContent").innerHTML = output;
+  navigate("results");
 }
 
 // ------------------------- ADJECTIVE QUIZ -------------------------
@@ -260,6 +361,8 @@ function generateAdjectiveQuiz() {
     numQuestions: parseInt(document.getElementById("numAdjQuestions").value),
     quizType: document.getElementById("adjQuizType").value
   };
+
+  navigate("adjQuiz");
 }
 
 function checkAdjectiveAnswers() {
@@ -280,8 +383,8 @@ function checkAdjectiveAnswers() {
   });
 
   output += `<p class="fw-bold">Final Score: ${score}/${currentAdjQuestions.length}</p>`;
-  navigate("results");
   document.getElementById("resultsContent").innerHTML = output;
+  navigate("results");
 }
 
 // ------------------------- UTIL -------------------------
@@ -302,82 +405,4 @@ function setMaxQuestions() {
 
 function setMaxAdjectiveQuestions() {
   document.getElementById("numAdjQuestions").value = parseInt(document.getElementById("totalAdjectives").textContent);
-}
-
-// ------------------------- TABLE BUILDERS -------------------------
-function buildVerbTables() {
-  const container = document.getElementById("verbTables");
-  container.innerHTML = "";
-  const grouped = {};
-  verbs.forEach(v => v.lesson.forEach(l => {
-    if (!grouped[l]) grouped[l] = [];
-    grouped[l].push(v);
-  }));
-  Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
-    const verbsForLesson = grouped[lesson];
-    let table = `
-      <h3 class="lesson-heading">Lesson ${lesson}</h3>
-      <table class="table table-striped table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th>Kanji</th><th>Dict</th><th>て-form(s)</th><th>ます-form(s)</th>
-          <th>Present Short Negative</th><th>Past Short</th><th>Past Short Negative</th>
-          <th>Type</th><th>Meaning</th>
-        </tr>
-      </thead>
-      <tbody>`;
-    verbsForLesson.forEach(v => {
-      table += `<tr>
-        <td>${v.kanji || ""}</td>
-        <td>${v.dict}</td>
-        <td>${(v["te-form"] || []).join(", ")}</td>
-        <td>${(v.masu || []).join(", ")}</td>
-        <td>${(v.present_short_negative || []).join(", ")}</td>
-        <td>${(v.past_short_affirmative || []).join(", ")}</td>
-        <td>${(v.past_short_negative || []).join(", ")}</td>
-        <td>${v.type}</td>
-        <td>${v.meaning}</td>
-      </tr>`;
-    });
-    table += "</tbody></table>";
-    container.innerHTML += table;
-  });
-}
-
-function buildAdjectiveTables() {
-  const container = document.getElementById("adjectiveTables");
-  container.innerHTML = "";
-  const grouped = {};
-  adjectives.forEach(a => a.lesson.forEach(l => {
-    if (!grouped[l]) grouped[l] = [];
-    grouped[l].push(a);
-  }));
-  Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
-    const adjForLesson = grouped[lesson];
-    let table = `
-      <h3 class="lesson-heading">Lesson ${lesson}</h3>
-      <table class="table table-striped table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th>Kanji</th><th>Dict</th><th>て-form(s)</th>
-          <th>Present Short Negative</th><th>Past Short</th><th>Past Short Negative</th>
-          <th>Type</th><th>Meaning</th>
-        </tr>
-      </thead>
-      <tbody>`;
-    adjForLesson.forEach(a => {
-      table += `<tr>
-        <td>${a.kanji || ""}</td>
-        <td>${a.dict}</td>
-        <td>${(a["te-form"] || []).join(", ")}</td>
-        <td>${(a.present_short_negative || []).join(", ")}</td>
-        <td>${(a.past_short_affirmative || []).join(", ")}</td>
-        <td>${(a.past_short_negative || []).join(", ")}</td>
-        <td>${a.type}</td>
-        <td>${a.meaning}</td>
-      </tr>`;
-    });
-    table += "</tbody></table>";
-    container.innerHTML += table;
-  });
 }
