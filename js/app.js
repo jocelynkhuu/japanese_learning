@@ -194,6 +194,12 @@ function buildAdjectiveTables() {
   });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const teFormTable = document.getElementById("teFormTable");
+  const bsCollapse = new bootstrap.Collapse(teFormTable, { toggle: false });
+});
+
+
 // ------------------------- QUIZ GENERATION -------------------------
 const typeMap = {
   "te": "te-form",
