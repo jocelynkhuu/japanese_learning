@@ -13,12 +13,10 @@
 
     <!-- Menu -->
     <div id="menu" class="mb-3">
-      <!-- Collapsible Te-form Cheat Sheet -->
       <div class="mb-3">
         <button class="btn btn-info mb-2 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#teFormTable" aria-expanded="true">
           📖 Show/Hide て-form Conjugation Rules
         </button>
-
         <div class="collapse show" id="teFormTable">
           <div class="card">
             <div class="card-header bg-primary text-white">
@@ -141,7 +139,8 @@
       <h2>Results</h2>
       <div id="resultsContent"></div>
       <div class="sticky-footer d-flex flex-column gap-2">
-        <button class="btn btn-primary w-100" onclick="goBackToQuiz()">🔙 Back to Quiz</button>
+        <button class="btn btn-primary w-100" onclick="goBackToQuiz()">⬅ Back to Quiz</button>
+        <button class="btn btn-success w-100" onclick="goForwardToQuiz()">➡ Forward to Quiz</button>
         <button class="btn btn-secondary w-100" onclick="reset()">🏠 Back to Menu</button>
       </div>
     </div>

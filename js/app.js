@@ -1,8 +1,9 @@
 let verbs = [];
 let adjectives = [];
 let lastQuizType = null; // "verb" or "adjective"
-let lastQuizSettings = {}; // store lesson selection, number of questions, and form type
-
+let lastQuizSettings = {}; // store lesson selection, number of questions, quiz type, skip irregular
+let historyStack = [];
+let forwardStack = [];
 
 // ------------------------- INIT -------------------------
 function initApp() {
@@ -75,14 +76,14 @@ function updateTotalAdjectives() {
 }
 
 // ------------------------- SHOW SECTIONS -------------------------
-function startQuiz() { 
-  document.getElementById("menu").style.display = "none"; 
-  document.getElementById("quiz").style.display = "block"; 
+function startQuiz() {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
 }
-function startAdjectiveQuiz() { 
-  document.getElementById("menu").style.display = "none"; 
-  document.getElementById("adjQuiz").style.display = "block"; 
-  buildAdjectiveLessonDropdown(); 
+function startAdjectiveQuiz() {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("adjQuiz").style.display = "block";
+  buildAdjectiveLessonDropdown();
 }
 function showList() {
   document.getElementById("menu").style.display = "none";
@@ -93,9 +94,10 @@ function showList() {
 
   const grouped = {};
   verbs.forEach(v => {
-    const l = v.lesson;
-    if (!grouped[l]) grouped[l] = [];
-    grouped[l].push(v);
+    v.lesson.forEach(l => {
+      if (!grouped[l]) grouped[l] = [];
+      grouped[l].push(v);
+    });
   });
 
   Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
@@ -150,9 +152,10 @@ function showAdjectives() {
 
   const grouped = {};
   adjectives.forEach(a => {
-    const l = a.lesson;
-    if (!grouped[l]) grouped[l] = [];
-    grouped[l].push(a);
+    a.lesson.forEach(l => {
+      if (!grouped[l]) grouped[l] = [];
+      grouped[l].push(a);
+    });
   });
 
   Object.keys(grouped).sort((a, b) => a - b).forEach(lesson => {
@@ -196,44 +199,59 @@ function showAdjectives() {
   });
 }
 
+// ------------------------- QUIZ BACK/FORWARD -------------------------
 function goBackToQuiz() {
+  if (!lastQuizType) return;
+
+  // push current state to forwardStack
+  if (document.getElementById("results").style.display === "block") {
+    forwardStack.push(lastQuizSettings);
+  }
+
+  restoreQuiz(lastQuizSettings);
+}
+
+function goForwardToQuiz() {
+  if (forwardStack.length === 0) return;
+  const nextState = forwardStack.pop();
+  restoreQuiz(nextState);
+}
+
+function restoreQuiz(settings) {
   document.getElementById("results").style.display = "none";
+
+  if (!settings) return;
+
+  lastQuizSettings = settings;
 
   if (lastQuizType === "verb") {
     document.getElementById("quiz").style.display = "block";
 
-    // Restore lesson selection
     const lessonDropdown = document.getElementById("lessonFilter");
     [...lessonDropdown.options].forEach(opt => {
-      opt.selected = lastQuizSettings.selectedLessons.includes(opt.value);
+      opt.selected = settings.selectedLessons.includes(opt.value);
     });
 
-    // Restore quiz settings
-    document.getElementById("numQuestions").value = lastQuizSettings.numQuestions;
-    document.getElementById("quizType").value = lastQuizSettings.quizType;
-    document.getElementById("skipIrregular").checked = lastQuizSettings.skipIrregular;
+    document.getElementById("numQuestions").value = settings.numQuestions;
+    document.getElementById("quizType").value = settings.quizType;
+    document.getElementById("skipIrregular").checked = settings.skipIrregular;
 
-    // Re-generate the quiz with previous settings
-    generateQuiz();
+    generateQuiz(true);
 
   } else if (lastQuizType === "adjective") {
     document.getElementById("adjQuiz").style.display = "block";
 
-    // Restore lesson selection
     const adjDropdown = document.getElementById("adjLessonFilter");
     [...adjDropdown.options].forEach(opt => {
-      opt.selected = lastQuizSettings.selectedLessons.includes(opt.value);
+      opt.selected = settings.selectedLessons.includes(opt.value);
     });
 
-    // Restore quiz settings
-    document.getElementById("numAdjQuestions").value = lastQuizSettings.numQuestions;
-    document.getElementById("adjQuizType").value = lastQuizSettings.quizType;
+    document.getElementById("numAdjQuestions").value = settings.numQuestions;
+    document.getElementById("adjQuizType").value = settings.quizType;
 
-    // Re-generate the adjective quiz
-    generateAdjectiveQuiz();
+    generateAdjectiveQuiz(true);
   }
 }
-
 
 // ------------------------- VERB QUIZ -------------------------
 let currentQuestions = [], currentType = "te";
@@ -245,10 +263,11 @@ const typeMap = {
   "past_short_negative": "past_short_negative"
 };
 
-function generateQuiz() {
+function generateQuiz(restore = false) {
   const numInput = document.getElementById("numQuestions");
   const selected = [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value);
   currentType = document.getElementById("quizType").value;
+
   let pool = verbs;
   if (!selected.includes("all")) {
     const lessons = selected.map(Number);
@@ -272,16 +291,21 @@ function generateQuiz() {
 
   form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
 
-  lastQuizType = "verb";
-  lastQuizSettings = {
-    selectedLessons: [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value),
-    numQuestions: parseInt(document.getElementById("numQuestions").value),
-    quizType: document.getElementById("quizType").value,
-    skipIrregular: document.getElementById("skipIrregular").checked
-  };
+  if (!restore) {
+    lastQuizType = "verb";
+    lastQuizSettings = {
+      selectedLessons: [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value),
+      numQuestions: parseInt(numInput.value),
+      quizType: document.getElementById("quizType").value,
+      skipIrregular: document.getElementById("skipIrregular").checked
+    };
+  }
 }
 
 function checkAnswers() {
+  forwardStack = [];
+  historyStack.push(lastQuizSettings);
+
   let score = 0, output = "";
   currentQuestions.forEach((v, i) => {
     const input = document.querySelector(`[name=q${i}]`);
@@ -294,6 +318,7 @@ function checkAnswers() {
       output += `<div class="alert alert-danger">❌ Q${i + 1}: ${(v.kanji || v.dict)} (${v.dict}) - Incorrect<br>Your answer: <b>${userAnswer}</b><br>Answers: ${validAnswers.join(", ")}</div>`;
     }
   });
+
   output += `<p class="fw-bold">Final Score: ${score}/${currentQuestions.length}</p>`;
   document.getElementById("quiz").style.display = "none";
   document.getElementById("results").style.display = "block";
@@ -310,7 +335,7 @@ const typeMapAdj = {
   "past_short_negative": "past_short_negative"
 };
 
-function generateAdjectiveQuiz() {
+function generateAdjectiveQuiz(restore = false) {
   const numInput = document.getElementById("numAdjQuestions");
   const selected = [...document.getElementById("adjLessonFilter").selectedOptions].map(o => o.value);
   const type = document.getElementById("adjQuizType").value;
@@ -337,16 +362,20 @@ function generateAdjectiveQuiz() {
 
   form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
 
-  lastQuizType = "adjective";
-  lastQuizSettings = {
-    selectedLessons: [...document.getElementById("adjLessonFilter").selectedOptions].map(o => o.value),
-    numQuestions: parseInt(document.getElementById("numAdjQuestions").value),
-    quizType: document.getElementById("adjQuizType").value
-  };
-
+  if (!restore) {
+    lastQuizType = "adjective";
+    lastQuizSettings = {
+      selectedLessons: [...document.getElementById("adjLessonFilter").selectedOptions].map(o => o.value),
+      numQuestions: parseInt(numInput.value),
+      quizType: document.getElementById("adjQuizType").value
+    };
+  }
 }
 
 function checkAdjectiveAnswers() {
+  forwardStack = [];
+  historyStack.push(lastQuizSettings);
+
   let score = 0, output = "";
   const type = document.getElementById("adjQuizType").value;
 
@@ -377,6 +406,8 @@ function reset() {
   document.getElementById("list").style.display = "none";
   document.getElementById("adjectives").style.display = "none";
   document.getElementById("menu").style.display = "block";
+  historyStack = [];
+  forwardStack = [];
 }
 
 function shuffle(array) {
