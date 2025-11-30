@@ -99,3 +99,11 @@ th.past-short, th.past-short-negative {
     width: 90px;
   }
 }
+
+/* Make tables horizontally scrollable on small screens */
+.card-body,
+#verbTables,
+#adjectiveTables {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
