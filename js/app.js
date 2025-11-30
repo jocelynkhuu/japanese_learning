@@ -1,5 +1,8 @@
 let verbs = [];
 let adjectives = [];
+let lastQuizType = null; // "verb" or "adjective"
+let lastQuizSettings = {}; // store lesson selection, number of questions, and form type
+
 
 // ------------------------- INIT -------------------------
 function initApp() {
@@ -193,6 +196,45 @@ function showAdjectives() {
   });
 }
 
+function goBackToQuiz() {
+  document.getElementById("results").style.display = "none";
+
+  if (lastQuizType === "verb") {
+    document.getElementById("quiz").style.display = "block";
+
+    // Restore lesson selection
+    const lessonDropdown = document.getElementById("lessonFilter");
+    [...lessonDropdown.options].forEach(opt => {
+      opt.selected = lastQuizSettings.selectedLessons.includes(opt.value);
+    });
+
+    // Restore quiz settings
+    document.getElementById("numQuestions").value = lastQuizSettings.numQuestions;
+    document.getElementById("quizType").value = lastQuizSettings.quizType;
+    document.getElementById("skipIrregular").checked = lastQuizSettings.skipIrregular;
+
+    // Re-generate the quiz with previous settings
+    generateQuiz();
+
+  } else if (lastQuizType === "adjective") {
+    document.getElementById("adjQuiz").style.display = "block";
+
+    // Restore lesson selection
+    const adjDropdown = document.getElementById("adjLessonFilter");
+    [...adjDropdown.options].forEach(opt => {
+      opt.selected = lastQuizSettings.selectedLessons.includes(opt.value);
+    });
+
+    // Restore quiz settings
+    document.getElementById("numAdjQuestions").value = lastQuizSettings.numQuestions;
+    document.getElementById("adjQuizType").value = lastQuizSettings.quizType;
+
+    // Re-generate the adjective quiz
+    generateAdjectiveQuiz();
+  }
+}
+
+
 // ------------------------- VERB QUIZ -------------------------
 let currentQuestions = [], currentType = "te";
 const typeMap = {
@@ -223,12 +265,20 @@ function generateQuiz() {
   currentQuestions.forEach((v, i) => {
     const answers = v[typeMap[currentType]] || [];
     form.innerHTML += `<div class="mb-3">
-      <label class="form-label">Q${i + 1}: ${(v.kanji || v.dict)} (${v.meaning}) → ${currentType.replace("_", " ")}?</label>
+      <label class="form-label">Q${i + 1}: ${(v.kanji || v.dict)} (${v.meaning}) → ${currentType.replace(/_/g, " ")}?</label>
       <input type="text" class="form-control" name="q${i}" data-answers='${encodeURIComponent(JSON.stringify(answers))}'>
     </div>`;
   });
 
   form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
+
+  lastQuizType = "verb";
+  lastQuizSettings = {
+    selectedLessons: [...document.getElementById("lessonFilter").selectedOptions].map(o => o.value),
+    numQuestions: parseInt(document.getElementById("numQuestions").value),
+    quizType: document.getElementById("quizType").value,
+    skipIrregular: document.getElementById("skipIrregular").checked
+  };
 }
 
 function checkAnswers() {
@@ -280,12 +330,20 @@ function generateAdjectiveQuiz() {
   currentAdjQuestions.forEach((a, i) => {
     const answers = a[typeMapAdj[type]] || [];
     form.innerHTML += `<div class="mb-3">
-      <label class="form-label">Q${i + 1}: ${(a.kanji || a.dict)} (${a.meaning}) → ${type.replace("_", " ")}?</label>
+      <label class="form-label">Q${i + 1}: ${(a.kanji || a.dict)} (${a.meaning}) → ${type.replace(/_/g, " ")}?</label>
       <input type="text" class="form-control" name="adjQ${i}" data-answers='${encodeURIComponent(JSON.stringify(answers))}' data-dict='${a.dict}'>
     </div>`;
   });
 
   form.innerHTML += `<button type="submit" class="btn btn-success">Submit Answers</button>`;
+
+  lastQuizType = "adjective";
+  lastQuizSettings = {
+    selectedLessons: [...document.getElementById("adjLessonFilter").selectedOptions].map(o => o.value),
+    numQuestions: parseInt(document.getElementById("numAdjQuestions").value),
+    quizType: document.getElementById("adjQuizType").value
+  };
+
 }
 
 function checkAdjectiveAnswers() {
