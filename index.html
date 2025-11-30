@@ -13,14 +13,6 @@
   <div class="container">
     <h1 class="mb-4 text-center">📘 Japanese Verb & Adjective Quiz</h1>
 
-    <!-- Main Menu Buttons -->
-    <div id="menu" class="mb-3">
-      <button class="btn btn-primary w-100 mb-2" onclick="showList()">📚 List All Verbs</button>
-      <button class="btn btn-success w-100 mb-2" onclick="showAdjectives()">📚 List All Adjectives</button>
-      <button class="btn btn-warning w-100 mb-2" onclick="showVerbQuizMenu()">📝 Verb Quiz</button>
-      <button class="btn btn-info w-100 mb-2" onclick="showAdjQuizMenu()">📝 Adjective Quiz</button>
-    </div>
-
     <!-- Collapsible Te-form Cheat Sheet -->
     <div class="mb-3">
       <button class="btn btn-info mb-2 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#teFormTable"
@@ -118,7 +110,7 @@
     <!-- Verb Quiz -->
     <div id="quiz" style="display:none; min-height: 100vh;">
       <h2>Verb Quiz</h2>
-      <!-- Quiz controls here -->
+      <!-- Quiz controls -->
       <div class="mb-3">
         <label class="form-label">How many questions? (1–<span id="totalVerbs"></span>):</label>
         <div class="d-flex gap-2">
@@ -152,7 +144,6 @@
     <!-- Adjective Quiz -->
     <div id="adjQuiz" style="display:none; min-height: 100vh;">
       <h2>Adjective Quiz</h2>
-      <!-- Quiz controls here -->
       <div class="mb-3">
         <label class="form-label">How many questions? (1–<span id="totalAdjectives"></span>):</label>
         <div class="d-flex gap-2">
@@ -177,6 +168,14 @@
       </div>
       <form id="adjQuizForm" onsubmit="checkAdjectiveAnswers(); return false;"></form>
       <button class="btn btn-primary w-100 mt-3" onclick="reset()">🔙 Back to Menu</button>
+    </div>
+
+    <!-- Main Menu Buttons at Bottom -->
+    <div id="menuBottom" class="mb-5 mt-4">
+      <button class="btn btn-primary w-100 mb-2" onclick="showList()">📚 List All Verbs</button>
+      <button class="btn btn-success w-100 mb-2" onclick="showAdjectives()">📚 List All Adjectives</button>
+      <button class="btn btn-warning w-100 mb-2" onclick="showVerbQuizMenu()">📝 Verb Quiz</button>
+      <button class="btn btn-info w-100 mb-2" onclick="showAdjQuizMenu()">📝 Adjective Quiz</button>
     </div>
 
   </div>
